@@ -1,0 +1,62 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #388ac1;
+}
+
+#titlebar {
+	height: 100px;
+}
+
+#content {
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#title {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#controlPanel {
+	padding-top: 80px;
+	width: 150px;
+	height: 100%;
+	float: left;
+}
+
+#pagePanel {
+	margin-left: 200px;
+	margin-right: 150px;
+	margin-bottom: 300px;
+	height: 100%;
+}
+
+.tabControl {
+	margin: 0;
+	padding-left: 30px;
+	padding-right: 20px;
+	color: white;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	font-size: 20px;
+	text-align: right;
+	line-height: 50px;
+	width: 100%;
+	height: 50px;
+	cursor: default;
+}
+
+.tabPage {
+	padding: 10px;
+	border-radius: 5px;
+	background-color: white;
+	color: #2E2E2E;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	width: 100%;
+	height: 100%;
+	display: none;
+}

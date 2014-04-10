@@ -3,27 +3,55 @@ html, body {
 	padding: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #2E2E2E;
+	background-color: #e9eaed;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
 }
 
-#titlebar {
-	height: 100px;
+#titleBar {
+	height: 50px;
+	background-color: #388ac1;
+	color: white;
+	box-shadow: 0 3px 5px #999999;
+	font-size: 20px;
+	line-height: 50px;
 }
 
 #content {
 	height: 100%;
 	margin-left: auto;
 	margin-right: auto;
+	padding-top: 50px;
 }
 
 #title {
+	float: left;
+}
+
+#toolBar {
+	float: right;
+}
+
+#greeting {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	float: left;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#profile {
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#exitButton{
+	display: block;
+	float: right;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 #controlPanel {
-	padding-top: 80px;
+	padding-top: 50px;
 	width: 150px;
 	height: 100%;
 	float: left;
@@ -31,17 +59,18 @@ html, body {
 
 #pagePanel {
 	margin-left: 200px;
-	margin-right: 150px;
+	margin-right: 75px;
 	margin-bottom: 300px;
 	height: 100%;
 }
 
 .tabControl {
+	position: relative;
+	z-index: 1;
 	margin: 0;
 	padding-left: 30px;
-	padding-right: 20px;
-	color: white;
-	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	padding-right: 25px;
+	color: #388ac1;
 	font-size: 20px;
 	text-align: right;
 	line-height: 50px;
@@ -51,6 +80,8 @@ html, body {
 }
 
 .tabPage {
+	position: relative;
+	z-index: 1;
 	padding: 10px;
 	border-radius: 5px;
 	background-color: white;
@@ -58,5 +89,6 @@ html, body {
 	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
 	width: 100%;
 	height: 100%;
+	box-shadow: 0 0 15px #999999;
 	display: none;
 }

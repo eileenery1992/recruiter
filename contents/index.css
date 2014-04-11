@@ -92,3 +92,21 @@ html, body {
 	box-shadow: 0 0 15px #999999;
 	display: none;
 }
+
+#pageTitle {
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+#newProfileBtn {
+    float: right;
+}
+
+#searchBar {
+    width: 50%;
+}
+
+.marginTop {
+    margin-top: 10px;
+}

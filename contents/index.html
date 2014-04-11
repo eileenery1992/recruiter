@@ -5,9 +5,11 @@
     <title>The Recruiter</title>
     <link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
     <link type="text/css" href="index.css" rel="stylesheet" />
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
     <script type="text/javascript" src="jquery/js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
 
@@ -43,6 +45,17 @@
           this.style.textDecoration = "none";
         });
 
+        $('.default-value').each(function() {
+          var default_value = this.value;
+          $(this).focus(function(){
+            if(this.value == default_value) {
+            this.value = '';}
+          });
+          $(this).blur(function(){
+            if(this.value == '') {
+            this.value = default_value;}
+          });});
+
       });
     </script>
 
@@ -63,7 +76,38 @@
         <div class="tabControl" id="tabPosition">Positions</div>
       </div>
       <div id="pagePanel">
-        <div class="tabPage" id="tabCandidatePage">Candidates Page</div>
+        <div class="tabPage" id="tabCandidatePage">
+          <div id="pageTitle">Search Candidates
+            <button type="button" id="newProfileBtn" class="btn-group-lg btn btn-default">New Application</button>
+          </div>
+          <div class="input-group marginTop" id="searchBar">
+            <input type="text" class="default-value form-control" value="ID/name/email">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+          </div><!-- /searchBar -->
+          <div id="filters" class="marginTop">
+            <input type="checkbox" class="marginTop">Active Only
+            <div class="row marginTop">
+              <div class="col-lg-6">
+                <div class="input-group">
+                  <input type="checkbox">Just Added
+                  <input type="checkbox">1st Interview
+                  <input type="checkbox">2nd Interview
+                  <input type="checkbox">Accepted
+                  <input type="checkbox">Offer Pending
+                  <input type="checkbox">Declined
+                  <input type="checkbox">Rejected
+                </div><!-- /input-group -->
+              </div><!-- /col-lg-6 -->
+            </div><!-- /row marginTop -->
+            <div id="advancedFilters" class="marginTop">Advanced Filters
+            </div><!-- /advancedFilters -->
+          </div><!-- /filters -->
+          <div id="candidatesTable">
+          test
+          </div><!--candidatesTable -->
+        </div>
         <div class="tabPage" id="tabTaskPage">My Tasks Page</div>
         <div class="tabPage" id="tabSchedulePage">Schedule Page</div>
         <div class="tabPage" id="tabPositionPage">Positions Page</div>

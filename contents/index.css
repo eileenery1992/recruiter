@@ -97,17 +97,90 @@ html, body {
 
 #profileHeader {
 	border-spacing: 10px;
+	margin-bottom: 20px;
 }
 
 #profileTitle {
+	font-weight: bold;
 	font-size: 32px;
 }
 
 #editButton {
 	font-size: 14px;
-	color: gray;
+	color: #388ac1;
+	cursor: pointer;
 }
 
 #infoTable {
-	border-spacing: 25px 0;
+	margin-bottom: 30px;
+	border-spacing: 25px 2px;
+}
+
+.label {
+	color: gray;
+}
+
+#profileInfo {
+	width: 100%;
+}
+
+#leftColumn {
+	width: 70%;
+}
+
+#rightColumn {
+	vertical-align: top;
+}
+
+#statusButton {
+	width: 200px;
+	height: 70px;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	background-color: #c73a11;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 70px;
+}
+
+#email {
+	color: #388ac1;
+}
+
+#profileControlPanel {
+	border-spacing: 0;
+}
+
+.profileTab {
+	padding-left: 15px;
+	padding-right: 15px;
+	height: 40px;
+	color: #388ac1;
+	border-bottom: 2px solid #388ac1;
+}
+
+
+#rightSpace {
+	width: 100%;
+}
+
+.spaceBetween {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.profileTab.selected {
+	border-top: 2px solid #388ac1;
+	border-left: 2px solid #388ac1;
+	border-right: 2px solid #388ac1;
+	border-bottom: none;
+}
+
+.profileTab.unselected {
+	cursor: pointer;
+	background-color: #388ac1;
+	color: white;
+	border: 2px solid #388ac1;
 }

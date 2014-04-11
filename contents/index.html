@@ -48,6 +48,18 @@
           updateTabs();
         });
 
+        $("#editButton").hover(function() {
+          this.style.textDecoration = "underline";
+        }, function() {
+          this.style.textDecoration = "none";
+        });
+
+        $("#email").hover(function() {
+          this.style.textDecoration = "underline";
+        }, function() {
+          this.style.textDecoration = "none";
+        });
+
 
       });
     </script>
@@ -80,37 +92,52 @@
               <td id="editButton">Edit</td>
             </tr>
           </table>
-          <div id="profileInfo">
-            <div id="leftColumn">
-              <table id="infoTable">
-                <tr>
-                  <td id="nameLabel">Name:</td>
-                  <td id="name">Ben Bitdiddle</td>
-                </tr>
-                <tr>
-                  <td id="emailLabel">Email:</td>
-                  <td id="email">bitdiddle@mit.edu</td>
-                </tr>
-                <tr>
-                  <td id="telLabel">Telephone:</td>
-                  <td id="tel">(617) 253-1234</td>
-                </tr>
-                <tr>
-                  <td id="posLabel">Position:</td>
-                  <td id="pos">UI Designer</td>
-                </tr>
-                <tr>
-                  <td id="revLabel">Reviewers:</td>
-                  <td id="rev"></td>
-                </tr>
-            </div>
-            <div id="rightColumn"></div>
-          </div>
-          <div id="profileControlPanel"></div>
+          <table id="profileInfo">
+            <tr>
+              <td id="leftColumn">
+                <table id="infoTable">
+                  <tr>
+                    <td id="nameLabel" class="label">Name:</td>
+                    <td id="name">Ben Bitdiddle</td>
+                  </tr>
+                  <tr>
+                    <td id="emailLabel" class="label">Email:</td>
+                    <td id="email">bitdiddle@mit.edu</td>
+                  </tr>
+                  <tr>
+                    <td id="telLabel" class="label">Telephone:</td>
+                    <td id="tel">(617) 253-1234</td>
+                  </tr>
+                  <tr>
+                    <td id="posLabel" class="label">Position:</td>
+                    <td id="pos">UI Designer</td>
+                  </tr>
+                  <tr>
+                    <td id="revLabel" class="label">Reviewers:</td>
+                    <td id="rev"></td>
+                  </tr>
+                </table>
+              </td>
+              <td id="rightColumn">
+                <div id="statusButton">Just Added</div>
+              </td>
+            </tr>
+          </table>
+          <table id="profileControlPanel">
+            <tr>
+              <td id="leftSpace" class="profileTab"/>
+              <td id="tabActivity" class="profileTab selected">Activity</td>
+              <td class="profileTab spaceBetween"/>
+              <td id="tabInterview" class="profileTab unselected">Interviews</td>
+              <td class="profileTab spaceBetween"/>
+              <td id="tabInfo" class="profileTab unselected">Information</td>
+              <td id="rightSpace" class="profileTab"/>
+            </tr>
+          </table>
           <div id="profilePagePanel">
-            <div id="tabActionPage">Action Page</div>
-            <div id="tabInterviewPage">Interview Page</div>
-            <div id="tabInfoPage">Info Page</div>
+            <div id="tabActivityPage"></div>
+            <div id="tabInterviewPage"></div>
+            <div id="tabInfoPage"></div>
           </div>
         </div>
       </div>

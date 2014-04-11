@@ -19,7 +19,9 @@
           if (selected.length != 0) {
             $("#" + selected).css("background-color", "white").css("z-index", 3);
             $("#" + selected + "Page").css("display", "block").css("z-index", 2);
-          } 
+          } else {
+            $("#tabProfilePage").css("display", "block").css("z-index", 2);
+          }
         }
 
         updateTabs();
@@ -41,7 +43,11 @@
           this.style.textDecoration = "underline";
         }, function() {
           this.style.textDecoration = "none";
+        }).click(function() {
+          selected = "";
+          updateTabs();
         });
+
 
       });
     </script>
@@ -67,6 +73,46 @@
         <div class="tabPage" id="tabTaskPage">My Tasks Page</div>
         <div class="tabPage" id="tabSchedulePage">Schedule Page</div>
         <div class="tabPage" id="tabPositionPage">Positions Page</div>
+        <div class="tabPage" id="tabProfilePage">
+          <table id="profileHeader">
+            <tr valign="baseline">
+              <td id="profileTitle">Application 10086</td>
+              <td id="editButton">Edit</td>
+            </tr>
+          </table>
+          <div id="profileInfo">
+            <div id="leftColumn">
+              <table id="infoTable">
+                <tr>
+                  <td id="nameLabel">Name:</td>
+                  <td id="name">Ben Bitdiddle</td>
+                </tr>
+                <tr>
+                  <td id="emailLabel">Email:</td>
+                  <td id="email">bitdiddle@mit.edu</td>
+                </tr>
+                <tr>
+                  <td id="telLabel">Telephone:</td>
+                  <td id="tel">(617) 253-1234</td>
+                </tr>
+                <tr>
+                  <td id="posLabel">Position:</td>
+                  <td id="pos">UI Designer</td>
+                </tr>
+                <tr>
+                  <td id="revLabel">Reviewers:</td>
+                  <td id="rev"></td>
+                </tr>
+            </div>
+            <div id="rightColumn"></div>
+          </div>
+          <div id="profileControlPanel"></div>
+          <div id="profilePagePanel">
+            <div id="tabActionPage">Action Page</div>
+            <div id="tabInterviewPage">Interview Page</div>
+            <div id="tabInfoPage">Info Page</div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

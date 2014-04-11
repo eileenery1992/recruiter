@@ -21,7 +21,9 @@
           if (selected.length != 0) {
             $("#" + selected).css("background-color", "white").css("z-index", 3);
             $("#" + selected + "Page").css("display", "block").css("z-index", 2);
-          } 
+          } else {
+            $("#tabProfilePage").css("display", "block").css("z-index", 2);
+          }
         }
 
         updateTabs();
@@ -39,10 +41,22 @@
           updateTabs();
         });
 
+        $(".profileTab.unselected, .profileTab.selected").hover(function() {
+          $(this).addClass("hovering");
+        }, function(){
+          $(this).removeClass("hovering");
+        }).click(function() {
+          $(".profileTab.selected").removeClass("selected").addClass("unselected");
+          this.className = "profileTab selected";
+        });
+
         $("#profile").hover(function() {
           this.style.textDecoration = "underline";
         }, function() {
           this.style.textDecoration = "none";
+        }).click(function() {
+          selected = "";
+          updateTabs();
         });
 
         $('.default-value').each(function() {
@@ -55,8 +69,21 @@
             if(this.value == '') {
             this.value = default_value;}
           });});
+        
+        $("#editButton").hover(function() {
+          this.style.textDecoration = "underline";
+        }, function() {
+          this.style.textDecoration = "none";
+        });
+
+        $("#email").hover(function() {
+          this.style.textDecoration = "underline";
+        }, function() {
+          this.style.textDecoration = "none";
+        });
 
       });
+
     </script>
 
   </head>
@@ -111,6 +138,70 @@
         <div class="tabPage" id="tabTaskPage">My Tasks Page</div>
         <div class="tabPage" id="tabSchedulePage">Schedule Page</div>
         <div class="tabPage" id="tabPositionPage">Positions Page</div>
+        <div class="tabPage" id="tabProfilePage">
+          <table id="profileHeader">
+            <tr valign="baseline">
+              <td id="profileTitle">Application 10086</td>
+              <td id="editButton">Edit</td>
+            </tr>
+          </table>
+          <table id="profileInfo">
+            <tr>
+              <td id="leftColumn">
+                <table id="infoTable">
+                  <tr>
+                    <td id="nameLabel" class="label">Name:</td>
+                    <td id="name">Ben Bitdiddle</td>
+                  </tr>
+                  <tr>
+                    <td id="emailLabel" class="label">Email:</td>
+                    <td id="email">bitdiddle@mit.edu</td>
+                  </tr>
+                  <tr>
+                    <td id="telLabel" class="label">Telephone:</td>
+                    <td id="tel">(617) 253-1234</td>
+                  </tr>
+                  <tr>
+                    <td id="posLabel" class="label">Position:</td>
+                    <td id="pos">UI Designer</td>
+                  </tr>
+                  <tr>
+                    <td id="revLabel" class="label">Reviewers:</td>
+                    <td id="rev"></td>
+                  </tr>
+                </table>
+              </td>
+              <td id="rightColumn">
+                <div id="statusButton">Just Added</div>
+              </td>
+            </tr>
+          </table>
+          <table id="profileControlPanel">
+            <tr>
+              <td id="leftSpace" class="profileTab"/>
+              <td id="tabActivity" class="profileTab selected">Activity</td>
+              <td class="profileTab spaceBetween"/>
+              <td id="tabInterview" class="profileTab unselected">Interviews</td>
+              <td class="profileTab spaceBetween"/>
+              <td id="tabInfo" class="profileTab unselected">Information</td>
+              <td id="rightSpace" class="profileTab"/>
+            </tr>
+          </table>
+          <div id="profilePagePanel">
+            <div id="tabActivityPage">
+              <div class="activity statusChange">
+                <span class="profileLink">laura</span> created application: 10086.
+                <span class="timeStamp">03/05/14 09:41am</span>
+              </div>
+              <div class="activity regular">
+                <span class="profileLink">laura</span> added reviewer: <span class="profileLink">mclean</span>.
+                <span class="timeStamp">03/05/14 09:45am</span>
+              </div>
+            </div>
+            <div id="tabInterviewPage"></div>
+            <div id="tabInfoPage"></div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

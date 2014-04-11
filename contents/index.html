@@ -39,6 +39,15 @@
           updateTabs();
         });
 
+        $(".profileTab.unselected, .profileTab.selected").hover(function() {
+          $(this).addClass("hovering");
+        }, function(){
+          $(this).removeClass("hovering");
+        }).click(function() {
+          $(".profileTab.selected").removeClass("selected").addClass("unselected");
+          this.className = "profileTab selected";
+        });
+
         $("#profile").hover(function() {
           this.style.textDecoration = "underline";
         }, function() {
@@ -135,7 +144,16 @@
             </tr>
           </table>
           <div id="profilePagePanel">
-            <div id="tabActivityPage"></div>
+            <div id="tabActivityPage">
+              <div class="activity statusChange">
+                <span class="profileLink">laura</span> created application: 10086.
+                <span class="timeStamp">03/05/14 09:41am</span>
+              </div>
+              <div class="activity regular">
+                <span class="profileLink">laura</span> added reviewer: <span class="profileLink">mclean</span>.
+                <span class="timeStamp">03/05/14 09:45am</span>
+              </div>
+            </div>
             <div id="tabInterviewPage"></div>
             <div id="tabInfoPage"></div>
           </div>

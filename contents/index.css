@@ -1,4 +1,4 @@
-html, body {
+html, #myBody {
 	margin: 0;
 	padding: 0;
 	width: 100%;
@@ -52,7 +52,7 @@ html, body {
 
 #controlPanel {
 	padding-top: 50px;
-	width: 150px;
+	width: 200px;
 	height: 100%;
 	float: left;
 }
@@ -123,10 +123,11 @@ html, body {
 	font-size: 32px;
 }
 
-#editButton {
+#editButtonContainer {
 	font-size: 14px;
 	color: #388ac1;
 	cursor: pointer;
+	padding-left: 10px;
 }
 
 #infoTable {
@@ -134,8 +135,9 @@ html, body {
 	border-spacing: 25px 2px;
 }
 
-.label {
+.myLabel {
 	color: gray;
+	padding-right: 15px;
 }
 
 #profileInfo {
@@ -143,6 +145,7 @@ html, body {
 }
 
 #leftColumn {
+	padding-left: 30px;
 	width: 70%;
 }
 
@@ -249,7 +252,7 @@ html, body {
 	display: none;
 }
 
-select {
+#mySelect {
 	font-size: 18px;
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 	padding: 5px;

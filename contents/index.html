@@ -87,7 +87,7 @@
     </script>
 
   </head>
-  <body>
+  <body id="myBody">
     <div id="titleBar">
       <div id="title"><img src="graphics/title3.png"/></div>
       <div id="toolBar">
@@ -142,7 +142,7 @@
           <table id="profileHeader">
             <tr valign="baseline">
               <td id="profileTitle">Application 10086</td>
-              <td id="editButton">Edit</td>
+              <td id="editButtonContainer"><div id="editButton">Edit</div></td>
             </tr>
           </table>
           <table id="profileInfo">
@@ -150,23 +150,23 @@
               <td id="leftColumn">
                 <table id="infoTable">
                   <tr>
-                    <td id="nameLabel" class="label">Name:</td>
+                    <td id="nameLabel" class="myLabel">Name:</td>
                     <td id="name">Ben Bitdiddle</td>
                   </tr>
                   <tr>
-                    <td id="emailLabel" class="label">Email:</td>
+                    <td id="emailLabel" class="myLabel">Email:</td>
                     <td id="email">bitdiddle@mit.edu</td>
                   </tr>
                   <tr>
-                    <td id="telLabel" class="label">Telephone:</td>
+                    <td id="telLabel" class="myLabel">Telephone:</td>
                     <td id="tel">(617) 253-1234</td>
                   </tr>
                   <tr>
-                    <td id="posLabel" class="label">Position:</td>
+                    <td id="posLabel" class="myLabel">Position:</td>
                     <td id="pos">UI Designer</td>
                   </tr>
                   <tr>
-                    <td id="revLabel" class="label">Reviewers:</td>
+                    <td id="revLabel" class="myLabel">Reviewers:</td>
                     <td id="rev"></td>
                   </tr>
                 </table>
@@ -199,7 +199,7 @@
               </div>
               <div id="actionControl">
                 <span id="actionSelector">
-                  <select>
+                  <select id="mySelect">
                     <option selected="true">Add Comment</option>
                     <option>Add Reviewer</option>
                   </select>

@@ -244,3 +244,39 @@ html, body {
 	border-right: 2px solid gray;
 	border-bottom: 2px solid gray;
 }
+
+#reviewerInput {
+	display: none;
+}
+
+select {
+	font-size: 18px;
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	padding: 5px;
+	border: 1px solid #388ac1;
+	margin: 10px;
+}
+
+#actionControl {
+	margin-top: 20px;
+}
+
+#actionInput {
+	margin: 10px;
+	border-color: #388ac1;
+	resize: none;
+	padding: 7px;
+	font-size: 18px;
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+}
+
+#confirmButton {
+	background-color: gray;
+	color: white;
+	height: 37px;
+	line-height: 37px;
+	font-size: 18px;
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	margin: 10px;
+	padding: 5px;
+}

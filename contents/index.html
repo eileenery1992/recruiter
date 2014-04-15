@@ -10,7 +10,19 @@
     <script type="text/javascript" src="jquery/js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	
+
+	<!-- Calendar Plugin https://github.com/robmonie/jquery-week-calendar -->
+  <link rel='stylesheet' type='text/css' href='plugins/week-calendar/libs/css/smoothness/jquery-ui-1.8.11.custom.css' />
+  <link rel='stylesheet' type='text/css' href='plugins/week-calendar/jquery.weekcalendar.css' />
+  
+  <script type='text/javascript' src='plugins/week-calendar/libs/jquery-1.4.4.min.js'></script>
+  <script type='text/javascript' src='plugins/week-calendar/libs/jquery-ui-1.8.11.custom.min.js'></script>
+  <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
+  <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
+  
     <script type="text/javascript">
+	
       $(document).ready(function() {
 
         var selected = "tabCandidate";
@@ -136,7 +148,9 @@
           </div><!--candidatesTable -->
         </div>
         <div class="tabPage" id="tabTaskPage">My Tasks Page</div>
-        <div class="tabPage" id="tabSchedulePage">Schedule Page</div>
+        <div class="tabPage" id="tabSchedulePage">
+
+		</div>
         <div class="tabPage" id="tabPositionPage">Positions Page</div>
         <div class="tabPage" id="tabProfilePage">
           <table id="profileHeader">

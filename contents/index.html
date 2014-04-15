@@ -5,88 +5,28 @@
     <title>The Recruiter</title>
     <link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
     <link type="text/css" href="index.css" rel="stylesheet" />
+	<link rel='stylesheet' type='text/css' href='plugins/week-calendar/libs/css/smoothness/jquery-ui-1.8.11.custom.css' />
+	<link rel='stylesheet' type='text/css' href='plugins/week-calendar/jquery.weekcalendar.css' />
     <link type="text/css" href="bootstrap/css/bootstrap.css" rel="stylesheet" />
 
+	<!-- Requird by calendar
+    <script type="text/javascript" src="plugins/week-calendar/libs/jquery-1.4.4.min.js"></script>
+	-->
     <script type="text/javascript" src="jquery/js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+
+    <script type="text/javascript" src="profile.js"></script>
+
     <script type="text/javascript" src="jquery/js/jquery.tablesorter.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="apps.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
+  <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
+  <script type='text/javascript' src='set_calendar.js'></script>
 
-        var selected = "tabCandidate";
-
-        var updateTabs = function() {
-          $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
-          $(".tabPage").css("display", "none").css("z-index", 1);
-          if (selected.length != 0) {
-            $("#" + selected).css("background-color", "white").css("z-index", 3);
-            $("#" + selected + "Page").css("display", "block").css("z-index", 2);
-          } else {
-            $("#tabProfilePage").css("display", "block").css("z-index", 2);
-          }
-        }
-
-        updateTabs();
-
-        $(".tabControl").hover(function() {
-          if (this.id != selected) {
-            this.style.backgroundColor = "#f6f7f8";
-          }
-        }, function() {
-          if (this.id != selected) {
-            this.style.backgroundColor = "#e9eaed";
-          }
-        }).click(function() {
-          selected = this.id;
-          updateTabs();
-        });
-
-        $(".profileTab.unselected, .profileTab.selected").hover(function() {
-          $(this).addClass("hovering");
-        }, function(){
-          $(this).removeClass("hovering");
-        }).click(function() {
-          $(".profileTab.selected").removeClass("selected").addClass("unselected");
-          this.className = "profileTab selected";
-        });
-
-        $("#profile").hover(function() {
-          this.style.textDecoration = "underline";
-        }, function() {
-          this.style.textDecoration = "none";
-        }).click(function() {
-          selected = "";
-          updateTabs();
-        });
-
-        $('.default-value').each(function() {
-          var default_value = this.value;
-          $(this).focus(function(){
-            if(this.value == default_value) {
-            this.value = '';}
-          });
-          $(this).blur(function(){
-            if(this.value == '') {
-            this.value = default_value;}
-          });});
-        
-        $("#editButton").hover(function() {
-          this.style.textDecoration = "underline";
-        }, function() {
-          this.style.textDecoration = "none";
-        });
-
-        $("#email").hover(function() {
-          this.style.textDecoration = "underline";
-        }, function() {
-          this.style.textDecoration = "none";
-        });
-
-      });
-
-    </script>
 
   </head>
   <body id="myBody">
@@ -277,8 +217,8 @@
             </tbody>
           </table><!--candidatesTable -->
         </div>
-        
-        <div class="tabPage" id="tabTaskPage">
+ 
+		<div class="tabPage" id="tabTaskPage">
           <div class="pageTitle">Search Candidates</div>
           <table class="table-hover table" id="taskTable">
             <thead>
@@ -296,7 +236,29 @@
           </table><!--taskTable -->
         </div><!-- tabTAskPage -->
 
-        <div class="tabPage" id="tabSchedulePage">Schedule Page</div>
+        <div class="tabPage" id="tabSchedulePage">
+		<div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID <a id='candidateID'></a> </div>
+		<div id='avail' class='horizontalPanel'>Candidate Availability
+			<div id='calendar'></div>
+		</div>	
+		<div id='spec' class='horizontalPanel'>
+			<form> 
+			Interview Type:  
+			<select> 
+				<option>Phone</option>
+				<option>Onsite</option>
+			</select>
+			Interviewers:
+			<input type='text' onkeydown='addInterviewer();'> 
+			<ul id='intrList'>
+			</ul>
+			Comments:<br>
+			<textarea rows=5, cols=20></textarea>
+			<input type='submit'>
+			</form>
+		</div>
+		</div>
+
         <div class="tabPage" id="tabPositionPage">Positions Page</div>
         <div class="tabPage" id="tabProfilePage">
           <table id="profileHeader">

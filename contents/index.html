@@ -19,10 +19,9 @@
   <script type='text/javascript' src='plugins/week-calendar/libs/jquery-ui-1.8.11.custom.min.js'></script>
   <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
   <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
+  <script type='text/javascript' src='set_calendar.js'></script>
   
     <script type="text/javascript">
-	
-
       $(document).ready(function() {
 
         var selected = "tabCandidate";
@@ -153,11 +152,10 @@
 		<div>
 			Candidate Availability
 
-	<h1>jQuery Week Calendar (full demo)</h1>
 	<div id='calendar'></div>
-	<div id="event_edit_container">
+	<div id="event_edit_container" style='display:none'>
 		<form>
-			<input type="hidden" />
+			<input type='hidden'>
 			<ul>
 				<li>
 					<span>Date: </span><span class="date_holder"></span> 

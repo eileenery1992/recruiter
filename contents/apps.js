@@ -108,8 +108,9 @@ $(function(){
 
   $("#taskTable").on("click", "td", function(e) {
     var header = e.delegateTarget.tHead.rows[0].cells[this.cellIndex].innerHTML;
-    var id = parseInt(e.target.parentNode.cells[0].innerHTML);
     if (header=="Action Required") {
+      var id = parseInt(e.target.parentNode.parentNode.cells[0].innerHTML);
+      console.log(id);
       var action = e.target.innerHTML;
       goToAction(action, id);
       

@@ -318,7 +318,17 @@ html, #myBody {
 /* css for my schedule tab
 
 */
+.horizontalPanel{
+	float:left;
+}
 
+#calendar{
+	width:35em;
+}
+
+#tabSchedulePage{
+	height: 40em;
+}
 
 /* css for position tab
 

@@ -50,3 +50,11 @@ $(document).ready(function() {
 
 
 });
+
+function addInterviewer(name){
+	var intrElem = document.createElement('li');
+	intrElem.textContent = name;
+	var delBtn = document.createElement('button');
+	
+	$('#intrList').appendChild()
+	

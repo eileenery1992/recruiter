@@ -90,27 +90,8 @@ html, #myBody {
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 	font-size: 18px;
 	width: 100%;
-	height: 100%;
 	box-shadow: 0 0 15px #999999;
 	display: none;
-}
-
-#pageTitle {
-    font-size: 24px;
-    margin-bottom: 10px;
-    margin-top: 15px;
-}
-
-#newProfileBtn {
-    float: right;
-}
-
-#searchBar {
-    width: 50%;
-}
-
-.marginTop {
-    margin-top: 10px;
 }
 
 #profileHeader {
@@ -283,3 +264,54 @@ html, #myBody {
 	margin: 10px;
 	padding: 5px;
 }
+
+/* css for candidate tab
+
+*/
+
+.pageTitle {
+    margin-bottom: 25px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+#newAppBtn {
+    float: right;
+}
+
+#searchBar {
+    width: 50%;
+}
+
+.marginTop {
+    margin-top: 10px;
+}
+
+
+#candidatesTable,
+#taskTable {
+    margin-top: 30px;
+}
+
+#filters {
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+#taskTable td {
+	cursor: pointer;
+}
+/* css for my tasks tab
+
+*/
+
+
+/* css for my schedule tab
+
+*/
+
+
+/* css for position tab
+
+*/

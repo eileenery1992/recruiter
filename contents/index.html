@@ -5,11 +5,13 @@
     <title>The Recruiter</title>
     <link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
     <link type="text/css" href="index.css" rel="stylesheet" />
-    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="bootstrap/css/bootstrap.css" rel="stylesheet" />
 
     <script type="text/javascript" src="jquery/js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="jquery/js/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="apps.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
 
@@ -88,6 +90,123 @@
 
   </head>
   <body id="myBody">
+
+    <!--new app from resume Modal -->
+    <div class="modal fade" id="newFromResume" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">New Application</h4>
+          </div>
+          <div class="modal-body">
+            <p>Create new application from resume?</p>
+            <input id="filebutton" name="filebutton" class="input-file" type="file">
+          </div>
+          <div class="modal-footer">
+            <button id="toForm" type="button" class="btn btn-default" data-dismiss="modal">No, take me to the form</button>
+            <button id="createFromResumeBtn" type="button" class="btn btn-primary">Create</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- new app from form Modal -->
+    <div class="modal fade" id="newFromForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" id="closeForm" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">New Application     ID: 10086</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <fieldset>
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" for="nameInput">Name *</label>
+                <div class="controls">
+                  <input id="nameInput" name="nameInput" type="text" placeholder="" class="input-xlarge" required="">   
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" for="emailInput">Email *</label>
+                <div class="controls">
+                  <input id="emailInput" name="emailInput" type="text" placeholder="" class="input-xlarge" required="">    
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" for="phoneInput">Phone *</label>
+                <div class="controls">
+                  <input id="phoneInput" name="phoneInput" type="text" placeholder="" class="input-xlarge" required="">    
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" for="schoolInput">School</label>
+                <div class="controls">
+                  <input id="schoolInput" name="schoolInput" type="text" placeholder="" class="input-xlarge">    
+                </div>
+              </div>
+
+              <!-- Select Basic -->
+              <div class="control-group">
+                <label class="control-label" for="educationInput">Education</label>
+                <div class="controls">
+                  <select id="educationInput" name="educationInput" class="input-xlarge">
+                    <option>High School Diploma</option>
+                    <option>Undergraduate</option>
+                    <option>Master</option>
+                    <option>Ph.D</option>
+                    <option>Postdoc</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" for="majorInput">Major</label>
+                <div class="controls">
+                  <input id="majorInput" name="majorInput" type="text" placeholder="" class="input-xlarge">   
+                </div>
+              </div>
+
+              <!-- Select Multiple -->
+              <div class="control-group">
+                <label class="control-label" for="positionInput">Position</label>
+                <div class="controls">
+                  <select id="positionInput" name="positionInput" class="input-xlarge" multiple="multiple">
+                    <option>Product Manager</option>
+                    <option>QA</option>
+                    <option>Software Developer</option>
+                    <option>UI Designer</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- File Button --> 
+              <div class="control-group">
+                <label class="control-label" for="filebutton">Resume</label>
+                <div class="controls">
+                  <input id="filebutton" name="filebutton" class="input-file" type="file">
+                </div>
+              </div>
+
+              </fieldset>
+              </form>
+          </div><!--modal-body -->
+          <div class="modal-footer">
+            <button id="toResumeUpload" type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+            <button id="createBtn" type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <div id="titleBar">
       <div id="title"><img src="graphics/title3.png"/></div>
       <div id="toolBar">
@@ -104,9 +223,12 @@
       </div>
       <div id="pagePanel">
         <div class="tabPage" id="tabCandidatePage">
-          <div id="pageTitle">Search Candidates
-            <button type="button" id="newProfileBtn" class="btn-group-lg btn btn-default">New Application</button>
-          </div>
+          <!-- Button trigger modal -->
+          <button id="newAppBtn" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newFromResume">
+            New Application
+          </button>
+
+          <div class="pageTitle">Search Candidates</div>
           <div class="input-group marginTop" id="searchBar">
             <input type="text" class="default-value form-control" value="ID/name/email">
             <span class="input-group-btn">
@@ -115,27 +237,65 @@
           </div><!-- /searchBar -->
           <div id="filters" class="marginTop">
             <input type="checkbox" class="marginTop">Active Only
-            <div class="row marginTop">
-              <div class="col-lg-6">
-                <div class="input-group">
-                  <input type="checkbox">Just Added
-                  <input type="checkbox">1st Interview
-                  <input type="checkbox">2nd Interview
-                  <input type="checkbox">Accepted
-                  <input type="checkbox">Offer Pending
-                  <input type="checkbox">Declined
-                  <input type="checkbox">Rejected
-                </div><!-- /input-group -->
-              </div><!-- /col-lg-6 -->
-            </div><!-- /row marginTop -->
-            <div id="advancedFilters" class="marginTop">Advanced Filters
-            </div><!-- /advancedFilters -->
+            <div class="marginTop" id="statusFilters">
+              <div class="input-group">
+                <input type="checkbox">Just Added 
+                <input type="checkbox">1st Interview 
+                <input type="checkbox">2nd Interview 
+                <input type="checkbox">Accepted 
+                <input type="checkbox">Offer Pending 
+                <input type="checkbox">Declined 
+                <input type="checkbox">Rejected 
+              </div><!-- /input-group -->
+            </div><!-- /statusFilters -->
+            <div class="marginTop" id="positionFilters">
+              <div class="input-group">
+                <input type="checkbox">QA 
+                <input type="checkbox">Product Manager 
+                <input type="checkbox">Software Developer
+                <input type="checkbox">UI Designer 
+              </div><!-- /input-group -->
+            </div><!-- /positionFilters -->
+            <!--<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedFilters">
+              Advanced Filters
+            </button>
+            <div id="advancedFilters" class="collapse in">
+            </div>-->
           </div><!-- /filters -->
-          <div id="candidatesTable">
-          test
-          </div><!--candidatesTable -->
+          <table class="table-hover table" id="candidatesTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th>Last Updated</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr></tr>
+            </tbody>
+          </table><!--candidatesTable -->
         </div>
-        <div class="tabPage" id="tabTaskPage">My Tasks Page</div>
+        
+        <div class="tabPage" id="tabTaskPage">
+          <div class="pageTitle">Search Candidates</div>
+          <table class="table-hover table" id="taskTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th>Action Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr></tr>
+            </tbody>
+          </table><!--taskTable -->
+        </div><!-- tabTAskPage -->
+
         <div class="tabPage" id="tabSchedulePage">Schedule Page</div>
         <div class="tabPage" id="tabPositionPage">Positions Page</div>
         <div class="tabPage" id="tabProfilePage">

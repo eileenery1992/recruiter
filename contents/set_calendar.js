@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-
    var $calendar = $('#calendar');
    var id = 10;
 
@@ -8,11 +6,13 @@ $(document).ready(function() {
       timeslotsPerHour : 4,
       allowCalEventOverlap : true,
       overlapEventsSeparate: true,
-      firstDayOfWeek : 1,
       businessHours :{start: 8, end: 18, limitDisplay: true },
-      daysToShow : 7,
+      daysToShow : 5,
       height : function($calendar) {
-         return $(window).height() - $("h1").outerHeight() - 1;
+         return $(window).height() ;
+      },
+	  width : function($calendar) {
+         return $(window).width() ;
       },
       eventRender : function(calEvent, $event) {
          if (calEvent.end.getTime() < new Date().getTime()) {
@@ -129,10 +129,6 @@ $(document).ready(function() {
       eventMouseout : function(calEvent, $event) {
       },
       noEvents : function() {
-
-      },
-      data : function(start, end, callback) {
-         callback(getEventData());
       }
    });
 
@@ -141,55 +137,7 @@ $(document).ready(function() {
       $dialogContent.find("textarea").val("");
    }
 
-   function getEventData() {
-      var year = new Date().getFullYear();
-      var month = new Date().getMonth();
-      var day = new Date().getDate();
-
-      return {
-         events : [
-            {
-               "id":1,
-               "start": new Date(year, month, day, 12),
-               "end": new Date(year, month, day, 13, 30),
-               "title":"Lunch with Mike"
-            },
-            {
-               "id":2,
-               "start": new Date(year, month, day, 14),
-               "end": new Date(year, month, day, 14, 45),
-               "title":"Dev Meeting"
-            },
-            {
-               "id":3,
-               "start": new Date(year, month, day + 1, 17),
-               "end": new Date(year, month, day + 1, 17, 45),
-               "title":"Hair cut"
-            },
-            {
-               "id":4,
-               "start": new Date(year, month, day - 1, 8),
-               "end": new Date(year, month, day - 1, 9, 30),
-               "title":"Team breakfast"
-            },
-            {
-               "id":5,
-               "start": new Date(year, month, day + 1, 14),
-               "end": new Date(year, month, day + 1, 15),
-               "title":"Product showcase"
-            },
-            {
-               "id":6,
-               "start": new Date(year, month, day, 10),
-               "end": new Date(year, month, day, 11),
-               "title":"I'm read-only",
-               readOnly : true
-            }
-
-         ]
-      };
-   }
-
+ 
 
    /*
     * Sets up the start and end time fields in the calendar event
@@ -245,24 +193,6 @@ $(document).ready(function() {
 
    });
 
-
-   var $about = $("#about");
-
-   $("#about_button").click(function() {
-      $about.dialog({
-         title: "About this calendar demo",
-         width: 600,
-         close: function() {
-            $about.dialog("destroy");
-            $about.hide();
-         },
-         buttons: {
-            close : function() {
-               $about.dialog("close");
-            }
-         }
-      }).show();
-   });
 
 
 });

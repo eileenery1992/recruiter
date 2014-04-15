@@ -25,18 +25,20 @@ var writeBen = function() {
   app["date"].toDateString(), "</td></tr>"));
 };
 
+var updateTabs = function() {
+  $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
+  $(".tabPage").css("display", "none").css("z-index", 1);
+  if (selected.length != 0) {
+    $("#" + selected).css("background-color", "white").css("z-index", 3);
+    $("#" + selected + "Page").css("display", "block").css("z-index", 2);
+  } else {
+    $("#tabProfilePage").css("display", "block").css("z-index", 2);
+  }
+}
+
 $(function(){
 
-        var updateTabs = function() {
-          $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
-          $(".tabPage").css("display", "none").css("z-index", 1);
-          if (selected.length != 0) {
-            $("#" + selected).css("background-color", "white").css("z-index", 3);
-            $("#" + selected + "Page").css("display", "block").css("z-index", 2);
-          } else {
-            $("#tabProfilePage").css("display", "block").css("z-index", 2);
-          }
-        }
+
   $.each(IDs, function(index, value){
     var app = apps[value];
     $("#candidatesTable tr:last").after("<tr><td>".concat(

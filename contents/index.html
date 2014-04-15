@@ -23,7 +23,7 @@
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
   <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
-  <script type='text/javascript' src='set_calendar.js'></script>
+  <script type='text/javascript' src='schedule.js'></script>
 	
     <script type="text/javascript">
       $(document).ready(function() {
@@ -126,6 +126,30 @@
 
     <!-- new app from form Modal -->
     <div class="modal fade" id="newFromForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	
+	<!-- Interview schedule page -->
+	<div class='model fade' id='newInterview' tabindex=-1 role='dialog' aria-labelledby='myModelLabel' aria-hidden='true'>
+		<div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID <a id='candidateID'></a> </div>
+		<div id='avail' class='horizontalPanel'>Candidate Availability
+			<div id='calendar'></div>
+		</div>	
+		<div id='spec' class='horizontalPanel'>
+			<form> 
+			Interview Type:  
+			<select> 
+				<option>Phone</option>
+				<option>Onsite</option>
+			</select>
+			Interviewers:
+			<input type='text' onkeydown='addInterviewer();'> 
+			<ul id='intrList'>
+			</ul>
+			Comments:<br>
+			<textarea rows=5, cols=20></textarea>
+			<input type='submit'>
+			</form>
+		</div>
+	</div>
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -310,26 +334,7 @@
         </div><!-- tabTAskPage -->
 
         <div class="tabPage" id="tabSchedulePage">
-		<div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID <a id='candidateID'></a> </div>
-		<div id='avail' class='horizontalPanel'>Candidate Availability
-			<div id='calendar'></div>
-		</div>	
-		<div id='spec' class='horizontalPanel'>
-			<form> 
-			Interview Type:  
-			<select> 
-				<option>Phone</option>
-				<option>Onsite</option>
-			</select>
-			Interviewers:
-			<input type='text' onkeydown='addInterviewer();'> 
-			<ul id='intrList'>
-			</ul>
-			Comments:<br>
-			<textarea rows=5, cols=20></textarea>
-			<input type='submit'>
-			</form>
-		</div>
+		
 		</div>
 
         <div class="tabPage" id="tabPositionPage">Positions Page</div>

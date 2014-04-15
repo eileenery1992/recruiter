@@ -1250,7 +1250,8 @@
                 self._renderEvents(options.data, $weekDayColumns);
             }
 
-          self._disableTextSelect($weekDayColumns);
+/*          self._disableTextSelect($weekDayColumns);
+*/
       },
 
       /**
@@ -2035,6 +2036,7 @@
           });
       },
 	  */
+	  
       _disableTextSelect: function($elements) {
           $elements.each(function() {
                 $(this).mousedown(function() {

@@ -431,15 +431,23 @@ html, #myBody {
 #newInterview .modal-dialog{
 	width: 1250px;
 }
+
+#newInterview .ul{
+	list-style-type:none;
+}
  
 #calendar {
 	width: 40em;
 	border: ridge;
 }
 
-#calendar .wc-time-header-cell{
+#newInterview * {
 	box-sizing: initial;
 }
+#calControls {
+	margin-bottom: 10px;
+}
+
 
 #calendar h1{
 	font-size:18px;
@@ -449,12 +457,30 @@ html, #myBody {
 	color:black;
 }
 
+#calControl button{
+	margin: 5px;
+	float: right;
+}
+
+#newInterview ul button{
+	float:right;
+}
+
+#newInterview li{
+	list-style-type: none;
+	padding: 8px;
+}
+#spec div{
+	padding:10px;
+}
 #intrList {
 	height: 300px;
 }
 #spec {
 	width: 400px;
 }
+
+
 
 
 /* css for position tab

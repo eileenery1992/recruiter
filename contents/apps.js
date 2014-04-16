@@ -25,6 +25,19 @@ var writeBen = function() {
   app["date"].toDateString(), "</td></tr>"));
 };
 
+  var t = {"ID": 10086, "action": "Send Rejection"};
+  var addTask = function(task) {
+    var app = apps[task["ID"]];
+    $("#taskTable tr:last").after("<tr id='t".concat(
+    task["ID"], "'><td>",
+    task["ID"], "</td><td>",
+    app["name"], "</td><td>",
+    app["pos"], "</td><td>",
+    app["status"], "</td><td><button class='btn btn-default'>",
+    task["action"], "</button></td></tr>"));
+  }  
+  var t2 = {'ID':10023, 'action': 'Schedule Interview'};
+
 $(function(){
 
 
@@ -70,20 +83,7 @@ $(function(){
     }
   });
 
-  var t = {"ID": 10086, "action": "Send Rejection"};
-  var addTask = function(task) {
-    var app = apps[task["ID"]];
-    $("#taskTable tr:last").after("<tr><td>".concat(
-    task["ID"], "</td><td>",
-    app["name"], "</td><td>",
-    app["pos"], "</td><td>",
-    app["status"], "</td><td><button class='btn btn-default'>",
-    task["action"], "</button></td></tr>"));
-  }
-  addTask(t);
-  
-  var t2 = {'ID':10023, 'action': 'Schedule Interview'};
-  addTask(t2);
+
 
   var goToAction = function(action, id) {
     switch(action) {

@@ -167,6 +167,7 @@ var loadBen = function() {
         reviewerLink.className = "profileLink";
         $("#rev").append(reviewerLink);
         $("#notification").css("display", "inline-block");
+        addTask(t);
       }
     }
   });
@@ -235,6 +236,8 @@ var loadBen = function() {
   $("#closeAlert").click(function() {
     $("#emailSent").modal("hide");
     $("#notification").css("display", "inline-block");
+    $("#t10086").css("display", "none");
+    addTask(t2);
   });
 
   $("#mySelect").click(function() {
@@ -364,7 +367,8 @@ var loadAlex = function() {
 
   $("#confirmDeletion").click(function() {
     $("#interviewCard").css("display", "none");
-    $("emptyTag").css("display", "block");
+    $("#emptyTag").css("display", "block");
+    scheduled = 0;
     $("#interviewDeleted").modal("hide");
   });
 };

@@ -59,6 +59,7 @@ $(document).ready(function() {
    });
 
    $('#intSendBtn').click(function(){
+      $("#t10023").css("display", "block");
       if (scheduled == 0) {
          addAction2("laura", "schedule", "");
          $("#interviewLink").click(function() {

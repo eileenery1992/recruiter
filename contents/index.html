@@ -158,7 +158,10 @@
           </div>
 		  <div class="modal-body">
 		   <div id='avail' class='horizontalPanel'>
+			<div id='calControls'>
 			<label> Candidate Availability </label>
+			<button onclick="$('#calendar').weekCalendar('clear');">Reset</button>
+			</div>
 		    <div id='calendar'></div>
 		   </div>	
 		   <div id='spec' class='horizontalPanel'>
@@ -179,7 +182,7 @@
 			</div>
 			  
 			<div id='iComment'>
-			<label>Comments:</label>
+			<label>Comments:</label><br>
 			<textarea rows=5, cols=20></textarea>
 			</div>
 			</form>

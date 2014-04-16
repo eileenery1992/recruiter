@@ -755,11 +755,12 @@
                   self.setDaysToShow(parseInt($(this).val(), 10));
                 });
             }
-            $calendarContainer.find('.wc-nav, .wc-display').buttonset();
+/*             $calendarContainer.find('.wc-nav, .wc-display').buttonset();
             var _height = $calendarContainer.find('.wc-nav').outerHeight();
+			console.log(_height)
             $calendarContainer.find('.wc-title')
               .height(_height)
-              .css('line-height', _height + 'px');
+              .css('line-height', _height + 'px'); */
         }else{
             var calendarNavHtml = '';
             calendarNavHtml += '<div class=\"ui-widget-header wc-toolbar\">';

@@ -57,12 +57,10 @@ $(document).ready(function() {
       noEvents : function() {
       }
    });
-   
-   var timeSelected = {};
-   var interviewType = '';
-   var interviewers = '';
-   
 
+   $('#intSendBtn').click(function(){
+		confirmSend($('#candidateName').text(), timeSelected(), $('#intrName').text());
+	});
 
 });
 
@@ -72,4 +70,27 @@ function addInterviewer(name){
 	var delBtn = document.createElement('button');
 	
 	$('#intrList').appendChild()
-	}
+}
+	
+function timeSelected(){
+	var t = [];
+    $('#calendar').find('.wc-cal-event').each(function() {
+            t.push([$(this).data('calEvent').start,
+				$(this).data('calEvent').end]);
+          });
+	return t;
+}
+
+function confirmSend(candidate, times, interviewer, type)
+{var x;
+var text = "Send"+candidate+"'s availabitilty to "+interviewer+"("+type+")"
+var r=confirm(text);
+if (r)
+  {
+// TODO: Redirect to candidate profile tab
+  }
+else
+  {
+// Back to task tab
+  }
+}

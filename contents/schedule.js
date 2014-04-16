@@ -76,16 +76,25 @@ $(document).ready(function() {
 
 	// Autocomplete
 	setAutocomp($('#intrName'), interviewers);
+	$('#intrName').keydown(function(e){
+		console.log($(this).val());
+		if(e.keyCode==13){	
+			addInterviewer($(this).val());
+			return false;
+			}
+		}
+		);
 			
 });
 
 function addInterviewer(name){
+	$('#intrName').val(''); 	// clears input field 
 	console.log(name);
 	var intrElem = document.createElement('li');
 	intrElem.textContent = name;
 	var delBtn = document.createElement('button');
 	delBtn.textContent = 'remove';
-	delBtn.onClick = function(){ console.log(this.parentNode.parentNode);this.parentNode.parentNode.removeChild(intrElem);};
+//	delBtn.onClick = function(){ console.log(this.parentNode.parentNode); return false;};
 	intrElem.appendChild(delBtn);
 	console.log(intrElem);
 	$('#intrList').append(intrElem);
@@ -97,11 +106,10 @@ function setAutocomp(inputElem, source){
 	source: source, 
 	select:function(event, ui){
 		console.log(event.which)
- 		if (event.which==1 || event.which==13){		// 1 for clicking, 13 for entering
+ 		if (event.which==1){		// 1 for clicking, 13 for entering
 			// Do stuff
 			addInterviewer(ui.item.value);
 			} 
-		inputElem.val(''); 	// clears input field 
 		return false;	
 		}
 	});

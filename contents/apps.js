@@ -122,6 +122,13 @@ $(function(){
     }else {
       selected = "";
       updateTabs();
+      if (rejected == 0) {
+          addAction("mclean", "reject", "");
+          rejected = 1;
+      }
+      $("#rejectButton").click(function() {
+          $("#newEmail").modal("show");
+        });
     }
   });
 });

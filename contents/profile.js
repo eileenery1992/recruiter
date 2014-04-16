@@ -1,6 +1,7 @@
 var selected = "tabCandidate";
 var candidate = "Ben";
 var rejected = 0;
+var sent = 1;
 
 function updateTabs(){
   $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
@@ -45,6 +46,9 @@ var addAction = function(actor, type, content) {
   } else if (type == "reject") {
     comment.innerHTML = " rejected this candidate: " + content;
     activityClass = "regular";
+  } else if (type == "send") {
+    comment.innerHTML = " sent rejection letter to the candidate."
+    activityClass = "reject";
   }
   activity.className = "activity " + activityClass;
   activity.appendChild(profileLink);
@@ -104,6 +108,9 @@ var loadBen = function() {
     addAction2("laura", "create", "");
     benLoaded = 1;
   }
+
+  $("#titleInput").val("Thank you for your interest");
+  $("#messageInput").val("Hello Ben,\n    Thank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!\n\nBest,\nLaura");
 
   $("#actionInput").keyup(function() {
     if ($(this).val().length != 0) {
@@ -180,6 +187,16 @@ var loadBen = function() {
 
   $("#sendEmailButton").click(function() {
     $("#newEmail").modal("hide");
+    $("#emailSent").modal("show");
+  });
+
+  $("#closeAlert").click(function() {
+    if (sent == 0) {
+      addAction("laura", "send", "");
+      sent = 1;
+    } 
+    $("#statusButton").text("Rejected").removeClass("activeStatus").addClass("inactiveStatus");
+    $("#emailSent").modal("hide");
   });
 
   $("#mySelect").click(function() {

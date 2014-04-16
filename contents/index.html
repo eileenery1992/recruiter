@@ -263,7 +263,7 @@
             <table id="emailTable">
               <tr>
                 <td class="emailLabel">To:</td>
-                <td>Alex Armstrong&#60;arms@mit.edu&#62;</td>
+                <td>Ben Bitdiddle&#60;bitdiddle@mit.edu&#62;</td>
               </tr>
               <tr>
                 <td class="emailLabel">Title:</td>
@@ -271,7 +271,7 @@
               </tr>
               <tr>
                 <td class="emailLabel">Message:</td>
-                <td><textarea rows="5" id="emailInput"></textarea></td>
+                <td><textarea rows="5" id="messageInput"></textarea></td>
               </tr>
             </table>
           </div>
@@ -282,6 +282,21 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <!-- Email Sent Alert -->
+    <div id="emailSent" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Email successfully sent!
+          </div>
+          <!-- dialog buttons -->
+          <div class="modal-footer"><button type="button" class="btn btn-primary" id="closeAlert">OK</button></div>
+        </div>
+      </div>
+    </div>
  
 		<div class="tabPage" id="tabTaskPage">
           <div class="pageTitle">Search Candidates</div>
@@ -340,7 +355,7 @@
                 </table>
               </td>
               <td id="rightColumn">
-                <div id="statusButton">Just Added</div>
+                <div id="statusButton" class="activeStatus">Just Added</div>
               </td>
             </tr>
           </table>
@@ -413,7 +428,7 @@
                 </table>
               </td>
               <td id="rightColumn2">
-                <div id="statusButton2">1st Interview</div>
+                <div id="statusButton2" class="activeStatus">1st Interview</div>
               </td>
             </tr>
           </table>

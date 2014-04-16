@@ -140,11 +140,18 @@ html, #myBody {
 	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
 	font-size: 24px;
 	font-weight: bold;
-	background-color: #c73a11;
 	color: white;
 	text-align: center;
 	vertical-align: middle;
 	line-height: 70px;
+}
+
+.activeStatus {
+	background-color: #8ac007;
+}
+
+.inactiveStatus {
+	background-color: #c73a11;
 }
 
 #email, #email2 {
@@ -240,6 +247,13 @@ html, #myBody {
 	border-bottom: 2px solid #A675A2;
 }
 
+.activity.reject {
+	border-top: 2px solid #C73A11;
+	border-left: 10px solid #C73A11;
+	border-right: 2px solid #C73A11;
+	border-bottom: 2px solid #C73A11;
+}
+
 #reviewerInputContainer, #reviewerInputContainer2 {
 	display: none;
 }
@@ -295,7 +309,7 @@ html, #myBody {
 	cursor: pointer;
 }
 
-#emailInput, #emailInput2 {
+#messageInput, #emailInput2 {
 	border-color: #388ac1;
 	resize: none;
 	padding: 7px;

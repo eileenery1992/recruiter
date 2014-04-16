@@ -115,20 +115,30 @@ $(function(){
     var header = e.delegateTarget.tHead.rows[0].cells[this.cellIndex].innerHTML;
     if (header=="Action Required") {
       var id = parseInt(e.target.parentNode.parentNode.cells[0].innerHTML);
-      console.log(id);
       var action = e.target.innerHTML;
       goToAction(action, id);
       
     }else {
       selected = "";
+      var id = parseInt(e.target.parentNode.cells[0].innerHTML);
+      if (id == 10086) {
+        candidate = "Ben";
+      } else if (id == 10023) {
+        candidate = "Alex";
+      }
       updateTabs();
-      if (rejected == 0) {
+
+      if (candidate == "Ben") {
+        if (rejected == 0) {
           addAction("mclean", "reject", "");
           rejected = 1;
-      }
-      $("#rejectButton").click(function() {
+        }
+        $("#rejectButton").click(function() {
           $("#newEmail").modal("show");
         });
+      }
+
+      
     }
   });
 });

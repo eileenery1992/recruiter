@@ -189,10 +189,10 @@
     </div>
     <div id="content">
       <div id="controlPanel">
-        <div class="tabControl" id="tabCandidate">Candidates</div>
-        <div class="tabControl" id="tabTask">My Tasks</div>
-        <div class="tabControl" id="tabSchedule">Schedule</div>
-        <div class="tabControl" id="tabPosition">Positions</div>
+        <div class="tabControl" id="tabCandidate">  Candidates</div>
+        <div class="tabControl" id="tabTask"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
+        <div class="tabControl" id="tabSchedule">  Schedule</div>
+        <div class="tabControl" id="tabPosition">  Positions</div>
       </div>
       <div id="pagePanel">
         <div class="tabPage" id="tabCandidatePage">
@@ -371,7 +371,7 @@
             </tr>
           </table>
           <div id="profilePagePanel">
-            <div id="tabActivityPage">
+            <div id="tabActivityPage" class="inProfilePage">
               <div id="activityList">
               </div>
               <div id="actionControl">
@@ -390,8 +390,15 @@
                 Post Action
               </div>
             </div>
-            <div id="tabInterviewPage"></div>
-            <div id="tabInfoPage"></div>
+            <div id="tabInterviewPage" class="inProfilePage">
+              <div id="interviewList">
+                No interviews yet.
+              </div>
+              <button id="newInterviewButton" class="btn btn-primary btn-lg">
+                New Interview
+              </button>
+            </div>
+            <div id="tabInfoPage" class="inProfilePage"></div>
           </div>
         </div>
         <div class="tabPage" id="tabProfilePage2">
@@ -434,17 +441,17 @@
           </table>
           <table id="profileControlPanel2">
             <tr>
-              <td id="leftSpace2" class="profileTab"/>
-              <td id="tabActivity2" class="profileTab selected">Activity</td>
-              <td class="profileTab spaceBetween"/>
-              <td id="tabInterview2" class="profileTab unselected">Interviews</td>
-              <td class="profileTab spaceBetween"/>
-              <td id="tabInfo2" class="profileTab unselected">Information</td>
-              <td id="rightSpace2" class="profileTab"/>
+              <td id="leftSpace2" class="profileTab2"/>
+              <td id="tabActivity2" class="profileTab2 selected">Activity</td>
+              <td class="profileTab2 spaceBetween"/>
+              <td id="tabInterview2" class="profileTab2 unselected">Interviews</td>
+              <td class="profileTab2 spaceBetween"/>
+              <td id="tabInfo2" class="profileTab2 unselected">Information</td>
+              <td id="rightSpace2" class="profileTab2"/>
             </tr>
           </table>
           <div id="profilePagePanel2">
-            <div id="tabActivityPage2">
+            <div id="tabActivity2Page2" class="inProfilePage2">
               <div id="activityList2">
               </div>
               <div id="actionControl2">
@@ -463,8 +470,34 @@
                 Post Action
               </div>
             </div>
-            <div id="tabInterviewPage2"></div>
-            <div id="tabInfoPage2"></div>
+            <div id="tabInterview2Page2" class="inProfilePage2">
+              <div id="interviewList2">
+                <div id="emptyTag">No interviews yet.</div>
+                <div id="interviewCard">
+                  <div id="cardTitle">
+                    Interview 1
+                  </div>
+                  <table id="interviewTable">
+                    <tr>
+                      <td>Type:</td>
+                      <td>Phone</td>
+                    </tr>
+                    <tr>
+                      <td>Interviewer:</td>
+                      <td><span class="profileLink">mclean</span></td>
+                    </tr>
+                    <tr>
+                      <td>Availability:</td>
+                      <td><button type="button" id="availability" class="btn btn-default btn-sm">Change Availability</button></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <button id="newInterviewButton2" class="btn btn-primary btn-lg">
+                New Interview
+              </button>
+            </div>
+            <div id="tabInfo2Page2" class="inProfilePage2"></div>
           </div>
         </div>
       </div>

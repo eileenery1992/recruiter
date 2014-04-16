@@ -88,6 +88,17 @@ $(function(){
   var goToAction = function(action, id) {
     switch(action) {
       case "Send Rejection":
+        selected = "";
+        candidate = "Ben";
+        if (rejected == 0) {
+          addAction("mclean", "reject", "");
+          rejected = 1;
+        }
+        $("#newEmail").modal("show");
+        $("#rejectButton").click(function() {
+          $("#newEmail").modal("show");
+        });
+        updateTabs();
         break;
       case "Interview Availability":
         break;

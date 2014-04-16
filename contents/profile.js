@@ -1,5 +1,6 @@
 var selected = "tabCandidate";
 var candidate = "Ben";
+var rejected = 0;
 
 function updateTabs(){
   $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
@@ -21,7 +22,7 @@ function updateTabs(){
 var addAction = function(actor, type, content) {
   var activity = document.createElement("div");
   var profileLink = document.createElement("span");
-  profileLink.innerHTML = "laura";
+  profileLink.innerHTML = actor;
   profileLink.className = "profileLink";
   var timeStamp = document.createElement("span");
   timeStamp.innerHTML = new Date().toLocaleString();
@@ -41,10 +42,21 @@ var addAction = function(actor, type, content) {
   } else if (type == "comment") {
     comment.innerHTML = " commented: " + content;
     activityClass = "comment";
+  } else if (type == "reject") {
+    comment.innerHTML = " rejected this candidate: " + content;
+    activityClass = "regular";
   }
   activity.className = "activity " + activityClass;
   activity.appendChild(profileLink);
   activity.appendChild(comment);
+  if (type == "reject") {
+    var rejectButton = document.createElement("button");
+    rejectButton.innerHTML = "Send Rejection";
+    rejectButton.type = "button";
+    rejectButton.className = "btn btn-danger btn-xs";
+    rejectButton.id = "rejectButton";
+    activity.appendChild(rejectButton);
+  }
   activity.appendChild(timeStamp);
   $("#activityList").append(activity);
 }
@@ -52,7 +64,7 @@ var addAction = function(actor, type, content) {
 var addAction2 = function(actor, type, content) {
   var activity = document.createElement("div");
   var profileLink = document.createElement("span");
-  profileLink.innerHTML = "laura";
+  profileLink.innerHTML = actor;
   profileLink.className = "profileLink";
   var timeStamp = document.createElement("span");
   timeStamp.innerHTML = new Date().toLocaleString();

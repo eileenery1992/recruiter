@@ -91,6 +91,7 @@ html, #myBody {
 	width: 100%;
 	box-shadow: 0 0 15px #999999;
 	display: none;
+	min-height: 500px;
 }
 
 #profileHeader, #profileHeader2 {
@@ -199,6 +200,10 @@ html, #myBody {
 .profileLink {
 	cursor: pointer;
 	color: #388ac1;
+}
+
+#rejectButton {
+	margin-top: -5px;
 }
 
 .timeStamp {

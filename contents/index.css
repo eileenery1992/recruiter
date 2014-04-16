@@ -419,7 +419,7 @@ html, #myBody {
 */
 
 #newInterview .modal-body{
-	height: 600px;
+	height: 650px;
 }
 #newInterview .modal-body >div{
 	float:left;
@@ -428,7 +428,7 @@ html, #myBody {
 }
 
 #newInterview .modal-dialog{
-	width:80em;
+	width: 1250px;
 }
  
 #calendar {

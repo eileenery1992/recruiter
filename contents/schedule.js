@@ -1,7 +1,8 @@
 $(document).ready(function() {
    var $calendar = $('#calendar');
    var id = 0;
-
+	var interviewers = ['mclean']
+	
    $calendar.weekCalendar({
       timeslotsPerHour : 4,
       allowCalEventOverlap : false,
@@ -72,16 +73,39 @@ $(document).ready(function() {
       $("#intSendBtn").text("Save Changes & Exit");
 	});
 
+	// Autocomplete
+	setAutocomp($('#intrName'), interviewers);
+			
 });
 
 function addInterviewer(name){
+	console.log(name);
 	var intrElem = document.createElement('li');
 	intrElem.textContent = name;
 	var delBtn = document.createElement('button');
-	
-	$('#intrList').appendChild()
+	delBtn.textContent = 'remove';
+	delBtn.onClick = function(){ console.log(this.parentNode.parentNode);this.parentNode.parentNode.removeChild(intrElem);};
+	intrElem.appendChild(delBtn);
+	console.log(intrElem);
+	$('#intrList').append(intrElem);
 }
 	
+function setAutocomp(inputElem, source){
+	// Turn on autocompletion
+    inputElem.autocomplete({ 
+	source: source, 
+	select:function(event, ui){
+		console.log(event.which)
+ 		if (event.which==1 || event.which==13){		// 1 for clicking, 13 for entering
+			// Do stuff
+			addInterviewer(ui.item.value);
+			} 
+		inputElem.val(''); 	// clears input field 
+		return false;	
+		}
+	});
+  }
+  
 function timeSelected(){
 	var t = [];
     $('#calendar').find('.wc-cal-event').each(function() {

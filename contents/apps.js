@@ -106,6 +106,9 @@ $(function(){
         break;
       case "Schedule Interview":
         $('#newInterview').modal('show');
+		$('#candidateName').text(apps[id]['name']);
+		$('#candidateID').text(id);
+		
       case "Send Interview Time":
         break;
     }

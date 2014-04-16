@@ -51,6 +51,7 @@
     </div><!-- /.modal -->
 
     <!-- new app from form Modal -->
+	
     <div class="modal fade" id="newFromForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	
       <div class="modal-dialog">
@@ -153,28 +154,38 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-			<div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID <a id='candidateID'></a> </div>
+			<div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID: <a id='candidateID'></a> </div>
           </div>
 		  <div class="modal-body">
-		   <div id='avail' class='horizontalPanel'>Candidate Availability
+		   <div id='avail' class='horizontalPanel'>
+			<h4> Candidate Availability </h4>
 		    <div id='calendar'></div>
 		   </div>	
 		   <div id='spec' class='horizontalPanel'>
 			<form> 
-			Interview Type:  
+			<div id='iType' class = 'verticalPanel'>
+			<label>Interview Type: </label>
 			<select> 
 				<option>Phone</option>
 				<option>Onsite</option>
 			</select>
-			Interviewers:
+			</div>
+			
+			<div id='intrs' class = 'verticalPanel'>
+			<label>Interviewers:</label>
 			<input type='text' onkeydown='addInterviewer();'> 
 			<ul id='intrList'>
 			</ul>
-			Comments:<br>
-			<textarea rows=5, cols=20></textarea>
-			<input type='submit'>
-			</form>
 			</div>
+			  
+			<div id='iComment'>
+			<label>Comments:</label>
+			<textarea rows=5, cols=20></textarea>
+			</div>
+			</form>
+            <button id="intCancelBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="intSendBtn" type="button" class="btn btn-primary" data-dismiss="modal">Send Interview Request</button>
+		   </div>
 		   </div>
 		  </div>
 		</div>

@@ -93,24 +93,24 @@ html, #myBody {
 	display: none;
 }
 
-#profileHeader {
+#profileHeader, #profileHeader2 {
 	border-spacing: 10px;
 	margin-bottom: 20px;
 }
 
-#profileTitle {
+#profileTitle, #profileTitle2 {
 	font-weight: bold;
 	font-size: 32px;
 }
 
-#editButtonContainer {
+#editButtonContainer, #editButtonContainer2 {
 	font-size: 14px;
 	color: #388ac1;
 	cursor: pointer;
 	padding-left: 10px;
 }
 
-#infoTable {
+#infoTable, #infoTable2 {
 	margin-bottom: 30px;
 	border-spacing: 25px 2px;
 }
@@ -120,20 +120,20 @@ html, #myBody {
 	padding-right: 15px;
 }
 
-#profileInfo {
+#profileInfo, #profileInfo2 {
 	width: 100%;
 }
 
-#leftColumn {
+#leftColumn, #leftColumn2 {
 	padding-left: 30px;
 	width: 70%;
 }
 
-#rightColumn {
+#rightColumn, #rightColumn2 {
 	vertical-align: top;
 }
 
-#statusButton {
+#statusButton, #statusButton2 {
 	width: 200px;
 	height: 70px;
 	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
@@ -146,11 +146,11 @@ html, #myBody {
 	line-height: 70px;
 }
 
-#email {
+#email, #email2 {
 	color: #388ac1;
 }
 
-#profileControlPanel {
+#profileControlPanel, #profileControlPanel2 {
 	border-spacing: 0;
 }
 
@@ -163,7 +163,7 @@ html, #myBody {
 }
 
 
-#rightSpace {
+#rightSpace, #rightSpace2 {
 	width: 100%;
 }
 
@@ -192,7 +192,7 @@ html, #myBody {
 	background-color: #79B4DB;
 }
 
-#tabActivityPage {
+#tabActivityPage, #tabActivityPage2 {
 	padding: 23px;
 }
 
@@ -235,17 +235,17 @@ html, #myBody {
 	border-bottom: 2px solid #A675A2;
 }
 
-#reviewerInputContainer {
+#reviewerInputContainer, #reviewerInputContainer2 {
 	display: none;
 }
 
-#reviewerInput, #titleInput {
+#reviewerInput, #titleInput, #reviewerInput2, #titleInput2 {
 	padding-left: 10px;
 	height: 39px;
 	border: 1px solid #388ac1;
 }
 
-#mySelect {
+#mySelect, #mySelect2 {
 	font-size: 18px;
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 	padding: 5px;
@@ -253,19 +253,19 @@ html, #myBody {
 	margin: 10px;
 }
 
-#actionControl {
+#actionControl, #actionControl2 {
 	margin-top: 20px;
 }
 
-#actionInputContainer {
+#actionInputContainer, #actionInputContainer2 {
 	padding-right: 20px;
 }
 
-#titleInput {
+#titleInput, #titleInput2 {
 	width: 100%;
 }
 
-#actionInput {
+#actionInput, #actionInput2 {
 	margin: 10px;
 	border-color: #388ac1;
 	resize: none;
@@ -276,7 +276,7 @@ html, #myBody {
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 }
 
-#confirmButton {
+#confirmButton, #confirmButton2 {
 	background-color: gray;
 	color: white;
 	height: 40px;
@@ -290,7 +290,7 @@ html, #myBody {
 	cursor: pointer;
 }
 
-#emailInput {
+#emailInput, #emailInput2 {
 	border-color: #388ac1;
 	resize: none;
 	padding: 7px;
@@ -299,7 +299,7 @@ html, #myBody {
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 }
 
-#emailTable {
+#emailTable, #emailTable2 {
 	border-spacing: 10px;
 	border-collapse: separate;
 	width: 100%;

@@ -67,15 +67,37 @@ html, #myBody {
 	position: relative;
 	z-index: 1;
 	margin: 0;
-	padding-left: 30px;
 	padding-right: 25px;
 	color: #388ac1;
 	font-size: 20px;
 	text-align: right;
 	line-height: 50px;
-	width: 100%;
+	width: 100%;<img src="graphics/dot1.png" id="icon1" class="notification"/>
 	height: 50px;
 	cursor: default;
+}
+
+#notification {
+	display: none;
+	cursor: pointer;
+}
+
+#interviewTable {
+	border-spacing: 10px;
+	border-collapse: separate;
+}
+
+#interviewCard {
+	display: none;
+	padding: 15px;
+	border-top: 2px solid #8AC007;
+	border-left: 10px solid #8AC007;
+	border-right: 2px solid #8AC007;
+	border-bottom: 2px solid #8AC007;
+}
+#cardTitle {
+	font-size: 24px;
+	font-weight: bold;
 }
 
 .tabPage {
@@ -162,7 +184,7 @@ html, #myBody {
 	border-spacing: 0;
 }
 
-.profileTab {
+.profileTab, .profileTab2 {
 	padding-left: 15px;
 	padding-right: 15px;
 	height: 40px;
@@ -180,7 +202,7 @@ html, #myBody {
 	padding-right: 2px;
 }
 
-.profileTab.selected {
+.profileTab.selected, .profileTab2.selected {
 	background-color: white;
 	color: #388ac1;
 	border-top: 2px solid #388ac1;
@@ -189,18 +211,27 @@ html, #myBody {
 	border-bottom: none;
 }
 
-.profileTab.unselected {
+.profileTab.unselected, .profileTab2.unselected {
 	cursor: pointer;
 	background-color: #388ac1;
 	color: white;
 	border: 2px solid #388ac1;
 }
 
-.profileTab.unselected.hovering {
+.inProfilePage, .inProfilePage2 {
+	display: none;
+}
+
+
+#tabActivityPage, #tabActivity2Page2 {
+	display: block;
+}
+
+.profileTab.unselected.hovering, .profileTab2.unselected.hovering {
 	background-color: #79B4DB;
 }
 
-#tabActivityPage, #tabActivityPage2 {
+#tabActivityPage, #tabActivity2Page2 {
 	padding: 23px;
 }
 
@@ -322,6 +353,14 @@ html, #myBody {
 	border-spacing: 10px;
 	border-collapse: separate;
 	width: 100%;
+}
+
+#interviewList, #interviewList2 {
+	padding: 30px;
+}
+
+#newInterviewButton, #newInterviewButton2 {
+	margin: 30px;
 }
 
 .emailLabel {

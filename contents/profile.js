@@ -1,7 +1,7 @@
 var selected = "tabCandidate";
 var candidate = "Ben";
 var rejected = 0;
-var sent = 1;
+var sent = 0;
 
 function updateTabs(){
   $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
@@ -132,6 +132,11 @@ var loadBen = function() {
       var reviewer = $("#reviewerInput").val();
       if (reviewer == "mclean") {
         addAction("laura", "review", reviewer);
+        var reviewerLink = document.createElement("span");
+        reviewerLink.innerHTML = reviewer;
+        reviewerLink.className = "profileLink";
+        $("#rev").append(reviewerLink);
+        $("#notification").css("display", "inline-block");
       }
     }
   });
@@ -143,6 +148,8 @@ var loadBen = function() {
   }).click(function() {
     $(".profileTab.selected").removeClass("selected").addClass("unselected");
     this.className = "profileTab selected";
+    $(".inProfilePage").css("display", "none");
+    $("#" + this.id + "Page").css("display", "block");
   });
 
   $("#profile").hover(function() {
@@ -188,14 +195,14 @@ var loadBen = function() {
   $("#sendEmailButton").click(function() {
     $("#newEmail").modal("hide");
     $("#emailSent").modal("show");
-  });
-
-  $("#closeAlert").click(function() {
     if (sent == 0) {
       addAction("laura", "send", "");
       sent = 1;
     } 
     $("#statusButton").text("Rejected").removeClass("activeStatus").addClass("inactiveStatus");
+  });
+
+  $("#closeAlert").click(function() {
     $("#emailSent").modal("hide");
   });
 
@@ -211,6 +218,11 @@ var loadBen = function() {
 };
 
 var loadAlex = function() {
+
+  var reviewerLink2 = document.createElement("span");
+  reviewerLink2.innerHTML = "mclean";
+  reviewerLink2.className = "profileLink";
+  $("#rev2").append(reviewerLink2);
 
   $("#actionInput2").keyup(function() {
     if ($(this).val().length != 0) {
@@ -236,13 +248,13 @@ var loadAlex = function() {
     }
   });
 
-  $(".profileTab.unselected, .profileTab.selected").hover(function() {
+  $(".profileTab2.unselected, .profileTab2.selected").hover(function() {
     $(this).addClass("hovering");
   }, function(){
     $(this).removeClass("hovering");
   }).click(function() {
-    $(".profileTab.selected").removeClass("selected").addClass("unselected");
-    this.className = "profileTab selected";
+    $(".profileTab2.selected").removeClass("selected").addClass("unselected");
+    this.className = "profileTab2 selected";
   });
 
   $('.default-value').each(function() {
@@ -278,6 +290,17 @@ var loadAlex = function() {
     $("#newEmail").modal("hide");
   });
 
+  $(".profileTab2.unselected, .profileTab2.selected").hover(function() {
+    $(this).addClass("hovering");
+  }, function(){
+    $(this).removeClass("hovering");
+  }).click(function() {
+    $(".profileTab2.selected").removeClass("selected").addClass("unselected");
+    this.className = "profileTab2 selected";
+    $(".inProfilePage2").css("display", "none");
+    $("#" + this.id + "Page2").css("display", "block");
+  });
+
   $("#mySelect2").click(function() {
     if (this.selectedIndex == 0) {
       $("#actionInputContainer2").css("display", "block");
@@ -287,6 +310,14 @@ var loadAlex = function() {
       $("#reviewerInputContainer2").css("display", "inline-block");
     }
   });
+
+  $("#newInterviewButton2").click(function() {
+    $('#newInterview').modal('show');
+  });
+
+  $("#availability").click(function() {
+    $('#newInterview').modal('show');
+  })
 };
 
 $(document).ready(function() {
@@ -300,7 +331,11 @@ $(document).ready(function() {
     }
   }).click(function() {
     selected = this.id;
+    if (this.id == "tabTask") {
+      $("#notification").css("display", "none");
+    }
     updateTabs();
   });
   loadBen();
+  loadAlex();
 });

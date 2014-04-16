@@ -345,6 +345,10 @@ html, #myBody {
 	font-size:18px;
 } 
 
+#calendar button{
+	color:black;
+}
+
 #intrList {
 	height: 300px;
 }

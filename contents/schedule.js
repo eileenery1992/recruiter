@@ -66,7 +66,7 @@ $(document).ready(function() {
          });
       }
       scheduled = 1;
-		confirmSend($('#candidateName').text(), timeSelected(), $('#intrName').text());
+		confirmSend($('#candidateName').text(), timeSelected(), $('#intrName').val(), $('#type').find(':selected').text());
       $("#emptyTag").css("display", "none");
       $("#interviewCard").css("display", "block");
       $("#intSendBtn").text("Save Changes & Exit");
@@ -93,7 +93,7 @@ function timeSelected(){
 
 function confirmSend(candidate, times, interviewer, type)
 {var x;
-var text = "Send"+candidate+"'s availabitilty to "+interviewer+"("+type+")"
+var text = "Send "+candidate+"'s availabitilty to "+interviewer+" (type: "+type+")"
 var r=confirm(text);
 if (r)
   {

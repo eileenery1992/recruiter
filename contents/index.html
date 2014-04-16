@@ -53,29 +53,6 @@
     <!-- new app from form Modal -->
     <div class="modal fade" id="newFromForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	
-	<!-- Interview schedule page -->
-	<div class='model fade' id='newInterview' tabindex=-1 role='dialog' aria-labelledby='myModelLabel' aria-hidden='true'>
-		<div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID <a id='candidateID'></a> </div>
-		<div id='avail' class='horizontalPanel'>Candidate Availability
-			<div id='calendar'></div>
-		</div>	
-		<div id='spec' class='horizontalPanel'>
-			<form> 
-			Interview Type:  
-			<select> 
-				<option>Phone</option>
-				<option>Onsite</option>
-			</select>
-			Interviewers:
-			<input type='text' onkeydown='addInterviewer();'> 
-			<ul id='intrList'>
-			</ul>
-			Comments:<br>
-			<textarea rows=5, cols=20></textarea>
-			<input type='submit'>
-			</form>
-		</div>
-	</div>
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -170,6 +147,39 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+		<!-- Interview request -->
+	<div class='modal fade' id='newInterview' tabindex='-1' role='dialog' aria-labelledby='myModelLabel' aria-hidden='true'>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+			<div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID <a id='candidateID'></a> </div>
+          </div>
+		  <div class="modal-body">
+		   <div id='avail' class='horizontalPanel'>Candidate Availability
+		    <div id='calendar'></div>
+		   </div>	
+		   <div id='spec' class='horizontalPanel'>
+			<form> 
+			Interview Type:  
+			<select> 
+				<option>Phone</option>
+				<option>Onsite</option>
+			</select>
+			Interviewers:
+			<input type='text' onkeydown='addInterviewer();'> 
+			<ul id='intrList'>
+			</ul>
+			Comments:<br>
+			<textarea rows=5, cols=20></textarea>
+			<input type='submit'>
+			</form>
+			</div>
+		   </div>
+		  </div>
+		</div>
+	</div>
+
     <div id="titleBar">
       <div id="title"><img src="graphics/title3.png"/></div>
       <div id="toolBar">

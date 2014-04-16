@@ -4,16 +4,16 @@ $(document).ready(function() {
 
    $calendar.weekCalendar({
       timeslotsPerHour : 4,
-      allowCalEventOverlap : true,
+      allowCalEventOverlap : false,
       overlapEventsSeparate: true,
+	  useShortDayNames: true,
+	  buttonText: {today : 'today', lastWeek : '<', nextWeek : '>'},
       businessHours :{start: 8, end: 18, limitDisplay: true },
       daysToShow : 5,
       height : function($calendar) {
-         return $(window).height() ;
+         return 450;
       },
-	  width : function($calendar) {
-         return $(window).width() ;
-      },
+	  newEventText: '',
       eventRender : function(calEvent, $event) {
          if (calEvent.end.getTime() < new Date().getTime()) {
             $event.css("backgroundColor", "#aaa");
@@ -22,9 +22,7 @@ $(document).ready(function() {
                "border" : "1px solid #888"
             });
          };
-		 $event.children(".wc-title").css({
-               "display" : "none"
-			   });
+
       },
       draggable : function(calEvent, $event) {
          return calEvent.readOnly != true;

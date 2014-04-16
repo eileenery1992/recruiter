@@ -92,6 +92,9 @@ $(function(){
     task["action"], "</button></td></tr>"));
   }
   addTask(t);
+  
+  var t2 = {'ID':10023, 'action': 'Schedule Interview'};
+  addTask(t2);
 
   var goToAction = function(action, id) {
     switch(action) {
@@ -102,7 +105,7 @@ $(function(){
       case "Send Offer":
         break;
       case "Schedule Interview":
-        break;
+        $('#newInterview').modal('show');
       case "Send Interview Time":
         break;
     }

@@ -318,16 +318,20 @@ html, #myBody {
 /* css for my schedule tab
 
 */
-.horizontalPanel{
+
+#newInterview .modal-body{
+	height: 600px;
+}
+#newInterview .modal-body >div{
 	float:left;
 }
 
-#calendar{
-	width:35em;
+#newInterview .modal-dialog{
+	width:80em;
 }
 
-#tabSchedulePage{
-	height: 40em;
+#calendar {
+	width: 40em;
 }
 
 /* css for position tab

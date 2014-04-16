@@ -11,9 +11,42 @@ var updateTabs = function() {
   }
 }
 
+var addAction = function(actor, type, content) {
+  var activity = document.createElement("div");
+  var profileLink = document.createElement("span");
+  profileLink.innerHTML = "laura";
+  profileLink.className = "profileLink";
+  var timeStamp = document.createElement("span");
+  timeStamp.innerHTML = new Date().toLocaleString();
+  timeStamp.className = "timeStamp";
+  var comment = document.createElement("span");
+  var activityClass = "";
+  if (type == "create") {
+    comment.innerHTML = " created application: 10086";
+    activityClass = "statusChange";
+  } else if (type == "review") {
+    comment.innerHTML = " added reviewer: ";
+    var reviewer = document.createElement("span");
+    reviewer.innerHTML = content;
+    reviewer.className = "profileLink";
+    comment.appendChild(reviewer);
+    activityClass = "regular";
+  } else if (type == "comment") {
+    comment.innerHTML = " commented: " + content;
+    activityClass = "regular";
+  }
+  activity.className = "activity " + activityClass;
+  activity.appendChild(profileLink);
+  activity.appendChild(comment);
+  activity.appendChild(timeStamp);
+  $("#activityList").append(activity);
+}
+
 $(document).ready(function() {
 
   updateTabs();
+
+  addAction("laura", "create", "");
 
   $(".tabControl").hover(function() {
     if (this.id != selected) {
@@ -26,6 +59,29 @@ $(document).ready(function() {
   }).click(function() {
     selected = this.id;
     updateTabs();
+  });
+
+  $("#actionInput").keyup(function() {
+    if ($(this).val().length != 0) {
+      $("#confirmButton").css("backgroundColor", "#388ac1");
+    } else {
+      $("#confirmButton").css("backgroundColor", "gray");
+    }
+  });
+
+  $("#confirmButton").click(function() {
+    var option = $("#mySelect").find(":selected").text();
+    if (option == "Add Comment") {
+      var comment = $("#actionInput").val();
+      if (comment.length != 0) {
+        addAction("laura", "comment", comment);
+      }
+    } else {
+      var reviewer = $("#reviewerInput").val();
+      if (reviewer == "mclean") {
+        addAction("laura", "review", reviewer);
+      }
+    }
   });
 
   $(".profileTab.unselected, .profileTab.selected").hover(function() {
@@ -67,6 +123,16 @@ $(document).ready(function() {
     this.style.textDecoration = "underline";
   }, function() {
     this.style.textDecoration = "none";
+  });
+
+  $("#mySelect").click(function() {
+    if (this.selectedIndex == 0) {
+      $("#actionInputContainer").css("display", "block");
+      $("#reviewerInputContainer").css("display", "none");
+    } else {
+      $("#actionInputContainer").css("display", "none");
+      $("#reviewerInputContainer").css("display", "inline-block");
+    }
   });
 
 });

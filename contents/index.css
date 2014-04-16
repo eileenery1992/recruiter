@@ -384,15 +384,38 @@ html, #myBody {
 }
 #newInterview .modal-body >div{
 	float:left;
+	margin: 0px 20px;
+	
 }
 
 #newInterview .modal-dialog{
 	width:80em;
 }
-
+ 
 #calendar {
 	width: 40em;
+	border: ridge;
 }
+
+#calendar .wc-time-header-cell{
+	box-sizing: initial;
+}
+
+#calendar h1{
+	font-size:18px;
+} 
+
+#calendar button{
+	color:black;
+}
+
+#intrList {
+	height: 300px;
+}
+#spec {
+	width: 400px;
+}
+
 
 /* css for position tab
 

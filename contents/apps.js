@@ -105,6 +105,15 @@ $(function(){
       case "Send Offer":
         break;
       case "Schedule Interview":
+        selected = "";
+        candidate = "Alex";
+        switchToInterview();
+        if (requested == 0) {
+          addAction("mclean", "interview", "");
+          requested = 1;
+        }
+        updateTabs();
+
         $('#newInterview').modal('show');
 		$('#candidateName').text(apps[id]['name']);
 		$('#candidateID').text(id);

@@ -2,6 +2,8 @@ var selected = "tabCandidate";
 var candidate = "Ben";
 var rejected = 0;
 var sent = 0;
+var requested = 0;
+var scheduled = 0;
 
 function updateTabs(){
   $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
@@ -18,6 +20,14 @@ function updateTabs(){
       $("#tabProfilePage").css("display", "none").css("z-index", 2);
     }
   }   
+}
+
+var switchToInterview = function() {
+    $(".profileTab2.selected").removeClass("selected").addClass("unselected");
+    $("#tabInterview2").removeClass("unselected").addClass("selected");
+    $("#tabInterview2Page2").removeClass("unselected").addClass("selected");
+    $(".inProfilePage2").css("display", "none");
+    $("#tabInterview2Page2").css("display", "block");
 }
 
 var addAction = function(actor, type, content) {
@@ -88,10 +98,29 @@ var addAction2 = function(actor, type, content) {
   } else if (type == "comment") {
     comment.innerHTML = " commented: " + content;
     activityClass = "comment";
+  } else if (type == "interview") {
+    comment.innerHTML = " requested an interview.  ";
+    activityClass = "regular";
+  } else if (type == "schedule") {
+    comment.innerHTML = " scheduled an ";
+    var interview = document.createElement("span");
+    interview.innerHTML = "interview."
+    interview.className = "profileLink";
+    interview.id = "interviewLink";
+    comment.appendChild(interview);
+    activityClass = "regular";
   }
   activity.className = "activity " + activityClass;
   activity.appendChild(profileLink);
   activity.appendChild(comment);
+  if (type == "interview") {
+    var interviewButton = document.createElement("button");
+    interviewButton.innerHTML = "Schedule Interview";
+    interviewButton.type = "button";
+    interviewButton.className = "btn btn-warning btn-xs";
+    interviewButton.id = "interviewButton";
+    activity.appendChild(interviewButton);
+  }
   activity.appendChild(timeStamp);
   $("#activityList2").append(activity);
 }
@@ -106,6 +135,7 @@ var loadBen = function() {
   if (benLoaded == 0) {
     addAction("laura", "create", "");
     addAction2("laura", "create", "");
+    addAction2("mclean", "interview", "");
     benLoaded = 1;
   }
 
@@ -204,6 +234,7 @@ var loadBen = function() {
 
   $("#closeAlert").click(function() {
     $("#emailSent").modal("hide");
+    $("#notification").css("display", "inline-block");
   });
 
   $("#mySelect").click(function() {
@@ -315,8 +346,26 @@ var loadAlex = function() {
     $('#newInterview').modal('show');
   });
 
+  $("#interviewButton").click(function() {
+    $('#newInterview').modal('show');
+  });
+
   $("#availability").click(function() {
     $('#newInterview').modal('show');
+  });
+
+  $("#deleteInterview").click(function() {
+    $("#interviewDeleted").modal("show");
+  });
+
+  $("#cancelDeletion").click(function() {
+    $("#interviewDeleted").modal("hide");
+  });
+
+  $("#confirmDeletion").click(function() {
+    $("#interviewCard").css("display", "none");
+    $("emptyTag").css("display", "block");
+    $("#interviewDeleted").modal("hide");
   });
 };
 

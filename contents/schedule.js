@@ -59,7 +59,17 @@ $(document).ready(function() {
    });
 
    $('#intSendBtn').click(function(){
+      if (scheduled == 0) {
+         addAction2("laura", "schedule", "");
+         $("#interviewLink").click(function() {
+            switchToInterview();
+         });
+      }
+      scheduled = 1;
 		confirmSend($('#candidateName').text(), timeSelected(), $('#intrName').text());
+      $("#emptyTag").css("display", "none");
+      $("#interviewCard").css("display", "block");
+      $("#intSendBtn").text("Save Changes & Exit");
 	});
 
 });

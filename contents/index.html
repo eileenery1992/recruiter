@@ -308,6 +308,24 @@
         </div>
       </div>
     </div>
+
+    <!-- Interview Deletion Confirmation -->
+    <div id="interviewDeleted" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Are you sure to delete this interview?
+          </div>
+          <!-- dialog buttons -->prod
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" id="cancelDeletion">Cancel</button>
+            <button type="button" class="btn btn-primary" id="confirmDeletion">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
  
 		<div class="tabPage" id="tabTaskPage">
           <div class="pageTitle">Search Candidates</div>
@@ -328,8 +346,8 @@
         </div><!-- tabTAskPage -->
 
         <div class="tabPage" id="tabSchedulePage">
-		
-		</div>
+		      This page is under construction.
+		    </div>
 
         <div class="tabPage" id="tabPositionPage">This page is under construction.</div>
         <div class="tabPage" id="tabProfilePage">
@@ -487,6 +505,7 @@
                 <div id="interviewCard">
                   <div id="cardTitle">
                     Interview 1
+                    <button type="button" class="close" id="deleteInterview" aria-hidden="true">&times;</button>
                   </div>
                   <table id="interviewTable">
                     <tr>

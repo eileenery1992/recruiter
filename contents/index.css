@@ -240,7 +240,7 @@ html, #myBody {
 	color: #388ac1;
 }
 
-#rejectButton {
+#rejectButton, #interviewButton {
 	margin-top: -5px;
 }
 
@@ -357,6 +357,7 @@ html, #myBody {
 
 #interviewList, #interviewList2 {
 	padding: 30px;
+	padding-bottom: 0;
 }
 
 #newInterviewButton, #newInterviewButton2 {

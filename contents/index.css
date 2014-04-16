@@ -221,18 +221,25 @@ html, #myBody {
 	border-bottom: 2px solid #8AC007;
 }
 
-.activity.regular {
+.activity.comment {
 	border-top: 2px solid gray;
 	border-left: 10px solid gray;
 	border-right: 2px solid gray;
 	border-bottom: 2px solid gray;
 }
 
+.activity.regular {
+	border-top: 2px solid #A675A2;
+	border-left: 10px solid #A675A2;
+	border-right: 2px solid #A675A2;
+	border-bottom: 2px solid #A675A2;
+}
+
 #reviewerInputContainer {
 	display: none;
 }
 
-#reviewerInput {
+#reviewerInput, #titleInput {
 	padding-left: 10px;
 	height: 39px;
 	border: 1px solid #388ac1;
@@ -252,6 +259,10 @@ html, #myBody {
 
 #actionInputContainer {
 	padding-right: 20px;
+}
+
+#titleInput {
+	width: 100%;
 }
 
 #actionInput {
@@ -277,6 +288,30 @@ html, #myBody {
 	line-height: 40px;
 	width: 115px;
 	cursor: pointer;
+}
+
+#emailInput {
+	border-color: #388ac1;
+	resize: none;
+	padding: 7px;
+	width: 100%;
+	font-size: 18px;
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+}
+
+#emailTable {
+	border-spacing: 10px;
+	border-collapse: separate;
+	width: 100%;
+}
+
+.emailLabel {
+	vertical-align: top;
+}
+
+.modal-body {
+	font-size: 18px;
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 }
 
 /* css for candidate tab

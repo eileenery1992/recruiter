@@ -250,6 +250,38 @@
             </tbody>
           </table><!--candidatesTable -->
         </div>
+
+    <!--new app from email Modal -->
+    <div class="modal fade" id="newEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Send Email to Candidate</h4>
+          </div>
+          <div class="modal-body">
+            <table id="emailTable">
+              <tr>
+                <td class="emailLabel">To:</td>
+                <td>Alex Armstrong&#60;arms@mit.edu&#62;</td>
+              </tr>
+              <tr>
+                <td class="emailLabel">Title:</td>
+                <td><input id="titleInput"></input></td>
+              </tr>
+              <tr>
+                <td class="emailLabel">Message:</td>
+                <td><textarea rows="5" id="emailInput"></textarea></td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button id="cancelEmailButton" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="sendEmailButton" type="button" class="btn btn-primary">Send</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
  
 		<div class="tabPage" id="tabTaskPage">
           <div class="pageTitle">Search Candidates</div>
@@ -345,6 +377,79 @@
             </div>
             <div id="tabInterviewPage"></div>
             <div id="tabInfoPage"></div>
+          </div>
+        </div>
+        <div class="tabPage" id="tabProfilePage2">
+          <table id="profileHeader2">
+            <tr valign="baseline">
+              <td id="profileTitle2">Application 10023</td>
+              <td id="editButtonContainer2"><div id="editButton2">Edit</div></td>
+            </tr>
+          </table>
+          <table id="profileInfo2">
+            <tr>
+              <td id="leftColumn2">
+                <table id="infoTable2">
+                  <tr>
+                    <td id="nameLabel2" class="myLabel">Name:</td>
+                    <td id="name2">Ben Bitdiddle</td>
+                  </tr>
+                  <tr>
+                    <td id="emailLabel2" class="myLabel">Email:</td>
+                    <td id="email2">bitdiddle@mit.edu</td>
+                  </tr>
+                  <tr>
+                    <td id="telLabel2" class="myLabel">Telephone:</td>
+                    <td id="tel2">(617) 253-1234</td>
+                  </tr>
+                  <tr>
+                    <td id="posLabel2" class="myLabel">Position:</td>
+                    <td id="pos2">UI Designer</td>
+                  </tr>
+                  <tr>
+                    <td id="revLabel2" class="myLabel">Reviewers:</td>
+                    <td id="rev2"></td>
+                  </tr>
+                </table>
+              </td>
+              <td id="rightColumn2">
+                <div id="statusButton2">Just Added</div>
+              </td>
+            </tr>
+          </table>
+          <table id="profileControlPanel2">
+            <tr>
+              <td id="leftSpace2" class="profileTab"/>
+              <td id="tabActivity2" class="profileTab selected">Activity</td>
+              <td class="profileTab spaceBetween"/>
+              <td id="tabInterview2" class="profileTab unselected">Interviews</td>
+              <td class="profileTab spaceBetween"/>
+              <td id="tabInfo2" class="profileTab unselected">Information</td>
+              <td id="rightSpace2" class="profileTab"/>
+            </tr>
+          </table>
+          <div id="profilePagePanel2">
+            <div id="tabActivityPage2">
+              <div id="activityList2">
+              </div>
+              <div id="actionControl2">
+                <span id="actionSelector2">
+                  <select id="mySelect2">
+                    <option selected="true" id="selectComment2">Add Comment</option>
+                    <option id="selectReview2">Add Reviewer</option>
+                  </select>
+                </span>
+                <span id="reviewerInputContainer2"><input id="reviewerInput2"/></span>
+              </div>
+              <div id="actionInputContainer2">
+                <textarea id="actionInput2" rows="5"></textarea>
+              </div>
+              <div id="confirmButton2">
+                Post Action
+              </div>
+            </div>
+            <div id="tabInterviewPage2"></div>
+            <div id="tabInfoPage2"></div>
           </div>
         </div>
       </div>

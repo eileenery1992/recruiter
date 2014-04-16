@@ -1,14 +1,26 @@
 var selected = "tabCandidate";
+var candidate = "Ben";
 
-var updateTabs = function() {
+function updateTabs(){
+  console.log("mewww"); 
   $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
   $(".tabPage").css("display", "none").css("z-index", 1);
   if (selected.length != 0) {
     $("#" + selected).css("background-color", "white").css("z-index", 3);
     $("#" + selected + "Page").css("display", "block").css("z-index", 2);
   } else {
-    $("#tabProfilePage").css("display", "block").css("z-index", 2);
-  }
+    if (candidate == "Ben") {
+      $("#tabProfilePage").css("display", "block").css("z-index", 2);
+      $("#tabProfilePage2").css("display", "none").css("z-index", 2);
+    } else {
+      $("#tabProfilePage2").css("display", "block").css("z-index", 2);
+      $("#tabProfilePage").css("display", "none").css("z-index", 2);
+    }
+  }   
+}
+
+function mew() {
+  console.log("mew");
 }
 
 var addAction = function(actor, type, content) {
@@ -33,7 +45,7 @@ var addAction = function(actor, type, content) {
     activityClass = "regular";
   } else if (type == "comment") {
     comment.innerHTML = " commented: " + content;
-    activityClass = "regular";
+    activityClass = "comment";
   }
   activity.className = "activity " + activityClass;
   activity.appendChild(profileLink);
@@ -45,6 +57,7 @@ var addAction = function(actor, type, content) {
 $(document).ready(function() {
 
   updateTabs();
+  mew();
 
   addAction("laura", "create", "");
 
@@ -73,6 +86,7 @@ $(document).ready(function() {
     var option = $("#mySelect").find(":selected").text();
     if (option == "Add Comment") {
       var comment = $("#actionInput").val();
+      $("#actionInput").val("");
       if (comment.length != 0) {
         addAction("laura", "comment", comment);
       }
@@ -123,6 +137,19 @@ $(document).ready(function() {
     this.style.textDecoration = "underline";
   }, function() {
     this.style.textDecoration = "none";
+  }).click(function() {
+    candidate = "Alex";
+    console.log("before");
+    updateTabs();
+    console.log("after");
+  });
+
+  $("#cancelEmailButton").click(function() {
+    $("#newEmail").modal("hide");
+  });
+
+  $("#sendEmailButton").click(function() {
+    $("#newEmail").modal("hide");
   });
 
   $("#mySelect").click(function() {

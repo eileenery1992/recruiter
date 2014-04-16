@@ -7,7 +7,7 @@ var d6 = new Date(2014, 2, 28);
 
 var apps={
       10086: {"name": "Ben Biddiddle", "tel": 6172531234, "email": "bitdiddle@mit.edu", "pos": "UI Designer", "status": "Just Added", "date": d1}, 
-      10023: {"name": "Alex Armstrong", "tel": 6172535678, "email": "Arms@mit.edu", "pos": "UI Designer", "status": "2nd Interview", "date": d2}, 
+      10023: {"name": "Alex Armstrong", "tel": 6172535678, "email": "arms@mit.edu", "pos": "UI Designer", "status": "2nd Interview", "date": d2}, 
       11225: {"name": "Jack Wang", "tel": 6172535678, "email": "jwang@mit.edu", "pos": "QA", "status": "1st Interview", "date": d6}, 
       10001: {"name": "Edison Chen", "tel": 6172535678, "email": "echen@mit.edu", "pos": "Software Developer", "status": "Declined", "date": d4}, 
       11000: {"name": "Frank Andrews", "tel": 6172535678, "email": "andrews@mit.edu", "pos": "Software Developer", "status": "1st Interview", "date": d3}, 
@@ -24,17 +24,6 @@ var writeBen = function() {
   app["status"], "</td><td>",
   app["date"].toDateString(), "</td></tr>"));
 };
-
-var updateTabs = function() {
-  $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
-  $(".tabPage").css("display", "none").css("z-index", 1);
-  if (selected.length != 0) {
-    $("#" + selected).css("background-color", "white").css("z-index", 3);
-    $("#" + selected + "Page").css("display", "block").css("z-index", 2);
-  } else {
-    $("#tabProfilePage").css("display", "block").css("z-index", 2);
-  }
-}
 
 $(function(){
 

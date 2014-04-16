@@ -228,8 +228,14 @@ html, #myBody {
 	border-bottom: 2px solid gray;
 }
 
-#reviewerInput {
+#reviewerInputContainer {
 	display: none;
+}
+
+#reviewerInput {
+	padding-left: 10px;
+	height: 39px;
+	border: 1px solid #388ac1;
 }
 
 #mySelect {

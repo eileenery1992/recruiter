@@ -325,22 +325,16 @@
           </table>
           <div id="profilePagePanel">
             <div id="tabActivityPage">
-              <div class="activity statusChange">
-                <span class="profileLink">laura</span> created application: 10086.
-                <span class="timeStamp">03/05/14 09:41am</span>
-              </div>
-              <div class="activity regular">
-                <span class="profileLink">laura</span> added reviewer: <span class="profileLink">mclean</span>.
-                <span class="timeStamp">03/05/14 09:45am</span>
+              <div id="activityList">
               </div>
               <div id="actionControl">
                 <span id="actionSelector">
                   <select id="mySelect">
-                    <option selected="true">Add Comment</option>
-                    <option>Add Reviewer</option>
+                    <option selected="true" id="selectComment">Add Comment</option>
+                    <option id="selectReview">Add Reviewer</option>
                   </select>
                 </span>
-                <span id="reviewerInput"></span>
+                <span id="reviewerInputContainer"><input id="reviewerInput"/></span>
               </div>
               <div id="actionInputContainer">
                 <textarea id="actionInput" rows="5"></textarea>

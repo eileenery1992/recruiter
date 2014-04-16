@@ -317,7 +317,7 @@ var loadAlex = function() {
 
   $("#availability").click(function() {
     $('#newInterview').modal('show');
-  })
+  });
 };
 
 $(document).ready(function() {

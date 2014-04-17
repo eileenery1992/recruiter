@@ -177,6 +177,7 @@ html, #myBody {
 }
 
 #email, #email2 {
+	cursor: pointer;
 	color: #388ac1;
 }
 

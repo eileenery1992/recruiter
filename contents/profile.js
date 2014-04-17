@@ -248,12 +248,22 @@ var loadBen = function() {
 
   $("#sendEmailButton").click(function() {
     $("#newEmail").modal("hide");
+    $("#emailSendConfirmation").modal("show");
+  });
+
+  $("#confirmSend").click(function() {
+    $("#emailSendConfirmation").modal("hide");
     $("#emailSent").modal("show");
     if (sent == 0) {
       addAction("laura", "send", "");
       sent = 1;
     } 
     $("#statusButton").text("Rejected").removeClass("activeStatus").addClass("inactiveStatus");
+  });
+
+  $("#cancelSend").click(function() {
+    $("#emailSendConfirmation").modal("hide");
+    $("#newEmail").modal("show");
   });
 
   $("#deleteToken").click(function() {

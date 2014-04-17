@@ -247,6 +247,7 @@ var loadBen = function() {
   $("#confirmSend").click(function() {
     $("#emailSendConfirmation").modal("hide");
     $("#emailSent").modal("show");
+    $("#rejectButton").css("background-color", "gray").css("border-color", "gray");
     if (sent == 0) {
       addAction("laura", "send", "");
       sent = 1;

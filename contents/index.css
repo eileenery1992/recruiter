@@ -481,7 +481,7 @@ html, #myBody {
   margin-top: 20px;
 }
 
-#candidatesTabe td,
+#candidatesTable td,
 #taskTable td {
 	cursor: pointer;
 }

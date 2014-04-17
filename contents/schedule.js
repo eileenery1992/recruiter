@@ -83,7 +83,7 @@ $(document).ready(function() {
 			}
 		}
 		);
-			
+	$('#closeIntReq').click(function(){console.log('closing'); $('#newInterview').modal('hide');});
 });
 
 function addInterviewer(name){

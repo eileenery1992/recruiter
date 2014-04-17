@@ -468,7 +468,7 @@ html, #myBody {
 */
 
 #newInterview .modal-body{
-	height: 650px;
+	height: 560px;
 }
 #newInterview .modal-body >div{
 	float:left;
@@ -522,10 +522,13 @@ html, #myBody {
 	padding:10px;
 }
 #intrList {
-	height: 300px;
+	height: 165px;
 }
 #spec {
 	width: 400px;
+}
+#intCancelBtn{
+	margin-left:10px;
 }
 
 

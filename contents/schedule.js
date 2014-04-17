@@ -80,6 +80,11 @@ $(document).ready(function() {
 			}
 		}
 		);
+
+  $("#closeIntReq").click(function() {
+    console.log("clicking");
+    $("#newInterview").modal("hide");
+  });
 });
 
 function addInterviewer(name){

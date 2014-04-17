@@ -210,9 +210,6 @@ var loadBen = function() {
     this.style.textDecoration = "underline";
   }, function() {
     this.style.textDecoration = "none";
-  }).click(function() {
-    selected = "";
-    updateTabs();
   });
 
   $('.default-value').each(function() {
@@ -236,10 +233,6 @@ var loadBen = function() {
     this.style.textDecoration = "underline";
   }, function() {
     this.style.textDecoration = "none";
-  }).click(function() {
-    candidate = "Alex";
-    updateTabs();
-    loadAlex();
   });
 
   $("#cancelEmailButton").click(function() {

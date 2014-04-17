@@ -57,7 +57,6 @@ $(document).ready(function() {
    });
 
    $('#intSendBtn').click(function(){
-      $("#t10023").css("display", "block");
       if (scheduled == 0) {
          addAction2("laura", "schedule", "");
          $("#interviewLink").click(function() {
@@ -69,6 +68,7 @@ $(document).ready(function() {
       $("#emptyTag").css("display", "none");
       $("#interviewCard").css("display", "block");
       $("#intSendBtn").text("Save Changes & Exit");
+      $("#t10023").css("display", "none");
 	});
 
 	// Autocomplete
@@ -79,24 +79,26 @@ $(document).ready(function() {
 			return false;
 			}
 		}
-		);
+		);	
+	$(document).on("click", ".intDel", function(event){
+		console.log( event.toElement.parentNode); 
+		event.toElement.parentNode.parentNode.removeChild(event.toElement.parentNode);
+		return false;
+	});
 
-  $("#closeIntReq").click(function() {
-    console.log("clicking");
-    $("#newInterview").modal("hide");
-  });
 });
 
 function addInterviewer(name){
 	if (name!='mclean'){return;}
 	$('#intrName').val(''); 	// clears input field 
 	var intrElem = document.createElement('li');
-	intrElem.innerHTML = "Mike McLean (<a>mclean</a>)";
+	intrElem.innerHTML = "Mike McLean (<a>mclean</a>)"+"<button class='intDel'>delete</button>";
 //	intrElem.innerHTML = '<span id="reviewerToken">mclean  <button type="button" class="close" id="deleteToken">&times;</button></span>'
-	var delBtn = document.createElement('button');
+/* 	var delBtn = document.createElement('button');
 	delBtn.textContent = 'x';
 	delBtn.onClick = function(){ console.log(this.parentNode.parentNode); return false;};
-	intrElem.appendChild(delBtn);
+	
+	intrElem.appendChild(delBtn); */
 	$('#intrList').append(intrElem);
 }
 	

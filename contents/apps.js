@@ -14,20 +14,25 @@ var apps={
       10661: {"name": "Kate Park", "tel": 6172535678, "email": "park@mit.edu", "pos": "UI Designer", "status": "Accepted", "date": d5},}
 
 var IDs = [10023, 11225, 10001, 11000, 10661];
+var outstandingTasks = [];
 
 var writeBen = function() {
-  var app = apps[10086];
-  $("#candidatesTable tr:last").after("<tr id='c10086'><td>".concat(
-  10086, "</td><td>",
-  app["name"], "</td><td>",
-  app["pos"], "</td><td>",
-  app["status"], "</td><td>",
-  app["date"].toDateString(), "</td></tr>"));
-  $("#c10086").click(function(event) {
-    selected = "";
-    candidate = "Alex";
-    updateTabs();
-  });
+  var idx = IDs.indexOf(10086);
+  if (idx == -1) {
+    IDs.push(10086);
+    var app = apps[10086];
+    $("#candidatesTable tr:last").after("<tr id='c10086'><td>".concat(
+    10086, "</td><td>",
+    app["name"], "</td><td>",
+    app["pos"], "</td><td>",
+    app["status"], "</td><td>",
+    app["date"].toDateString(), "</td></tr>"));
+    $("#c10086").click(function(event) {
+      selected = "";
+      candidate = "Ben";
+      updateTabs();
+    });
+  }
 };
 
   var t = {"ID": 10086, "action": "Send Rejection"};

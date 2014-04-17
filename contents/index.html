@@ -40,7 +40,7 @@
           </div>
           <div class="modal-body">
             <p>Create new application from resume?</p>
-            <input id="filebutton" name="filebutton" class="input-file btn btn-primary btn-large" type="file">
+            <input id="filebutton1" name="filebutton1" class="input-file" type="file">
           </div>
           <div class="modal-footer">
             <button id="toForm" type="button" class="btn btn-default" data-dismiss="modal">No, take me to the form</button>
@@ -132,9 +132,9 @@
 
               <!-- File Button --> 
               <div class="control-group">
-                <label class="control-label" id="controlLabel8" for="filebutton">Resume</label>
+                <label class="control-label" id="controlLabel8" for="filebutton2">Resume</label>
                 <span class="controls">
-                  <input id="filebutton" name="filebutton" class="input-file" type="file">
+                  <input id="filebutton2" name="filebutton2" class="input-file" type="file">
                 </span>
               </div>
 
@@ -161,7 +161,7 @@
 		   <div id='avail' class='horizontalPanel'>
 			<div id='calControls'>
 			<label> Candidate Availability </label>
-			<button onclick="$('#calendar').weekCalendar('clear');">Reset</button>
+			<button onclick="$('#calendar').weekCalendar('clear');" class="btn btn-default btn-large">Reset</button>
 			</div>
 		    <div id='calendar'></div>
 		   </div>	
@@ -184,7 +184,8 @@
 			  
 			<div id='iComment'>
 			<label>Comments:</label><br>
-			<textarea rows=5, cols=32></textarea>
+
+			<textarea rows=5 id="commentInputArea"></textarea>
 			</div>
 			</form>
             <button id="intCancelBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

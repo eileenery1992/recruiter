@@ -253,8 +253,18 @@ html, #myBody {
 }
 
 #filebutton {
+	background-color: #388ac1;
+	font-size: 14px;
+	color: white;
 	display: inline-block;
 	margin-top: 30px;
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#filebutton2 {
+	display: inline-block;
 }
 
 .control-group {
@@ -322,8 +332,14 @@ html, #myBody {
 	display: none;
 }
 
-#reviewerInput, #titleInput, #reviewerInput2, #titleInput2 {
+#reviewerInput, #reviewerInput2, #titleInput2 {
 	padding-left: 10px;
+	height: 39px;
+	border: 1px solid #388ac1;
+}
+
+#titleInput {
+	padding-left: 7px;
 	height: 39px;
 	border: 1px solid #388ac1;
 }
@@ -421,6 +437,15 @@ html, #myBody {
 	margin: 20px;
 }
 
+#commentInputArea {
+	resize: none;
+	width: 100%;
+}
+
+#intCancelButton {
+	margin-left: 10px;
+}
+
 /* css for candidate tab
 
 */
@@ -455,6 +480,7 @@ html, #myBody {
   margin-top: 20px;
 }
 
+#candidatesTabe td,
 #taskTable td {
 	cursor: pointer;
 }

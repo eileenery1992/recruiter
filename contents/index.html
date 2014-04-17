@@ -154,13 +154,14 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
+			<button type="button" class="close" id="closeForm" aria-hidden="true">×</button>
 			<div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID: <a id='candidateID'></a> </div>
           </div>
 		  <div class="modal-body">
 		   <div id='avail' class='horizontalPanel'>
 			<div id='calControls'>
 			<label> Candidate Availability </label>
-			<button onclick="$('#calendar').weekCalendar('clear');">Reset</button>
+			<button onclick="$('#calendar').weekCalendar('clear');" class="btn btn-default btn-large">Reset</button>
 			</div>
 		    <div id='calendar'></div>
 		   </div>	
@@ -183,7 +184,7 @@
 			  
 			<div id='iComment'>
 			<label>Comments:</label><br>
-			<textarea rows=5, cols=20></textarea>
+			<textarea rows=5 id="commentInputArea"></textarea>
 			</div>
 			</form>
             <button id="intCancelBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

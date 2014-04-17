@@ -134,7 +134,7 @@
               <div class="control-group">
                 <label class="control-label" id="controlLabel8" for="filebutton">Resume</label>
                 <span class="controls">
-                  <input id="filebutton" name="filebutton" class="input-file" type="file">
+                  <input id="filebutton2" name="filebutton" class="input-file" type="file">
                 </span>
               </div>
 
@@ -161,7 +161,7 @@
 		   <div id='avail' class='horizontalPanel'>
 			<div id='calControls'>
 			<label> Candidate Availability </label>
-			<button onclick="$('#calendar').weekCalendar('clear');">Reset</button>
+			<button onclick="$('#calendar').weekCalendar('clear');" class="btn btn-default btn-large">Reset</button>
 			</div>
 		    <div id='calendar'></div>
 		   </div>	
@@ -184,7 +184,7 @@
 			  
 			<div id='iComment'>
 			<label>Comments:</label><br>
-			<textarea rows=5, cols=20></textarea>
+			<textarea rows=5 id="commentInputArea"></textarea>
 			</div>
 			</form>
             <button id="intCancelBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

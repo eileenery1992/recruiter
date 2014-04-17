@@ -164,7 +164,7 @@ var loadBen = function() {
   }
 
   $("#titleInput").val("Thank you for your interest");
-  $("#messageInput").val("Hello Ben,\n    Thank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!\n\nBest,\nLaura");
+  $("#messageInput").val("Hello Ben,\n\nThank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!\n\nBest,\nLaura");
 
   $("#actionInput").keyup(function() {
     if ($(this).val().length != 0) {

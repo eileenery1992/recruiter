@@ -263,6 +263,10 @@ html, #myBody {
 	border-radius: 5px;
 }
 
+#filebutton2 {
+	display: inline-block;
+}
+
 .control-group {
 	padding: 10px;
 }
@@ -328,8 +332,14 @@ html, #myBody {
 	display: none;
 }
 
-#reviewerInput, #titleInput, #reviewerInput2, #titleInput2 {
+#reviewerInput, #reviewerInput2, #titleInput2 {
 	padding-left: 10px;
+	height: 39px;
+	border: 1px solid #388ac1;
+}
+
+#titleInput {
+	padding-left: 7px;
 	height: 39px;
 	border: 1px solid #388ac1;
 }
@@ -425,6 +435,15 @@ html, #myBody {
 
 #newAppBtn {
 	margin: 20px;
+}
+
+#commentInputArea {
+	resize: none;
+	width: 100%;
+}
+
+#intCancelButton {
+	margin-left: 10px;
 }
 
 /* css for candidate tab
@@ -528,7 +547,7 @@ html, #myBody {
 	padding:10px;
 }
 #intrList {
-	height: 300px;
+	height: 165px;
 }
 #spec {
 	width: 400px;

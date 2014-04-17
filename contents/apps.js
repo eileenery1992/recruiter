@@ -107,7 +107,9 @@ $(function(){
         }
         $("#newEmail").modal("show");
         $("#rejectButton").click(function() {
-          $("#newEmail").modal("show");
+          if (sent == 0) {
+            $("#newEmail").modal("show");
+          }
         });
         updateTabs();
         break;
@@ -157,7 +159,9 @@ $(function(){
           rejected = 1;
         }
         $("#rejectButton").click(function() {
-          $("#newEmail").modal("show");
+          if (sent == 0) {
+            $("#newEmail").modal("show");
+          }
         });
       }
 

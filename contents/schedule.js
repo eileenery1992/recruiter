@@ -80,12 +80,21 @@ $(document).ready(function() {
 			}
 		}
 		);	
-	$(document).on("click", ".intDel", function(event){
-		console.log( event.toElement.parentNode); 
-		event.toElement.parentNode.parentNode.removeChild(event.toElement.parentNode);
+	$(document).on("click", ".intDel", function(event){		
+		if(event.toElement){	//chrome
+			console.log('chrome');
+			var target=event.toElement;
+		}else if(event.target){	// firefox
+			console.log('firefox');
+			var target=event.target;
+		}else{
+			console.log('failed');
+			return false;
+		}
+		target.parentNode.parentNode.removeChild(target.parentNode);
 		return false;
 	});
-
+	
 });
 
 function addInterviewer(name){

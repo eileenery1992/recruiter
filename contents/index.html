@@ -65,40 +65,40 @@
               <fieldset>
               <!-- Text input-->
               <div class="control-group">
-                <label class="control-label" for="nameInput">Name *</label>
-                <div class="controls">
+                <label class="control-label" id="controlLabel1" for="nameInput">Name *</label>
+                <span class="controls">
                   <input id="nameInput" name="nameInput" type="text" placeholder="" class="input-xlarge" required="">   
-                </div>
+                </span>
               </div>
 
               <!-- Text input-->
               <div class="control-group">
-                <label class="control-label" for="emailInput">Email *</label>
-                <div class="controls">
+                <label class="control-label" id="controlLabel2" for="emailInput">Email *</label>
+                <span class="controls">
                   <input id="emailInput" name="emailInput" type="text" placeholder="" class="input-xlarge" required="">    
-                </div>
+                </span>
               </div>
 
               <!-- Text input-->
               <div class="control-group">
-                <label class="control-label" for="phoneInput">Phone *</label>
-                <div class="controls">
+                <label class="control-label" id="controlLabel3" for="phoneInput">Phone *</label>
+                <span class="controls">
                   <input id="phoneInput" name="phoneInput" type="text" placeholder="" class="input-xlarge" required="">    
-                </div>
+                </span>
               </div>
 
               <!-- Text input-->
               <div class="control-group">
-                <label class="control-label" for="schoolInput">School</label>
-                <div class="controls">
+                <label class="control-label" id="controlLabel4" for="schoolInput">School</label>
+                <span class="controls">
                   <input id="schoolInput" name="schoolInput" type="text" placeholder="" class="input-xlarge">    
-                </div>
+                </span>
               </div>
 
               <!-- Select Basic -->
               <div class="control-group">
-                <label class="control-label" for="educationInput">Education</label>
-                <div class="controls">
+                <label class="control-label" id="controlLabel5" for="educationInput">Education</label>
+                <span class="controls">
                   <select id="educationInput" name="educationInput" class="input-xlarge">
                     <option>High School Diploma</option>
                     <option>Undergraduate</option>
@@ -106,36 +106,36 @@
                     <option>Ph.D</option>
                     <option>Postdoc</option>
                   </select>
-                </div>
+                </span>
               </div>
 
               <!-- Text input-->
               <div class="control-group">
-                <label class="control-label" for="majorInput">Major</label>
-                <div class="controls">
+                <label class="control-label" id="controlLabel6" for="majorInput">Major</label>
+                <span class="controls">
                   <input id="majorInput" name="majorInput" type="text" placeholder="" class="input-xlarge">   
-                </div>
+                </span>
               </div>
 
               <!-- Select Multiple -->
               <div class="control-group">
-                <label class="control-label" for="positionInput">Position</label>
-                <div class="controls">
+                <label class="control-label" id="controlLabel7" for="positionInput">Position</label>
+                <span class="controls">
                   <select id="positionInput" name="positionInput" class="input-xlarge" multiple="multiple">
                     <option>Product Manager</option>
                     <option>QA</option>
                     <option>Software Developer</option>
                     <option>UI Designer</option>
                   </select>
-                </div>
+                </span>
               </div>
 
               <!-- File Button --> 
               <div class="control-group">
-                <label class="control-label" for="filebutton">Resume</label>
-                <div class="controls">
+                <label class="control-label" id="controlLabel8" for="filebutton">Resume</label>
+                <span class="controls">
                   <input id="filebutton" name="filebutton" class="input-file" type="file">
-                </div>
+                </span>
               </div>
 
               </fieldset>
@@ -331,7 +331,7 @@
     </div>
  
 		<div class="tabPage" id="tabTaskPage">
-          <div class="pageTitle">Search Candidates</div>
+          <div class="pageTitle">Upcoming Tasks</div>
           <table class="table-hover table" id="taskTable">
             <thead>
               <tr>
@@ -414,6 +414,7 @@
                   </select>
                 </span>
                 <span id="reviewerInputContainer"><input id="reviewerInput"/></span>
+                <span id="reviewerToken">mclean  <button type="button" class="close" id="deleteToken">&times;</button></span>
               </div>
               <div id="actionInputContainer">
                 <textarea id="actionInput" rows="5"></textarea>

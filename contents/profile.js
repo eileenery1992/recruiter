@@ -4,6 +4,9 @@ var rejected = 0;
 var sent = 0;
 var requested = 0;
 var scheduled = 0;
+var interviewers = ['mclean']
+var reviewers = ['Mike McLean (mclean)']
+var token = 0;
 
 function updateTabs(){
   $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
@@ -20,6 +23,27 @@ function updateTabs(){
       $("#tabProfilePage").css("display", "none").css("z-index", 2);
     }
   }   
+}
+
+function addReviewer() {
+  $('#reviewerInput').val('');   // clears input field 
+  $("#reviewerToken").css("display", "inline-block");
+  $("#confirmButton").css("background-color", "#388ac1");
+  token = 1;
+}
+
+function setAutocompRev(inputElem, source){
+  // Turn on autocompletion
+  inputElem.autocomplete({ 
+    source: source, 
+    select:function(event, ui){
+      if (event.which==1 || event.which == 13){    // 1 for clicking, 13 for entering
+        // Do stuff
+        addReviewer();
+      }
+      return false; 
+    }
+  });
 }
 
 var switchToInterview = function() {
@@ -159,11 +183,10 @@ var loadBen = function() {
         addAction("laura", "comment", comment);
       }
     } else {
-      var reviewer = $("#reviewerInput").val();
-      if (reviewer == "mclean") {
-        addAction("laura", "review", reviewer);
+      if (token == 1) {
+        addAction("laura", "review", "mclean");
         var reviewerLink = document.createElement("span");
-        reviewerLink.innerHTML = reviewer;
+        reviewerLink.innerHTML = "mclean";
         reviewerLink.className = "profileLink";
         $("#rev").append(reviewerLink);
         $("#notification").css("display", "inline-block");
@@ -233,6 +256,12 @@ var loadBen = function() {
     $("#statusButton").text("Rejected").removeClass("activeStatus").addClass("inactiveStatus");
   });
 
+  $("#deleteToken").click(function() {
+    $("#reviewerToken").css("display", "none");
+    $("#confirmButton").css("background-color", "gray");
+    token = 0;
+  });
+
   $("#closeAlert").click(function() {
     $("#emailSent").modal("hide");
     $("#notification").css("display", "inline-block");
@@ -249,6 +278,9 @@ var loadBen = function() {
       $("#reviewerInputContainer").css("display", "inline-block");
     }
   });
+
+  setAutocompRev($('#reviewerInput'), reviewers);
+  
 };
 
 var loadAlex = function() {

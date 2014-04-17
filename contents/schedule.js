@@ -1,7 +1,6 @@
 $(document).ready(function() {
    var $calendar = $('#calendar');
    var id = 0;
-	var interviewers = ['mclean']
 	
    $calendar.weekCalendar({
       timeslotsPerHour : 4,

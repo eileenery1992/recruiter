@@ -240,9 +240,41 @@ html, #myBody {
 	color: #388ac1;
 }
 
+#controlLabel1, #controlLabel2, #controlLabel3, #controlLabel4, #controlLabel5, #controlLabel6, #controlLabel7, #controlLabel8 {
+	text-align: left;
+	width: 120px;
+	vertical-align: top;
+	font-weight: normal;
+	padding-top: 0;
+}
+
+#nameInput, #emailInput, #phoneInput, #schoolInput, #educationInput, #majorInput, #positionInput {
+	width: 400px;
+}
+
+#filebutton {
+	display: inline-block;
+}
+
+.control-group {
+	padding: 10px;
+}
+
 #rejectButton, #interviewButton {
 	margin-top: -5px;
 }
+
+#reviewerToken {
+	width: 100px;
+	background-color: #388ac1;
+	color: white;
+	padding: 10px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border-radius: 5px;
+	margin-left: 10px;
+	display: none;
+} 
 
 .timeStamp {
 	color: gray;
@@ -373,6 +405,21 @@ html, #myBody {
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 }
 
+.modal-title {
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.modal-footer .btn {
+	font-size: 18px;
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+}
+
+#newAppBtn {
+	margin: 20px;
+}
+
 /* css for candidate tab
 
 */
@@ -381,7 +428,7 @@ html, #myBody {
     margin-bottom: 25px;
     margin-top: 10px;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 32px;
 }
 
 #newAppBtn {

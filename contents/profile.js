@@ -271,6 +271,12 @@ var loadBen = function() {
     $("#notification").css("display", "inline-block");
     $("#t10086").css("display", "none");
     addTask(t2);
+    apps[10086]["status"] = "Rejected";
+    $("#c10086").find("td").eq(3).html("Rejected");
+    apps[10023]["status"] = "1st Interview";
+    $("#c10023").find("td").eq(3).html("1st Interview");
+    $("#c10023").find("td").eq(4).html(d1.toDateString());
+    
   });
 
   $("#mySelect").click(function() {

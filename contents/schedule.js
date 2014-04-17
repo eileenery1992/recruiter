@@ -20,10 +20,8 @@ $(document).ready(function() {
 		btn.textContent='delete';
 		btn.addEventListener('click', function() {
 			$("#calendar").weekCalendar("removeEvent", calEvent.id);
-			console.log(calEvent.id);
 		});
 		$event.append(btn);
-		console.log(calEvent)
          if (calEvent.end.getTime() < new Date().getTime()) {
             $event.css("backgroundColor", "#aaa");
             $event.children(".wc-time").css({
@@ -76,26 +74,24 @@ $(document).ready(function() {
 	// Autocomplete
 	setAutocomp($('#intrName'), interviewers);
 	$('#intrName').keydown(function(e){
-		console.log($(this).val());
 		if(e.keyCode==13){	
 			addInterviewer($(this).val());
 			return false;
 			}
 		}
 		);
-			
 });
 
 function addInterviewer(name){
+	if (name!='mclean'){return;}
 	$('#intrName').val(''); 	// clears input field 
-	console.log(name);
 	var intrElem = document.createElement('li');
-	intrElem.textContent = name;
+	intrElem.innerHTML = "Mike McLean (<a>mclean</a>)";
+//	intrElem.innerHTML = '<span id="reviewerToken">mclean  <button type="button" class="close" id="deleteToken">&times;</button></span>'
 	var delBtn = document.createElement('button');
-	delBtn.textContent = 'remove';
-//	delBtn.onClick = function(){ console.log(this.parentNode.parentNode); return false;};
+	delBtn.textContent = 'x';
+	delBtn.onClick = function(){ console.log(this.parentNode.parentNode); return false;};
 	intrElem.appendChild(delBtn);
-	console.log(intrElem);
 	$('#intrList').append(intrElem);
 }
 	
@@ -104,7 +100,6 @@ function setAutocomp(inputElem, source){
     inputElem.autocomplete({ 
 	source: source, 
 	select:function(event, ui){
-		console.log(event.which)
  		if (event.which==1){		// 1 for clicking, 13 for entering
 			// Do stuff
 			addInterviewer(ui.item.value);

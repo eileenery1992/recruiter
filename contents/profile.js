@@ -210,9 +210,6 @@ var loadBen = function() {
     this.style.textDecoration = "underline";
   }, function() {
     this.style.textDecoration = "none";
-  }).click(function() {
-    selected = "";
-    updateTabs();
   });
 
   $('.default-value').each(function() {
@@ -236,10 +233,6 @@ var loadBen = function() {
     this.style.textDecoration = "underline";
   }, function() {
     this.style.textDecoration = "none";
-  }).click(function() {
-    candidate = "Alex";
-    updateTabs();
-    loadAlex();
   });
 
   $("#cancelEmailButton").click(function() {
@@ -248,12 +241,23 @@ var loadBen = function() {
 
   $("#sendEmailButton").click(function() {
     $("#newEmail").modal("hide");
+    $("#emailSendConfirmation").modal("show");
+  });
+
+  $("#confirmSend").click(function() {
+    $("#emailSendConfirmation").modal("hide");
     $("#emailSent").modal("show");
+    $("#rejectButton").css("background-color", "gray").css("border-color", "gray");
     if (sent == 0) {
       addAction("laura", "send", "");
       sent = 1;
     } 
     $("#statusButton").text("Rejected").removeClass("activeStatus").addClass("inactiveStatus");
+  });
+
+  $("#cancelSend").click(function() {
+    $("#emailSendConfirmation").modal("hide");
+    $("#newEmail").modal("show");
   });
 
   $("#deleteToken").click(function() {

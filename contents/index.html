@@ -154,7 +154,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-			<button type="button" class="close" id="closeForm" aria-hidden="true">×</button>
+			<button type="button" class="close" id="closeIntReq" aria-hidden="true">×</button>
 			<div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID: <a id='candidateID'></a> </div>
           </div>
 		  <div class="modal-body">
@@ -184,6 +184,7 @@
 			  
 			<div id='iComment'>
 			<label>Comments:</label><br>
+
 			<textarea rows=5 id="commentInputArea"></textarea>
 			</div>
 			</form>
@@ -326,6 +327,24 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" id="cancelDeletion">Cancel</button>
             <button type="button" class="btn btn-primary" id="confirmDeletion">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Send Confirmation -->
+    <div id="emailSendConfirmation" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Are you sure to send this email to the candidate?
+          </div>
+          <!-- dialog buttons -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" id="cancelSend">Cancel</button>
+            <button type="button" class="btn btn-primary" id="confirmSend">Send</button>
           </div>
         </div>
       </div>

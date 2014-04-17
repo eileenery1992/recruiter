@@ -177,6 +177,7 @@ html, #myBody {
 }
 
 #email, #email2 {
+	cursor: pointer;
 	color: #388ac1;
 }
 
@@ -494,7 +495,7 @@ html, #myBody {
 */
 
 #newInterview .modal-body{
-	height: 650px;
+	height: 560px;
 }
 #newInterview .modal-body >div{
 	float:left;
@@ -552,6 +553,9 @@ html, #myBody {
 }
 #spec {
 	width: 400px;
+}
+#intCancelBtn{
+	margin-left:10px;
 }
 
 

@@ -1,4 +1,4 @@
-var d1 = new Date(2014, 4, 10);
+var d1 = new Date();
 var d2 = new Date(2014, 2, 3);
 var d3 = new Date(2014, 3, 8);
 var d4 = new Date(2014, 3, 10);
@@ -78,6 +78,7 @@ $(function(){
   $("#createBtn").click(function(event) {
     writeBen();
     selected = "";
+    candidate = "Ben";
     updateTabs();
   });
 
@@ -86,6 +87,7 @@ $(function(){
       $("#newFromResume").modal("hide");
       writeBen();
       selected = "";
+      candidate = "Ben";
       updateTabs();
     }else {
       alert("Please upload a resume");

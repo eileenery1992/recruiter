@@ -57,7 +57,6 @@ $(document).ready(function() {
    });
 
    $('#intSendBtn').click(function(){
-      $("#t10023").css("display", "block");
       if (scheduled == 0) {
          addAction2("laura", "schedule", "");
          $("#interviewLink").click(function() {
@@ -69,6 +68,7 @@ $(document).ready(function() {
       $("#emptyTag").css("display", "none");
       $("#interviewCard").css("display", "block");
       $("#intSendBtn").text("Save Changes & Exit");
+      $("#t10023").css("display", "none");
 	});
 
 	// Autocomplete

@@ -78,6 +78,7 @@ $(function(){
   $("#createBtn").click(function(event) {
     writeBen();
     selected = "";
+    candidate = "Ben";
     updateTabs();
   });
 
@@ -86,6 +87,7 @@ $(function(){
       $("#newFromResume").modal("hide");
       writeBen();
       selected = "";
+      candidate = "Ben";
       updateTabs();
     }else {
       alert("Please upload a resume");

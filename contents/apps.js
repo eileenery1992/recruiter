@@ -7,7 +7,7 @@ var d6 = new Date(2014, 2, 28);
 
 var apps={
       10086: {"name": "Ben Biddiddle", "tel": 6172531234, "email": "bitdiddle@mit.edu", "pos": "UI Designer", "status": "Just Added", "date": d1}, 
-      10023: {"name": "Alex Armstrong", "tel": 6172535678, "email": "arms@mit.edu", "pos": "UI Designer", "status": "2nd Interview", "date": d2}, 
+      10023: {"name": "Alex Armstrong", "tel": 6172535678, "email": "arms@mit.edu", "pos": "UI Designer", "status": "Just Added", "date": d2}, 
       11225: {"name": "Jack Wang", "tel": 6172535678, "email": "jwang@mit.edu", "pos": "QA", "status": "1st Interview", "date": d6}, 
       10001: {"name": "Edison Chen", "tel": 6172535678, "email": "echen@mit.edu", "pos": "Software Developer", "status": "Declined", "date": d4}, 
       11000: {"name": "Frank Andrews", "tel": 6172535678, "email": "andrews@mit.edu", "pos": "Software Developer", "status": "1st Interview", "date": d3}, 
@@ -17,12 +17,17 @@ var IDs = [10023, 11225, 10001, 11000, 10661];
 
 var writeBen = function() {
   var app = apps[10086];
-  $("#candidatesTable tr:last").after("<tr><td>".concat(
+  $("#candidatesTable tr:last").after("<tr id='c10086'><td>".concat(
   10086, "</td><td>",
   app["name"], "</td><td>",
   app["pos"], "</td><td>",
   app["status"], "</td><td>",
   app["date"].toDateString(), "</td></tr>"));
+  $("#c10086").click(function(event) {
+    selected = "";
+    candidate = "Alex";
+    updateTabs();
+  });
 };
 
   var t = {"ID": 10086, "action": "Send Rejection"};
@@ -43,12 +48,18 @@ $(function(){
 
   $.each(IDs, function(index, value){
     var app = apps[value];
-    $("#candidatesTable tr:last").after("<tr><td>".concat(
+    $("#candidatesTable tr:last").after("<tr id='c".concat(
+    value, "'><td>",
     value, "</td><td>",
     app["name"], "</td><td>",
     app["pos"], "</td><td>",
     app["status"], "</td><td>",
     app["date"].toDateString(), "</td></tr>"));
+  });
+  $("#c10023").click(function(event) {
+    selected = "";
+    candidate = "Alex";
+    updateTabs();
   });
 
   $("#toForm").click(function(event) {

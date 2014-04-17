@@ -455,6 +455,7 @@ html, #myBody {
   margin-top: 20px;
 }
 
+#candidatesTabe td,
 #taskTable td {
 	cursor: pointer;
 }

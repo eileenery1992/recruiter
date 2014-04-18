@@ -65,7 +65,8 @@ $(document).ready(function() {
          });
       }
       scheduled = 1;
-		confirmSend($('#candidateName').text(), timeSelected(), $('#intrName').val(), $('#type').find(':selected').text());
+	  var interviewers  = "Mike McLean (mclean)";
+		confirmSend($('#candidateName').text(), timeSelected(), interviewers, $('#type').find(':selected').text());
       $("#emptyTag").css("display", "none");
       $("#interviewCard").css("display", "block");
       $("#intSendBtn").text("Save Changes & Exit");

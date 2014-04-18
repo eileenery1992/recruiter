@@ -559,6 +559,14 @@ html, #myBody {
 	margin-left:10px;
 }
 
+#newInterview .btn-mini{
+	padding:1.5px 5px;
+}
+#clearBtn {
+float: right;
+position: relative;
+top: 5px;
+}
 
 
 

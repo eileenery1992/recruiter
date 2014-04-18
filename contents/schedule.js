@@ -12,12 +12,13 @@ $(document).ready(function() {
       businessHours :{start: 8, end: 18, limitDisplay: true },
       daysToShow : 5,
       height : function($calendar) {
-         return 450;
+         return 400;
       },
 	  newEventText: '',
       eventRender : function(calEvent, $event) {
 		var btn = document.createElement('button');
 		btn.textContent='delete';
+		btn.className = 'btn btn-default btn-mini';
 		btn.addEventListener('click', function() {
 			$("#calendar").weekCalendar("removeEvent", calEvent.id);
 		});
@@ -94,6 +95,8 @@ $(document).ready(function() {
 		target.parentNode.parentNode.removeChild(target.parentNode);
 		return false;
 	});
+	// Make plugin calendar consistent with site in button style
+	$('#calendar button').addClass('btn btn-default btn-mini');
 	
 });
 
@@ -101,13 +104,7 @@ function addInterviewer(name){
 	if (name!='mclean'){return;}
 	$('#intrName').val(''); 	// clears input field 
 	var intrElem = document.createElement('li');
-	intrElem.innerHTML = "Mike McLean (<a>mclean</a>)"+"<button class='intDel'>delete</button>";
-//	intrElem.innerHTML = '<span id="reviewerToken">mclean  <button type="button" class="close" id="deleteToken">&times;</button></span>'
-/* 	var delBtn = document.createElement('button');
-	delBtn.textContent = 'x';
-	delBtn.onClick = function(){ console.log(this.parentNode.parentNode); return false;};
-	
-	intrElem.appendChild(delBtn); */
+	intrElem.innerHTML = "Mike McLean (<a>mclean</a>)"+"<button class='intDel btn btn-default btn-mini'>X</button>";
 	$('#intrList').append(intrElem);
 }
 	

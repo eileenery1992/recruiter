@@ -209,6 +209,7 @@ $("#form_candidate").submit(function(event){
     request.done(function (response, textStatus, jqXHR){
         // log a message to the console
         console.log("Hooray, it worked!");
+        $('#newFromForm').modal('hide');
     });
 
     // callback handler that will be called on failure

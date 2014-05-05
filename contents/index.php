@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>The Recruiter</title>
+    <link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link type="text/css" href="index.css" rel="stylesheet" />
+	<link rel='stylesheet' type='text/css' href='plugins/week-calendar/libs/css/smoothness/jquery-ui-1.8.11.custom.css' />
+	<link rel='stylesheet' type='text/css' href='plugins/week-calendar/jquery.weekcalendar.css' />
+    <link type="text/css" href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+	<!-- Requird by calendar
+    <script type="text/javascript" src="plugins/week-calendar/libs/jquery-1.4.4.min.js"></script>
+	-->
+    <script type="text/javascript" src="jquery/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+
+    <script type="text/javascript" src="profile.js"></script>
+
+    <script type="text/javascript" src="jquery/js/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="apps.js"></script>
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
+  <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
+  <script type='text/javascript' src='schedule.js'></script>
+
+  </head>
+  <body id="myBody">
+
+    <!--new app from resume Modal -->
+    <div class="modal fade" id="newFromResume" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">New Application</h4>
+          </div>
+          <div class="modal-body">
+            <p>Create new application from resume?</p>
+            <input id="filebutton1" name="filebutton1" class="input-file" type="file">
+          </div>
+          <div class="modal-footer">
+            <button id="toForm" type="button" class="btn btn-default" data-dismiss="modal">No, take me to the form</button>
+            <button id="createFromResumeBtn" type="button" class="btn btn-primary">Create</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- new app from form Modal -->
+	
+    <div class="modal fade" id="newFromForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" id="closeForm" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">New Application     ID: 10086</h4>
+          </div>
+          <div class="modal-body">
+            <form id='form_candidate' class="form-horizontal">
+              <fieldset>
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel1" for="nameInput">Name *</label>
+                <span class="controls">
+                  <input id="nameInput" name="nameInput" type="text" placeholder="" class="input-xlarge" required="">   
+                </span>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel2" for="emailInput">Email *</label>
+                <span class="controls">
+                  <input id="emailInput" name="emailInput" type="text" placeholder="" class="input-xlarge" required="">    
+                </span>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel3" for="phoneInput">Phone *</label>
+                <span class="controls">
+                  <input id="phoneInput" name="phoneInput" type="text" placeholder="" class="input-xlarge" required="">    
+                </span>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel4" for="schoolInput">School</label>
+                <span class="controls">
+                  <input id="schoolInput" name="schoolInput" type="text" placeholder="" class="input-xlarge">    
+                </span>
+              </div>
+
+              <!-- Select Basic -->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel5" for="educationInput">Education</label>
+                <span class="controls">
+                  <select id="educationInput" name="educationInput" class="input-xlarge">
+                    <option>High School Diploma</option>
+                    <option>Undergraduate</option>
+                    <option>Master</option>
+                    <option>Ph.D</option>
+                    <option>Postdoc</option>
+                  </select>
+                </span>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel6" for="majorInput">Major</label>
+                <span class="controls">
+                  <input id="majorInput" name="majorInput" type="text" placeholder="" class="input-xlarge">   
+                </span>
+              </div>
+
+              <!-- Select Multiple -->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel7" for="positionInput">Position</label>
+                <span class="controls">
+                  <select id="positionInput" name="positionInput" class="input-xlarge" multiple="multiple">
+                    <option>Product Manager</option>
+                    <option>QA</option>
+                    <option>Software Developer</option>
+                    <option>UI Designer</option>
+                  </select>
+                </span>
+              </div>
+
+              <!-- File Button --> 
+              <div class="control-group">
+                <label class="control-label" id="controlLabel8" for="filebutton2">Resume</label>
+                <span class="controls">
+                  <input id="filebutton2" name="filebutton2" class="input-file" type="file">
+                </span>
+              </div>
+
+              </fieldset>
+              </form>
+          </div><!--modal-body -->
+          <div class="modal-footer">
+            <button id="toResumeUpload" type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+            <button id="createBtn" type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+		<!-- Interview request -->
+	<div class='modal fade' id='newInterview' tabindex='-1' role='dialog' aria-labelledby='myModelLabel' aria-hidden='true'>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+			<button type="button" class="close" id="closeIntReq" aria-hidden="true" onclick="$('#newInterview').modal('hide');">×</button>
+			<div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID: <a id='candidateID'></a> </div>
+          </div>
+		  <div class="modal-body">
+		   <div id='avail' class='horizontalPanel'>
+			<div id='calControls'>
+			<label> Candidate Availability </label>
+			<button id='clearBtn' onclick="$('#calendar').weekCalendar('clear');" class="btn btn-default btn-mini">Clear</button>
+			</div>
+		    <div id='calendar'></div>
+		   </div>	
+		   <div id='spec' class='horizontalPanel'>
+			<form> 
+			<div id='iType' class = 'verticalPanel'>
+			<label>Interview Type: </label>
+			<select id='type'> 
+				<option>Phone</option>
+				<option>Onsite</option>
+			</select>
+			</div>
+			
+			<div id='intrs' class = 'verticalPanel'>
+			<label>Interviewers:</label>
+			<input id='intrName' type='text'> 
+			<ul id='intrList'>
+			</ul>
+			</div>
+			  
+			<div id='iComment'>
+			<label>Comments:</label><br>
+
+			<textarea rows=5 id="commentInputArea"></textarea>
+			</div>
+			</form>
+            <button id="intCancelBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="intSendBtn" type="button" class="btn btn-primary" data-dismiss="modal">Send Interview Request</button>
+		   </div>
+		   </div>
+		  </div>
+		</div>
+	</div>
+
+    <div id="titleBar">
+      <div id="title"><img src="graphics/title3.png"/></div>
+      <div id="toolBar">
+        <div id="greeting">Hi, <span id="profile">Laura</span>!</div>
+        <div id="exitButton"><img src="graphics/icon2.png"/></div>
+      </div>
+    </div>
+    <div id="content">
+      <div id="controlPanel">
+        <div class="tabControl" id="tabCandidate">  Candidates</div>
+        <div class="tabControl" id="tabTask"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
+        <div class="tabControl" id="tabSchedule">  Schedule</div>
+        <div class="tabControl" id="tabPosition">  Positions</div>
+      </div>
+      <div id="pagePanel">
+        <div class="tabPage" id="tabCandidatePage">
+          <!-- Button trigger modal -->
+          <button id="newAppBtn" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newFromResume">
+            New Application
+          </button>
+
+          <div class="pageTitle">Search Candidates</div>
+          <div class="input-group marginTop" id="searchBar">
+            <input type="text" class="default-value form-control" value="ID/name/email">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+          </div><!-- /searchBar -->
+          <div id="filters" class="marginTop">
+            <input type="checkbox" class="marginTop">Active Only
+            <div class="marginTop" id="statusFilters">
+              <div class="input-group">
+                <input type="checkbox">Just Added 
+                <input type="checkbox">1st Interview 
+                <input type="checkbox">2nd Interview 
+                <input type="checkbox">Accepted 
+                <input type="checkbox">Offer Pending 
+                <input type="checkbox">Declined 
+                <input type="checkbox">Rejected 
+              </div><!-- /input-group -->
+            </div><!-- /statusFilters -->
+            <div class="marginTop" id="positionFilters">
+              <div class="input-group">
+                <input type="checkbox">QA 
+                <input type="checkbox">Product Manager 
+                <input type="checkbox">Software Developer
+                <input type="checkbox">UI Designer 
+              </div><!-- /input-group -->
+            </div><!-- /positionFilters -->
+            <!--<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedFilters">
+              Advanced Filters
+            </button>
+            <div id="advancedFilters" class="collapse in">
+            </div>-->
+          </div><!-- /filters -->
+          <table class="table-hover table" id="candidatesTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th>Last Updated</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr></tr>
+            </tbody>
+          </table><!--candidatesTable -->
+        </div>
+
+    <!--new app from email Modal -->
+    <div class="modal fade" id="newEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Send Email to Candidate</h4>
+          </div>
+          <div class="modal-body">
+            <table id="emailTable">
+              <tr>
+                <td class="emailLabel">To:</td>
+                <td>Ben Bitdiddle&#60;bitdiddle@mit.edu&#62;</td>
+              </tr>
+              <tr>
+                <td class="emailLabel">Title:</td>
+                <td><input id="titleInput"></input></td>
+              </tr>
+              <tr>
+                <td class="emailLabel">Message:</td>
+                <td><textarea rows="5" id="messageInput"></textarea></td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button id="cancelEmailButton" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="sendEmailButton" type="button" class="btn btn-primary">Send</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Email Sent Alert -->
+    <div id="emailSent" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Email successfully sent!
+          </div>
+          <!-- dialog buttons -->
+          <div class="modal-footer"><button type="button" class="btn btn-primary" id="closeAlert">OK</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interview Deletion Confirmation -->
+    <div id="interviewDeleted" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Are you sure to delete this interview?
+          </div>
+          <!-- dialog buttons -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" id="cancelDeletion">Cancel</button>
+            <button type="button" class="btn btn-primary" id="confirmDeletion">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Send Confirmation -->
+    <div id="emailSendConfirmation" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Are you sure to send this email to the candidate?
+          </div>
+          <!-- dialog buttons -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" id="cancelSend">Cancel</button>
+            <button type="button" class="btn btn-primary" id="confirmSend">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+		<div class="tabPage" id="tabTaskPage">
+          <div class="pageTitle">Upcoming Tasks</div>
+          <table class="table-hover table" id="taskTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th>Action Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr></tr>
+            </tbody>
+          </table><!--taskTable -->
+        </div><!-- tabTAskPage -->
+
+        <div class="tabPage" id="tabSchedulePage">
+		      This page is under construction.
+		    </div>
+
+        <div class="tabPage" id="tabPositionPage">This page is under construction.</div>
+        <div class="tabPage" id="tabProfilePage">
+          <table id="profileHeader">
+            <tr valign="baseline">
+              <td id="profileTitle">Application 10086</td>
+              <td id="editButtonContainer"><div id="editButton">Edit</div></td>
+            </tr>
+          </table>
+          <table id="profileInfo">
+            <tr>
+              <td id="leftColumn">
+                <table id="infoTable">
+                  <tr>
+                    <td id="nameLabel" class="myLabel">Name:</td>
+                    <td id="name">Ben Bitdiddle</td>
+                  </tr>
+                  <tr>
+                    <td id="emailLabel" class="myLabel">Email:</td>
+                    <td id="email">bitdiddle@mit.edu</td>
+                  </tr>
+                  <tr>
+                    <td id="telLabel" class="myLabel">Telephone:</td>
+                    <td id="tel">(617) 253-1234</td>
+                  </tr>
+                  <tr>
+                    <td id="posLabel" class="myLabel">Position:</td>
+                    <td id="pos">UI Designer</td>
+                  </tr>
+                  <tr>
+                    <td id="revLabel" class="myLabel">Reviewers:</td>
+                    <td id="rev"></td>
+                  </tr>
+                </table>
+              </td>
+              <td id="rightColumn">
+                <div id="statusButton" class="activeStatus">Just Added</div>
+              </td>
+            </tr>
+          </table>
+          <table id="profileControlPanel">
+            <tr>
+              <td id="leftSpace" class="profileTab"/>
+              <td id="tabActivity" class="profileTab selected">Activity</td>
+              <td class="profileTab spaceBetween"/>
+              <td id="tabInterview" class="profileTab unselected">Interviews</td>
+              <td class="profileTab spaceBetween"/>
+              <td id="tabInfo" class="profileTab unselected">Information</td>
+              <td id="rightSpace" class="profileTab"/>
+            </tr>
+          </table>
+          <div id="profilePagePanel">
+            <div id="tabActivityPage" class="inProfilePage">
+              <div id="activityList">
+              </div>
+              <div id="actionControl">
+                <span id="actionSelector">
+                  <select id="mySelect">
+                    <option selected="true" id="selectComment">Add Comment</option>
+                    <option id="selectReview">Add Reviewer</option>
+                  </select>
+                </span>
+                <span id="reviewerInputContainer"><input id="reviewerInput"/></span>
+                <span id="reviewerToken">mclean  <button type="button" class="close" id="deleteToken">&times;</button></span>
+              </div>
+              <div id="actionInputContainer">
+                <textarea id="actionInput" rows="5"></textarea>
+              </div>
+              <div id="confirmButton">
+                Post Action
+              </div>
+            </div>
+            <div id="tabInterviewPage" class="inProfilePage">
+              <div id="interviewList">
+                No interviews yet.
+              </div>
+              <button id="newInterviewButton" class="btn btn-primary btn-lg">
+                New Interview
+              </button>
+            </div>
+            <div id="tabInfoPage" class="inProfilePage">This page is under construction.</div>
+          </div>
+        </div>
+        <div class="tabPage" id="tabProfilePage2">
+          <table id="profileHeader2">
+            <tr valign="baseline">
+              <td id="profileTitle2">Application 10023</td>
+              <td id="editButtonContainer2"><div id="editButton2">Edit</div></td>
+            </tr>
+          </table>
+          <table id="profileInfo2">
+            <tr>
+              <td id="leftColumn2">
+                <table id="infoTable2">
+                  <tr>
+                    <td id="nameLabel2" class="myLabel">Name:</td>
+                    <td id="name2">Alex Armstrong</td>
+                  </tr>
+                  <tr>
+                    <td id="emailLabel2" class="myLabel">Email:</td>
+                    <td id="email2">arms@mit.edu</td>
+                  </tr>
+                  <tr>
+                    <td id="telLabel2" class="myLabel">Telephone:</td>
+                    <td id="tel2">(617) 253-5678</td>
+                  </tr>
+                  <tr>
+                    <td id="posLabel2" class="myLabel">Position:</td>
+                    <td id="pos2">UI Designer</td>
+                  </tr>
+                  <tr>
+                    <td id="revLabel2" class="myLabel">Reviewers:</td>
+                    <td id="rev2"></td>
+                  </tr>
+                </table>
+              </td>
+              <td id="rightColumn2">
+                <div id="statusButton2" class="activeStatus">1st Interview</div>
+              </td>
+            </tr>
+          </table>
+          <table id="profileControlPanel2">
+            <tr>
+              <td id="leftSpace2" class="profileTab2"/>
+              <td id="tabActivity2" class="profileTab2 selected">Activity</td>
+              <td class="profileTab2 spaceBetween"/>
+              <td id="tabInterview2" class="profileTab2 unselected">Interviews</td>
+              <td class="profileTab2 spaceBetween"/>
+              <td id="tabInfo2" class="profileTab2 unselected">Information</td>
+              <td id="rightSpace2" class="profileTab2"/>
+            </tr>
+          </table>
+          <div id="profilePagePanel2">
+            <div id="tabActivity2Page2" class="inProfilePage2">
+              <div id="activityList2">
+              </div>
+              <div id="actionControl2">
+                <span id="actionSelector2">
+                  <select id="mySelect2">
+                    <option selected="true" id="selectComment2">Add Comment</option>
+                    <option id="selectReview2">Add Reviewer</option>
+                  </select>
+                </span>
+                <span id="reviewerInputContainer2"><input id="reviewerInput2"/></span>
+              </div>
+              <div id="actionInputContainer2">
+                <textarea id="actionInput2" rows="5"></textarea>
+              </div>
+              <div id="confirmButton2">
+                Post Action
+              </div>
+            </div>
+            <div id="tabInterview2Page2" class="inProfilePage2">
+              <div id="interviewList2">
+                <div id="emptyTag">No interviews yet.</div>
+                <div id="interviewCard">
+                  <div id="cardTitle">
+                    Interview 1
+                    <button type="button" class="close" id="deleteInterview" aria-hidden="true">&times;</button>
+                  </div>
+                  <table id="interviewTable">
+                    <tr>
+                      <td>Type:</td>
+                      <td>Phone</td>
+                    </tr>
+                    <tr>
+                      <td>Interviewer:</td>
+                      <td><span class="profileLink">mclean</span></td>
+                    </tr>
+                    <tr>
+                      <td>Availability:</td>
+                      <td><button type="button" id="availability" class="btn btn-default btn-sm">Change Availability</button></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <button id="newInterviewButton2" class="btn btn-primary btn-lg">
+                New Interview
+              </button>
+            </div>
+            <div id="tabInfo2Page2" class="inProfilePage2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

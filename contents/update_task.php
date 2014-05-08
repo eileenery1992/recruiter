@@ -12,9 +12,11 @@ if (mysqli_connect_errno()) {
 $CID = $_POST['CID'];
 $action = $_POST['action'];
 $delete = $_POST['delete'];
+
+
 echo $delete;
 if ($delete){
-  $s = "DELETE FROM Tasks WHERE TaskID=$taskID ";
+  $s = "DELETE FROM Tasks WHERE CID=$CID ";
 } else{
 $s = "UPDATE Tasks
 SET action=$action

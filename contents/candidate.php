@@ -41,7 +41,7 @@
             <table id="emailTable">
               <tr>
                 <td class="emailLabel">To:</td>
-                <td>Ben Bitdiddle&#60;bitdiddle@mit.edu&#62;</td>
+                <td><span id="recipient">Ben Bitdiddle&#60;bitdiddle@mit.edu&#62;</span></td>
               </tr>
               <tr>
                 <td class="emailLabel">Title:</td>
@@ -102,8 +102,8 @@
     </div>
     <div id="content">
       <div id="controlPanel">
-        <div class="tabControl" id="tabCandidate">  Candidates</div>
-        <div class="tabControl" id="tabTask"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
+        <div class="tabControl" id="tabCandidate" href="/recruiter/contents/index.php">  Candidates</div>
+        <div class="tabControl" id="tabTask" href="/recruiter/contents/tasks.php"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
         <div class="tabControl" id="tabSchedule">  Schedule</div>
         <div class="tabControl" id="tabPosition">  Positions</div>
       </div>
@@ -138,7 +138,7 @@
         echo "<div id='pagePanel'>
           <div class='tabPage' id='tabProfilePage'>
             <table id='profileHeader'><tr valign='baseline'>
-              <td id='profileTitle'>$c_name</td>
+              <td id='profileTitle'><span id='profileName'>$c_name</span></td>
               <td id='editButtonContainer'><div id='editButton'>Edit</div></td>
             </tr>
           </table>
@@ -152,7 +152,7 @@
                   </tr>
                   <tr>
                     <td id='emailLabel' class='myLabel'>Email:</td>
-                    <td id='email'>$c_email</td>
+                    <td id='email'><span id='profileEmail'>$c_email</span></td>
                   </tr>
                   <tr>
                     <td id='telLabel' class='myLabel'>Telephone:</td>

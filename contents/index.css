@@ -399,6 +399,18 @@ html, #myBody {
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 }
 
+.badge {
+    background-color: red;
+    border-radius: 12px;
+    box-shadow: 1px 1px 1px black;
+    color: white;
+    font: bold 12px/9px Helvetica, Verdana, Tahoma;
+    height: 12px;
+    padding: 2px 3px 0 3px;
+    text-align: center;
+    min-width: 8px;
+}
+
 #confirmButton, #confirmButton2 {
 	background-color: gray;
 	color: white;

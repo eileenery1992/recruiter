@@ -9,6 +9,20 @@ var reviewers = ['Mike McLean (mclean)']
 var token = 0;
 var rejecting = 0;
 
+
+
+var rejectTitle = "Thank you for your interest";
+var rejectMessage = "Hello,\n\nThank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!\n\nBest,\nLaura";
+
+
+function updateTabs(){
+  $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
+  if (selected.length != 0) {
+    $("#" + selected).css("background-color", "white").css("z-index", 3);
+  }  
+}
+
+
 function addReviewer() {
   $('#reviewerInput').val('');   // clears input field 
   $("#reviewerToken").css("display", "inline-block");
@@ -138,8 +152,16 @@ var benLoaded = 0;
 
 var loadBen = function() {
 
+  updateTabs();
+
   $(".clickableRow").click(function() {
     window.document.location = $(this).attr("href");
+  });
+
+  $(".tabControl").click(function() {
+    if ($(this).attr("href").length > 0) {
+      window.document.location = $(this).attr("href");
+    }   
   });
 
   if (benLoaded == 0) {
@@ -147,8 +169,8 @@ var loadBen = function() {
     benLoaded = 1;
   }
 
-  $("#titleInput").val("Thank you for your interest");
-  $("#messageInput").val("Hello Ben,\n\nThank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!\n\nBest,\nLaura");
+  $("#titleInput").val(rejectTitle);
+  $("#messageInput").val(rejectMessage);
 
   $("#actionInput").keyup(function() {
     if ($(this).val().length != 0) {
@@ -218,6 +240,9 @@ var loadBen = function() {
   }, function() {
     this.style.textDecoration = "none";
   }).click(function() {
+    $("#titleInput").val("");
+    $("#messageInput").val("");
+    $("#recipient").html($("#profileName").html().concat("&#60;").concat($("#profileEmail").html()).concat("&#62;"));
     $("#newEmail").modal("show");
   });
 
@@ -336,22 +361,6 @@ var loadAlex = function() {
     this.style.textDecoration = "none";
   });
 
-  $("#email2").hover(function() {
-    this.style.textDecoration = "underline";
-  }, function() {
-    this.style.textDecoration = "none";
-  }).click(function() {
-    $("#newEmail").modal("show");
-  });
-
-  $("#cancelEmailButton2").click(function() {
-    $("#newEmail").modal("hide");
-  });
-
-  $("#sendEmailButton2").click(function() {
-    $("#newEmail").modal("hide");
-  });
-
   $(".profileTab2.unselected, .profileTab2.selected").hover(function() {
     $(this).addClass("hovering");
   }, function(){
@@ -415,7 +424,13 @@ $(document).ready(function() {
     if (this.id == "tabTask") {
       $("#notification").css("display", "none");
     }
+    updateTabs();
   });
+  if (document.URL.indexOf("candidate") > -1) {
+    selected = "";
+  } else if (document.URL.indexOf("tasks") > -1) {
+    selected = "tabTask";
+  }
   loadBen();
   loadAlex();
 });

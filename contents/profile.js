@@ -8,23 +8,6 @@ var interviewers = ['mclean']
 var reviewers = ['Mike McLean (mclean)']
 var token = 0;
 
-function updateTabs(){
-  $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
-  $(".tabPage").css("display", "none").css("z-index", 1);
-  if (selected.length != 0) {
-    $("#" + selected).css("background-color", "white").css("z-index", 3);
-    $("#" + selected + "Page").css("display", "block").css("z-index", 2);
-  } else {
-    if (candidate == "Ben") {
-      $("#tabProfilePage").css("display", "block").css("z-index", 2);
-      $("#tabProfilePage2").css("display", "none").css("z-index", 2);
-    } else {
-      $("#tabProfilePage2").css("display", "block").css("z-index", 2);
-      $("#tabProfilePage").css("display", "none").css("z-index", 2);
-    }
-  }   
-}
-
 function addReviewer() {
   $('#reviewerInput').val('');   // clears input field 
   $("#reviewerToken").css("display", "inline-block");
@@ -153,8 +136,6 @@ var addAction2 = function(actor, type, content) {
 var benLoaded = 0;
 
 var loadBen = function() {
-
-  updateTabs();
 
   if (benLoaded == 0) {
     addAction("laura", "create", "");
@@ -429,7 +410,6 @@ $(document).ready(function() {
     if (this.id == "tabTask") {
       $("#notification").css("display", "none");
     }
-    updateTabs();
   });
   loadBen();
   loadAlex();

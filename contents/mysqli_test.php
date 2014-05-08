@@ -12,13 +12,6 @@ echo $mysqli->host_info . "\n";
 
 mysqli_select_db($mysqli, $database) or die('Could not select database');
 
-// Get all column names 
-$q = "SELECT table_name, column_name, data_type, data_length
-FROM syscolumns 
-WHERE table_name = 'Candidates'";
-$cols = mysqli_query($mysqli, $q) or die(mysqli_error($mysqli));
-echo $cols;
-
 // Performing SQL query
 //$query = 'SELECT * FROM Persons';
 $query = "SELECT Name, Position, Status, Last_Updated FROM Candidates;";
@@ -40,13 +33,12 @@ while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 }
 echo "</table>\n";
 
-/*
 // Create table
 $sql="CREATE TABLE Persons3(FirstName CHAR(30),LastName CHAR(30),Age INT)";
 mysqli_query($mysqli,$sql)
   or die("Error creating table: " . mysqli_error($mysqli));
 echo "Created table";
-*/
+
 mysqli_close($mysqli);
 
 

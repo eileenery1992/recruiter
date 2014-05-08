@@ -132,9 +132,13 @@ html, #myBody {
 	padding-left: 10px;
 }
 
-#infoTable, #infoTable2 {
+#infoTable, #infoTable2, #moreInfoTable {
 	margin-bottom: 30px;
 	border-spacing: 25px 2px;
+}
+
+#moreInfoTable {
+	margin: 30px;
 }
 
 .myLabel {
@@ -171,8 +175,20 @@ html, #myBody {
 	background-color: #8ac007;
 }
 
+.pendingStatus {
+	background-color: #f0ad4e;
+}
+
 .inactiveStatus {
 	background-color: #c73a11;
+}
+
+.noStatus {
+	background-color: gray;
+}
+
+#statusButton {
+	margin-right: 35px;
 }
 
 #email, #email2 {
@@ -386,7 +402,7 @@ html, #myBody {
 	text-align: center;
 	line-height: 40px;
 	width: 115px;
-	cursor: pointer;
+	cursor: none;
 }
 
 #messageInput, #emailInput2 {

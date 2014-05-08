@@ -18,8 +18,8 @@ $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con
 
 // Printing results in HTML
 while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-    echo "<tr>";
     $count = 0;
+    echo "<tr class='clickableRow' href='/recruiter/contents/candidate.php?id=".$line["CID"]."'>";;
     foreach ($line as $col_value) {
       $count = $count + 1;
       if ($count == 4) {

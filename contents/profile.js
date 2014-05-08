@@ -196,6 +196,9 @@ var loadBen = function() {
         reviewerLink.className = "profileLink";
         $("#rev").append(reviewerLink);
         $("#notification").css("display", "inline-block");
+        var cid = parseInt($("#id").innerHTML);
+        console.log(cid);
+        generate_response(1, cid);
         addTask(t);
       }
     }

@@ -92,6 +92,7 @@ $(function(){
     $.getJSON("maxCID.php", function(data){
       $('#newCID').text(parseInt(data)+1);
       $("#newFromResume").modal("hide");
+      $("#newFromForm").modal("show");
     });
   });
 

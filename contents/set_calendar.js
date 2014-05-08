@@ -14,6 +14,7 @@ $(document).ready(function() {
 	  width : function($calendar) {
          return $(window).width() ;
       },
+      events: toEvents(),
       eventRender : function(calEvent, $event) {
          if (calEvent.end.getTime() < new Date().getTime()) {
             $event.css("backgroundColor", "#aaa");
@@ -51,10 +52,14 @@ $(document).ready(function() {
 
 });
 
-function addInterviewer(name){
-	var intrElem = document.createElement('li');
-	intrElem.textContent = name;
-	var delBtn = document.createElement('button');
-	
-	$('#intrList').appendChild()
-	
+function toEvents(){
+  var events = [];
+  var json = $.getJSON("list_availability.php", function(r){
+    alert(r);
+    $.each(r, function(i, obj){
+    console.log(obj);
+    events.push({'id':obj.TID, 'start':obj.Start, 'end':obj.End, 'title':''});
+    });
+  });
+  return events;
+}

@@ -1,4 +1,7 @@
 <?php
+//TODO:take from url or post data
+$cid = 10000; 
+
 $username = "mzhan"; 
 $password = "wxz6813"; 
 $hostname = "sql.mit.edu";  
@@ -8,37 +11,24 @@ $mysqli = new mysqli($hostname, $username, $password);
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
-echo $mysqli->host_info . "\n";
 
 mysqli_select_db($mysqli, $database) or die('Could not select database');
 
-// Get all column names 
-$q = "SELECT table_name, column_name, data_type, data_length
-FROM syscolumns 
-WHERE table_name = 'Candidates'";
-$cols = mysqli_query($mysqli, $q) or die(mysqli_error($mysqli));
-echo $cols;
-
 // Performing SQL query
 //$query = 'SELECT * FROM Persons';
-$query = "SELECT Name, Position, Status, Last_Updated FROM Candidates;";
+$query = "SELECT Availabilities.TID, Availabilities.Start, Availabilities.End
+FROM Availabilities 
+INNER JOIN Candidates 
+ON Candidates.CID=Availabilities.CID
+WHERE Candidates.CID=$cid;";
 $result = mysqli_query($mysqli,$query) or die('Query failed: ' . mysqli_error($mysqli));
 
-/*
-mysqli_query($mysqli,"INSERT INTO Candidates (ID, Name, Position)
-VALUES (10000, 'Glenn','aaa')") or die ('Insertion failed: '. mysqli_error($mysqli));
-*/
 
-// Printing results in HTML
-echo "<table>\n";
-while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-    echo "\t<tr>\n";
-    foreach ($line as $col_value) {
-        echo "\t\t<td>$col_value</td>\n";
-    }
-    echo "\t</tr>\n";
+$rows = array();
+while($r = mysqli_fetch_array($result,MYSQL_ASSOC)) {
+    $rows[] = $r;
 }
-echo "</table>\n";
+echo json_encode($rows);
 
 /*
 // Create table

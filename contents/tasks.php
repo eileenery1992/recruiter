@@ -143,6 +143,7 @@
             // Performing SQL query
             $query = 'SELECT Candidates.CID, Candidates.Name, Candidates.Position, Candidates.Status, Tasks.Action FROM Candidates INNER JOIN Tasks ON Candidates.CID=Tasks.CID';
             $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
+            $statii = array("Just Added", "1st Interview", "2nd Interview", "3rd Interview", "Offer Pending", "Offer Accepted", "Offer Declined", "Rejected"); 
 
             // Printing results in HTML
             while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
@@ -162,6 +163,8 @@
                     } else {
                       echo "<td>$col_value</td>";
                     }
+                  } elseif ($count == 4) {
+                    echo "<td>".$statii[$col_value]."</td>";
                   } else {
                     echo "<td>$col_value</td>";
                   }  

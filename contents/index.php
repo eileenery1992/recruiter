@@ -155,8 +155,7 @@
       <div id="controlPanel">
         <div class="tabControl" id="tabCandidate">  Candidates</div>
         <div class="tabControl" id="tabTask" href="/recruiter/contents/tasks.php"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
-        <div class="tabControl" id="tabSchedule">  Schedule</div>
-        <div class="tabControl" id="tabPosition">  Positions</div>
+        <div class="tabControl" id="tabDirectory" href="/recruiter/contents/directory.php">  Directory</div>
       </div>
       <div id="pagePanel">
         <div class="tabPage" id="tabCandidatePage">

@@ -431,6 +431,8 @@ $(document).ready(function() {
     selected = "";
   } else if (document.URL.indexOf("tasks") > -1) {
     selected = "tabTask";
+  } else if (document.URL.indexOf("directory") > -1) {
+    selected = "tabDirectory";
   }
 
   $(".buttonReviewer").click(function() {

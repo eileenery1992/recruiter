@@ -501,6 +501,11 @@ html, #myBody {
 #taskTable td {
 	cursor: pointer;
 }
+
+#candidatesTable .tablesorter-filter {
+  font-weight: normal;
+}
+
 /* css for my tasks tab
 
 */

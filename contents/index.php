@@ -4,7 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>The Recruiter</title>
     <link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
-    <link type="text/css" href="index.css" rel="stylesheet" />
 	<link rel='stylesheet' type='text/css' href='plugins/week-calendar/libs/css/smoothness/jquery-ui-1.8.11.custom.css' />
 	<link rel='stylesheet' type='text/css' href='plugins/week-calendar/jquery.weekcalendar.css' />
     <link type="text/css" href="bootstrap/css/bootstrap.css" rel="stylesheet" />
@@ -32,8 +31,127 @@
 <script src="jquery/js/jquery.tablesorter.js"></script>
 <!-- tablesorter widget file - loaded after the plugin -->
 <script src="jquery/js/jquery.tablesorter.widgets.js"></script>
+    <link type="text/css" href="index.css" rel="stylesheet" />
   </head>
   <body id="myBody">
+    <!--new app from resume Modal -->
+    <div class="modal fade" id="newFromResume" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">New Application</h4>
+          </div>
+          <div class="modal-body">
+            <p>Create new application from resume?</p>
+            <input id="filebutton1" name="filebutton1" class="input-file" type="file">
+          </div>
+          <div class="modal-footer">
+            <button id="toForm" type="button" class="btn btn-default" data-dismiss="modal">No, take me to the form</button>
+            <button id="createFromResumeBtn" type="button" class="btn btn-primary">Create</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- new app from form Modal -->
+	
+    <div class="modal fade" id="newFromForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" id="closeForm" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">New Application     ID: 10086</h4>
+          </div>
+          <div class="modal-body">
+            <form id='form_candidate' class="form-horizontal">
+              <fieldset>
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel1" for="nameInput">Name *</label>
+                <span class="controls">
+                  <input id="nameInput" name="nameInput" type="text" placeholder="" class="input-xlarge" required="">   
+                </span>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel2" for="emailInput">Email *</label>
+                <span class="controls">
+                  <input id="emailInput" name="emailInput" type="text" placeholder="" class="input-xlarge" required="">    
+                </span>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel3" for="phoneInput">Phone *</label>
+                <span class="controls">
+                  <input id="phoneInput" name="phoneInput" type="text" placeholder="" class="input-xlarge" required="">    
+                </span>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel4" for="schoolInput">School</label>
+                <span class="controls">
+                  <input id="schoolInput" name="schoolInput" type="text" placeholder="" class="input-xlarge">    
+                </span>
+              </div>
+
+              <!-- Select Basic -->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel5" for="educationInput">Education</label>
+                <span class="controls">
+                  <select id="educationInput" name="educationInput" class="input-xlarge">
+                    <option>High School Diploma</option>
+                    <option>Undergraduate</option>
+                    <option>Master</option>
+                    <option>Ph.D</option>
+                    <option>Postdoc</option>
+                  </select>
+                </span>
+              </div>
+
+              <!-- Text input-->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel6" for="majorInput">Major</label>
+                <span class="controls">
+                  <input id="majorInput" name="majorInput" type="text" placeholder="" class="input-xlarge">   
+                </span>
+              </div>
+
+              <!-- Select Multiple -->
+              <div class="control-group">
+                <label class="control-label" id="controlLabel7" for="positionInput">Position</label>
+                <span class="controls">
+                  <select id="positionInput" name="positionInput" class="input-xlarge" multiple="multiple">
+                    <option>Product Manager</option>
+                    <option>QA</option>
+                    <option>Software Developer</option>
+                    <option>UI Designer</option>
+                  </select>
+                </span>
+              </div>
+
+              <!-- File Button --> 
+              <div class="control-group">
+                <label class="control-label" id="controlLabel8" for="filebutton2">Resume</label>
+                <span class="controls">
+                  <input id="filebutton2" name="filebutton2" class="input-file" type="file">
+                </span>
+              </div>
+
+          </div><!--modal-body -->
+          <div class="modal-footer">
+            <button id="toResumeUpload" type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+            <input id="createBtn" type="submit" value="Create" class="btn btn-primary" >
+          </div>
+              </fieldset>
+              </form>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <div id="titleBar">
       <div id="title"><img src="graphics/title3.png"/></div>
       <div id="toolBar">
@@ -66,8 +184,8 @@
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Position</th>
-                <th>Status</th>
+                <th class="filter-select" data-placeholder="Select a position">Position</th>
+                <th class="filter-select" data-placeholder="Select a status">Status</th>
                 <th>Last Updated</th>
               </tr>
             </thead>

@@ -60,6 +60,10 @@
         $c_phone = $line["Phone"];
         $c_position = $line["Position"];
         $c_reviewers = $line["Reviewers"];
+        $c_status = $line["Status"];
+        $c_school = $line["School"];
+        $c_education = $line["Education"];
+        $c_major = $line["Major"];
         $query = 'SELECT * FROM Actions WHERE CID='. $id;
         $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
         $c_actions = array();
@@ -99,9 +103,28 @@
                   </tr>
                 </table>
               </td>
-              <td id='rightColumn'>
-                <div id='statusButton' class='activeStatus'>Just Added</div>
-              </td>
+              <td id='rightColumn'>";
+
+              if ($c_status == 1) {
+                echo "<div id='statusButton' class='pendingStatus'>Just Added</div>";
+              } elseif ($c_status == 2) {
+                echo "<div id='statusButton' class='pendingStatus'>1st Interview</div>";
+              } elseif ($c_status == 3) {
+                echo "<div id='statusButton' class='pendingStatus'>2nd Interview</div>";
+              } elseif ($c_status == 4) {
+                echo "<div id='statusButton' class='pendingStatus'>3rd Interview</div>";
+              } elseif ($c_status == 5) {
+                echo "<div id='statusButton' class='pendingStatus'>Offer Pending</div>";
+              } elseif ($c_status == 6) {
+                echo "<div id='statusButton' class='activeStatus'>Offer Accepted</div>";
+              } elseif ($c_status == 7) {
+                echo "<div id='statusButton' class='inactiveStatus'>Offer Declined</div>";
+              } elseif ($c_status == 8) {
+                echo "<div id='statusButton' class='inactiveStatus'>Rejected</div>";
+              } else {
+                echo "<div id='statusButton' class='noStatus'>No Status</div>";
+              }
+        echo "</td>
             </tr>
           </table>
           <table id='profileControlPanel'>
@@ -142,14 +165,12 @@
             //reject
             $innerStr = "rejected this candidate.";
             echo "<div class='activity regular'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='timeStamp'>$a_time</span></div>";
-          } else {
+          } elseif ($a_type == 5) {
             //send reject
             $innerStr = " sent a rejection letter to the candidate.";
             echo "<div class='activity statusChange'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='timeStamp'>$a_time</span></div>";
           }
         }
-        
-
 
         echo "</div>
               <div id='actionControl'>
@@ -177,7 +198,29 @@
                 New Interview
               </button>
             </div>
-            <div id='tabInfoPage' class='inProfilePage'>This page is under construction.</div>
+            <div id='tabInfoPage' class='inProfilePage'>";
+            
+        echo "<table id='moreInfoTable'>
+                  <tr>
+                    <td id='schoolLabel' class='myLabel'>School:</td>
+                    <td id='school'>$c_school</td>
+                  </tr>
+                  <tr>
+                    <td id='educationLabel' class='myLabel'>Education:</td>
+                    <td id='education'>$c_education</td>
+                  </tr>
+                  <tr>
+                    <td id='majorLabel' class='myLabel'>Major:</td>
+                    <td id='major'>$c_major</td>
+                  </tr>
+                  <tr>
+                    <td id='resumeLabel' class='myLabel'>Resume:</td>
+                    <td id='resume'><input id='infoFileButton' name='infoFileButton1' class='input-file' type='file'></td>
+                  </tr>
+                </table>";
+
+
+        echo "</div>
           </div>
         </div>
       </div>";

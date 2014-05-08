@@ -153,7 +153,7 @@ var loadBen = function() {
     if ($(this).val().length != 0) {
       $("#confirmButton").css("backgroundColor", "#388ac1");
     } else {
-      $("#confirmButton").css("backgroundColor", "gay");
+      $("#confirmButton").css("backgroundColor", "gray");
     }
   });
 

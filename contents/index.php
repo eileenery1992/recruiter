@@ -56,8 +56,7 @@
 
     <!-- new app from form Modal -->
 	
-    <div class="modal fade" id="newFromForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	
+    <div class="modal fade" id="newFromForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -101,15 +100,9 @@
 
               <!-- Select Basic -->
               <div class="control-group">
-                <label class="control-label" id="controlLabel5" for="educationInput">Education</label>
+                <label class="control-label" id="controlLabel5" for="educationInput">Education Degree</label>
                 <span class="controls">
-                  <select id="educationInput" name="educationInput" class="input-xlarge">
-                    <option>High School Diploma</option>
-                    <option>Undergraduate</option>
-                    <option>Master</option>
-                    <option>Ph.D</option>
-                    <option>Postdoc</option>
-                  </select>
+                  <input id="educationInput" name="educationInput" type="text" placeholder="" class="input-xlarge">    
                 </span>
               </div>
 
@@ -123,9 +116,9 @@
 
               <!-- Select Multiple -->
               <div class="control-group">
-                <label class="control-label" id="controlLabel7" for="positionInput">Position</label>
+                <label class="control-label" id="controlLabel7" for="positionInput">Position *</label>
                 <span class="controls">
-                  <select id="positionInput" name="positionInput" class="input-xlarge" multiple="multiple">
+                  <select id="positionInput" name="positionInput" class="input-xlarge" multiple="multiple" required="">
                     <option>Product Manager</option>
                     <option>QA</option>
                     <option>Software Developer</option>
@@ -173,12 +166,13 @@
           </button>
 
           <div class="pageTitle">Search Candidates</div>
+          <!--
           <div class="input-group marginTop" id="searchBar">
             <input type="text" class="default-value form-control" value="ID/name/email">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
             </span>
-          </div><!-- /searchBar -->
+          </div>-->
           <table class="table-hover table" id="candidatesTable">
             <thead>
               <tr>

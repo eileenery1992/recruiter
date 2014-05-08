@@ -68,7 +68,7 @@ $(function(){
   });
 
   $("#toForm").click(function(event) {
-    $("#newFromForm").modal("show");
+    $("#newFromForm").modal("show")
   });
 
   $("#toResumeUpload").click(function(event) {

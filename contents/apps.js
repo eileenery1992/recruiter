@@ -68,7 +68,10 @@ $(function(){
   });
 
   $("#toForm").click(function(event) {
+    $.getJSON("maxCID.php", function(data){
+          $('#newCID').text(parseInt(data.maxID)+1);
     $("#newFromForm").modal("show");
+    });
   });
 
   $("#toResumeUpload").click(function(event) {

@@ -29,6 +29,71 @@
 
   </head>
   <body id="myBody">
+    <!--new app from email Modal -->
+    <div class="modal fade" id="newEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Send Email to Candidate</h4>
+          </div>
+          <div class="modal-body">
+            <table id="emailTable">
+              <tr>
+                <td class="emailLabel">To:</td>
+                <td>Ben Bitdiddle&#60;bitdiddle@mit.edu&#62;</td>
+              </tr>
+              <tr>
+                <td class="emailLabel">Title:</td>
+                <td><input id="titleInput"></input></td>
+              </tr>
+              <tr>
+                <td class="emailLabel">Message:</td>
+                <td><textarea rows="5" id="messageInput"></textarea></td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button id="cancelEmailButton" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="sendEmailButton" type="button" class="btn btn-primary">Send</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Email Sent Alert -->
+    <div id="emailSent" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Email successfully sent!
+          </div>
+          <!-- dialog buttons -->
+          <div class="modal-footer"><button type="button" class="btn btn-primary" id="closeAlert">OK</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Send Confirmation -->
+    <div id="emailSendConfirmation" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Are you sure to send this email to the candidate?
+          </div>
+          <!-- dialog buttons -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" id="cancelSend">Cancel</button>
+            <button type="button" class="btn btn-primary" id="confirmSend">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
     <div id="titleBar">
       <div id="title"><img src="graphics/title3.png"/></div>
       <div id="toolBar">
@@ -73,7 +138,7 @@
         echo "<div id='pagePanel'>
           <div class='tabPage' id='tabProfilePage'>
             <table id='profileHeader'><tr valign='baseline'>
-              <td id='profileTitle'>Application $id</td>
+              <td id='profileTitle'>$c_name</td>
               <td id='editButtonContainer'><div id='editButton'>Edit</div></td>
             </tr>
           </table>
@@ -82,8 +147,8 @@
               <td id='leftColumn'>
                 <table id='infoTable'>
                   <tr>
-                    <td id='nameLabel' class='myLabel'>Name:</td>
-                    <td id='name'>$c_name</td>
+                    <td id='idLabel' class='myLabel'>ID:</td>
+                    <td id='id'>$id</td>
                   </tr>
                   <tr>
                     <td id='emailLabel' class='myLabel'>Email:</td>

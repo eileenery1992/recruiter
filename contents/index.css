@@ -30,6 +30,14 @@ html, #myBody {
 	float: right;
 }
 
+#candidatesTable input {
+	-webkit-appearance: textfield;
+}
+
+.lastRow {
+	height: 50px;
+}
+
 #greeting {
 	display: block;
 	float: left;
@@ -414,6 +422,11 @@ html, #myBody {
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 }
 
+#emailContent {
+	width: 800px;
+	margin-left: -100px;
+}
+
 #emailTable, #emailTable2 {
 	border-spacing: 10px;
 	border-collapse: separate;
@@ -489,7 +502,7 @@ html, #myBody {
 
 #candidatesTable,
 #taskTable {
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 #filters {

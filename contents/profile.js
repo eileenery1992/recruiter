@@ -137,9 +137,11 @@ var benLoaded = 0;
 
 var loadBen = function() {
 
+  $(".clickableRow").click(function() {
+    window.document.location = $(this).attr("href");
+  });
+
   if (benLoaded == 0) {
-    addAction("laura", "create", "");
-    addAction2("laura", "create", "");
     addAction2("mclean", "interview", "");
     benLoaded = 1;
   }

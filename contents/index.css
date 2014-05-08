@@ -316,10 +316,10 @@ html, #myBody {
 }
 
 .activity.regular {
-	border-top: 2px solid #A675A2;
-	border-left: 10px solid #A675A2;
-	border-right: 2px solid #A675A2;
-	border-bottom: 2px solid #A675A2;
+	border-top: 2px solid #f0ad4e;
+	border-left: 10px solid #f0ad4e;
+	border-right: 2px solid #f0ad4e;
+	border-bottom: 2px solid #f0ad4e;
 }
 
 .activity.reject {

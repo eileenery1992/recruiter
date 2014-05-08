@@ -15,6 +15,13 @@ var rejectTitle = "Thank you for your interest";
 var rejectMessage = "Hello,\n\nThank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!\n\nBest,\nLaura";
 
 
+function updateTabs(){
+  $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
+  if (selected.length != 0) {
+    $("#" + selected).css("background-color", "white").css("z-index", 3);
+  }  
+}
+
 
 function addReviewer() {
   $('#reviewerInput').val('');   // clears input field 
@@ -145,8 +152,16 @@ var benLoaded = 0;
 
 var loadBen = function() {
 
+  updateTabs();
+
   $(".clickableRow").click(function() {
     window.document.location = $(this).attr("href");
+  });
+
+  $(".tabControl").click(function() {
+    if ($(this).attr("href").length > 0) {
+      window.document.location = $(this).attr("href");
+    }   
   });
 
   if (benLoaded == 0) {
@@ -409,7 +424,13 @@ $(document).ready(function() {
     if (this.id == "tabTask") {
       $("#notification").css("display", "none");
     }
+    updateTabs();
   });
+  if (document.URL.indexOf("candidate") > -1) {
+    selected = "";
+  } else if (document.URL.indexOf("tasks") > -1) {
+    selected = "tabTask";
+  }
   loadBen();
   loadAlex();
 });

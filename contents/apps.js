@@ -115,9 +115,13 @@ $(function(){
           addAction("mclean", "reject", "");
           rejected = 1;
         }
+        $("#titleInput").val(rejectTitle);
+        $("#messageInput").val(rejectMessage);
         $("#newEmail").modal("show");
         $("#rejectButton").click(function() {
           if (sent == 0) {
+            $("#titleInput").val(rejectTitle);
+            $("#messageInput").val(rejectMessage);
             $("#newEmail").modal("show");
           }
         });
@@ -138,9 +142,9 @@ $(function(){
         updateTabs();
 
         $('#newInterview').modal('show');
-		$('#candidateName').text(apps[id]['name']);
-		$('#candidateID').text(id);
-		
+    $('#candidateName').text(apps[id]['name']);
+    $('#candidateID').text(id);
+    
       case "Send Interview Time":
         break;
     }
@@ -170,6 +174,8 @@ $(function(){
         }
         $("#rejectButton").click(function() {
           if (sent == 0) {
+            $("#titleInput").val(rejectTitle);
+            $("#messageInput").val(rejectMessage);
             $("#newEmail").modal("show");
           }
         });

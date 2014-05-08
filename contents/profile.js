@@ -4,7 +4,7 @@ var rejected = 0;
 var sent = 0;
 var requested = 0;
 var scheduled = 0;
-var interviewers = ['mclean']
+var interviewers = ['Mike Mclean (mclean)']
 var reviewers = ['Mike McLean (mclean)']
 var token = 0;
 var rejecting = 0;
@@ -431,6 +431,8 @@ $(document).ready(function() {
     selected = "";
   } else if (document.URL.indexOf("tasks") > -1) {
     selected = "tabTask";
+  } else if (document.URL.indexOf("directory") > -1) {
+    selected = "tabDirectory";
   }
 
   $(".buttonReviewer").click(function() {

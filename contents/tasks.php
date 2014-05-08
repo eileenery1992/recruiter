@@ -153,8 +153,7 @@
       <div id="controlPanel">
         <div class="tabControl" id="tabCandidate" href="/recruiter/contents/index.php">  Candidates</div>
         <div class="tabControl" id="tabTask"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
-        <div class="tabControl" id="tabSchedule">  Schedule</div>
-        <div class="tabControl" id="tabPosition">  Positions</div>
+        <div class="tabControl" id="tabDirectory" href="/recruiter/contents/directory.php">  Directory</div>
       </div>
       <div id="pagePanel">
         
@@ -228,7 +227,7 @@
                       echo "<td>$col_value</td>";
                     }
                   } elseif ($count == 4) {
-                    echo "<td>".$statii[$col_value-1]."</td>";
+                    echo "<td>".$statii[$col_value]."</td>";
                   } else {
                     echo "<td>$col_value</td>";
                   }  

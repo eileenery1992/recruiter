@@ -28,12 +28,13 @@ if (!mysqli_query($con,$sql)) {
 
 // TODO: Add action and task
 $query = "SELECT MAX(CID) AS maxID FROM Candidates;";
-$result = mysqli_query($con,$query) or die('Query failed: ' . mysqli_error($mysqli));
-$new = mysqli_fetch_row($result)[0];
-$s = "INSERT INTO Tasks (CID, Action) VALUES ('$new', 1)";
-mysqli_query($con, $s);
+$result = mysqli_query($con,$query) or die('Query failed: ' . mysqli_error($con));
 
-echo $new[0];
+$r = mysqli_fetch_row($result)[0] ;
+echo json_encode($r);
+
+$s = "INSERT INTO Tasks (CID, Action) VALUES ('$r', 1)";
+mysqli_query($con, $s);
 
 mysqli_close($con);
 ?> 

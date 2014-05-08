@@ -211,7 +211,7 @@ $("#form_candidate").submit(function(event){
     // callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         // log a message to the console
-        console.log("Hooray, it worked!");
+        console.log("New ID:", response);
         $('#newFromForm').modal('hide');
     });
 

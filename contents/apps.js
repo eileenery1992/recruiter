@@ -69,7 +69,7 @@ $(function(){
 
   $("#toForm").click(function(event) {
     $.getJSON("maxCID.php", function(data){
-          $('#newCID').text(parseInt(data.maxID)+1);
+          $('#newCID').text(parseInt(data)+1);
     $("#newFromForm").modal("show");
     });
   });

@@ -13,7 +13,8 @@ var rejecting = 0;
 
 var rejectTitle = "Thank you for your interest";
 var rejectMessage = "Hello,\n\nThank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!\n\nBest,\nLaura";
-
+var offerTitle = "Congratulations";
+var offerMessage = "We would love you to join us at Geekle!";
 
 function updateTabs(){
   $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
@@ -431,6 +432,33 @@ $(document).ready(function() {
   } else if (document.URL.indexOf("tasks") > -1) {
     selected = "tabTask";
   }
+
+  $(".buttonReviewer").click(function() {
+    window.document.location = $(this).attr("href");
+    return false;
+  });
+
+  $(".buttonSchedule").click(function() {
+    $("#newInterview").modal("show");
+    return false;
+  });
+
+  $(".buttonRejection").click(function() {
+    $("#titleInput").val(rejectTitle);
+    $("#messageInput").val(rejectMessage);
+    $("#newEmail").modal("show");
+    return false;
+  });
+
+  $(".buttonOffer").click(function() {
+    $("#titleInput").val(offerTitle);
+    $("#messageInput").val(offerMessage);
+    $("#newEmail").modal("show");
+    return false;
+  });
+
+
+
   loadBen();
   loadAlex();
 });

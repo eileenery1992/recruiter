@@ -7,6 +7,7 @@ var scheduled = 0;
 var interviewers = ['mclean']
 var reviewers = ['Mike McLean (mclean)']
 var token = 0;
+var rejecting = 0;
 
 function addReviewer() {
   $('#reviewerInput').val('');   // clears input field 
@@ -216,6 +217,8 @@ var loadBen = function() {
     this.style.textDecoration = "underline";
   }, function() {
     this.style.textDecoration = "none";
+  }).click(function() {
+    $("#newEmail").modal("show");
   });
 
   $("#cancelEmailButton").click(function() {

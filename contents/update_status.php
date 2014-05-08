@@ -1,0 +1,22 @@
+<?php
+$username = "mzhan";
+$password = "wxz6813";
+$hostname = "sql.mit.edu";
+$database = "mzhan+recruiter";
+
+$con=mysqli_connect($hostname, $username, $password, $database);
+// Check connection
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+
+$status = $_POST['status'];
+$cid = $_POST['cid'];
+$s = "UPDATE Candidates 
+SET Status=$status
+WHERE CID=$cid"; 
+mysqli_query($con, $s) or die(mysqli_error($con));
+
+mysqli_close($con);
+?>
+

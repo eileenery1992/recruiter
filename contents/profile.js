@@ -439,7 +439,13 @@ $(document).ready(function() {
   });
 
   $(".buttonSchedule").click(function() {
-    $("#newInterview").modal("show");
+    
+$("#newInterview").modal("show");
+    var l = this.parentNode.parentNode.childNodes;
+    var name = l[1].innerText;
+    var id = l[0].innerText;
+    $('#candidateName').text(name);
+    $('#candidateID').text(id);    
     return false;
   });
 

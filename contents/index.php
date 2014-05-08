@@ -83,9 +83,6 @@
             <div id="advancedFilters" class="collapse in">
             </div>-->
           </div><!-- /filters -->
-          <div>
-          <?php include "candidate_table.php"; ?>
-          </div>
           <table class="table-hover table" id="candidatesTable">
             <thead>
               <tr>
@@ -95,6 +92,7 @@
                 <th>Status</th>
                 <th>Last Updated</th>
               </tr>
+              <?php include "candidate_table.php"; ?>
             </thead>
             <tbody>
               <tr></tr>

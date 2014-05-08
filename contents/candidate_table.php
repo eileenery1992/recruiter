@@ -11,21 +11,18 @@ if (mysqli_connect_errno()) {
 }
 
 // Performing SQL query
-$query = 'SELECT * FROM Candidates';
+$query = 'SELECT CID, Name, Position, Status, Last_Updated FROM Candidates';
 $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
 
 
 // Printing results in HTML
-echo "<table  class='table-hover table' id='candidatesTable'>\n";
 while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-    echo "\t<tr>\n";
+    echo "<tr>";
     foreach ($line as $col_value) {
-        echo "\t\t<td>$col_value</td>\n";
+        echo "<td>$col_value</td>";
     }
-    echo "\t</tr>\n";
+    echo "</tr>";
 }
-echo "</table>\n";
-
 
 mysqli_close($con);
 ?> 

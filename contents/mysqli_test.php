@@ -13,14 +13,11 @@ echo $mysqli->host_info . "\n";
 mysqli_select_db($mysqli, $database) or die('Could not select database');
 
 // Performing SQL query
-//$query = 'SELECT * FROM Persons';
-$query = "SELECT Name, Position, Status FROM Candidates;";
-$result = mysqli_query($mysqli,$query) or die('Query failed: ' . mysqli_error($mysqli));
+$query = 'SELECT * FROM Persons';
+$result = mysqli_query($mysqli,$query) or die('Query failed: ' . mysqli_error());
 
-/*
 mysqli_query($mysqli,"INSERT INTO Persons (FirstName,LastName,Age)
 VALUES ('Glenn','Quagmire',33)") or die ('Insertion failed: '. mysqli_error());
-*/
 
 // Printing results in HTML
 echo "<table>\n";
@@ -33,13 +30,12 @@ while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 }
 echo "</table>\n";
 
-/*
 // Create table
 $sql="CREATE TABLE Persons3(FirstName CHAR(30),LastName CHAR(30),Age INT)";
 mysqli_query($mysqli,$sql)
   or die("Error creating table: " . mysqli_error($mysqli));
 echo "Created table";
-*/
+
 mysqli_close($mysqli);
 
 

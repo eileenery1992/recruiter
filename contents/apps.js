@@ -154,6 +154,7 @@ $(function(){
       case "Send Offer":
         break;
       case "Schedule Interview":
+	console.log('SCHEDULE');
         selected = "";
         candidate = "Alex";
         switchToInterview();

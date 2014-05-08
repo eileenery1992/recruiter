@@ -24,7 +24,7 @@ while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
       $count = $count + 1;
       if ($count == 4) {
         if ($col_value) {
-          echo "<td>".$statii[$col_value]."</td>";
+          echo "<td>".$statii[$col_value-1]."</td>";
         } else {
           echo "<td>$col_value</td>";
         }

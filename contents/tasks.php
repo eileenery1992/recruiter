@@ -164,7 +164,7 @@
                       echo "<td>$col_value</td>";
                     }
                   } elseif ($count == 4) {
-                    echo "<td>".$statii[$col_value]."</td>";
+                    echo "<td>".$statii[$col_value-1]."</td>";
                   } else {
                     echo "<td>$col_value</td>";
                   }  

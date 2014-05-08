@@ -17,15 +17,15 @@
 
     <script type="text/javascript" src="profile.js"></script>
 
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
+  <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
+  <script type='text/javascript' src='schedule.js'></script>
     <script type="text/javascript" src="jquery/js/jquery.tablesorter.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="apps.js"></script>
     <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 	
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
-  <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
-  <script type='text/javascript' src='schedule.js'></script>
 
   </head>
   <body id="myBody">

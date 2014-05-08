@@ -32,7 +32,7 @@
     <!--new app from email Modal -->
     <div class="modal fade" id="newEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" id="emailContent">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title" id="myModalLabel">Send Email to Candidate</h4>
@@ -49,7 +49,7 @@
               </tr>
               <tr>
                 <td class="emailLabel">Message:</td>
-                <td><textarea rows="5" id="messageInput"></textarea></td>
+                <td><textarea rows="8" id="messageInput"></textarea></td>
               </tr>
             </table>
           </div>
@@ -278,7 +278,7 @@
                     <td id='majorLabel' class='myLabel'>Major:</td>
                     <td id='major'>$c_major</td>
                   </tr>
-                  <tr>
+                  <tr class='lastRow'>
                     <td id='resumeLabel' class='myLabel'>Resume:</td>
                     <td id='resume'><input id='infoFileButton' name='infoFileButton1' class='input-file' type='file'></td>
                   </tr>

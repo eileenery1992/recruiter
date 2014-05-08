@@ -61,7 +61,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" id="closeForm" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">New Application     ID: 10086</h4>
+            <h4 class="modal-title" id="myModalLabel">New Application     ID: <span id='newCID'></span></h4>
           </div>
           <div class="modal-body">
             <form id='form_candidate' class="form-horizontal">

@@ -16,6 +16,43 @@ var apps={
 var IDs = [10023, 11225, 10001, 11000, 10661];
 var outstandingTasks = [];
 
+var add_task = function(action, id) {
+  switch(action) {
+    case "interview":
+    break;
+    case "reject":
+    break;
+    case "offer":
+    break;
+  }
+};
+
+var generate_response = function(status, cid) {
+  var new_status = 0; 
+  if (status<=4) {
+    var ran = Math.random();
+    if (ran<.5) {
+      new_status = 8;
+    } else{
+      new_status = status + 1;
+    }
+  } else if(status==5) {
+    var ran = Math.random();
+    if (ran<.5) {
+      new_status = 6;
+    } else{
+      new_status = 7;
+    }}
+  $.post('update_status.php', {'status':new_status, 'cid':cid}, function(r){console.log('updated');})
+  if (new_status <= 4) {
+    add_task("interview", cid);
+  } else if (new_status == 8) {
+    add_task("reject", cid);
+  } else if (new_status==6 || new_status==7) {
+    add_task("offer", cid);
+  }
+};
+
 var writeBen = function() {
   var idx = IDs.indexOf(10086);
   if (idx == -1) {
@@ -51,25 +88,10 @@ var writeBen = function() {
 $(function(){
 
 
-  $.each(IDs, function(index, value){
-    var app = apps[value];
-    $("#candidatesTable tr:last").after("<tr id='c".concat(
-    value, "'><td>",
-    value, "</td><td>",
-    app["name"], "</td><td>",
-    app["pos"], "</td><td>",
-    app["status"], "</td><td>",
-    app["date"].toDateString(), "</td></tr>"));
-  });
-  $("#c10023").click(function(event) {
-    selected = "";
-    candidate = "Alex";
-    updateTabs();
-  });
-
   $("#toForm").click(function(event) {
     $.getJSON("maxCID.php", function(data){
           $('#newCID').text(parseInt(data.maxID)+1);
+    $("#newFromResume").modal("hide");
     $("#newFromForm").modal("show");
     });
   });
@@ -211,8 +233,11 @@ $("#form_candidate").submit(function(event){
     // callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         // log a message to the console
+        var cid = response;
         console.log("Hooray, it worked!");
         $('#newFromForm').modal('hide');
+        generate_response(1, cid);
+        window.document.location = "/recruiter/contents/candidate.php?id="+cid;
     });
 
     // callback handler that will be called on failure

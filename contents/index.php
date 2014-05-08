@@ -26,7 +26,12 @@
   <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
   <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
   <script type='text/javascript' src='schedule.js'></script>
-
+<!-- bootstrap widget theme -->
+<link rel="stylesheet" href="jquery/js/theme.bootstrap.css">
+<!-- tablesorter plugin -->
+<script src="jquery/js/jquery.tablesorter.js"></script>
+<!-- tablesorter widget file - loaded after the plugin -->
+<script src="jquery/js/jquery.tablesorter.widgets.js"></script>
   </head>
   <body id="myBody">
     <div id="titleBar">
@@ -56,33 +61,6 @@
               <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
             </span>
           </div><!-- /searchBar -->
-          <div id="filters" class="marginTop">
-            <input type="checkbox" class="marginTop">Active Only
-            <div class="marginTop" id="statusFilters">
-              <div class="input-group">
-                <input type="checkbox">Just Added 
-                <input type="checkbox">1st Interview 
-                <input type="checkbox">2nd Interview 
-                <input type="checkbox">Accepted 
-                <input type="checkbox">Offer Pending 
-                <input type="checkbox">Declined 
-                <input type="checkbox">Rejected 
-              </div><!-- /input-group -->
-            </div><!-- /statusFilters -->
-            <div class="marginTop" id="positionFilters">
-              <div class="input-group">
-                <input type="checkbox">QA 
-                <input type="checkbox">Product Manager 
-                <input type="checkbox">Software Developer
-                <input type="checkbox">UI Designer 
-              </div><!-- /input-group -->
-            </div><!-- /positionFilters -->
-            <!--<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedFilters">
-              Advanced Filters
-            </button>
-            <div id="advancedFilters" class="collapse in">
-            </div>-->
-          </div><!-- /filters -->
           <table class="table-hover table" id="candidatesTable">
             <thead>
               <tr>
@@ -92,10 +70,9 @@
                 <th>Status</th>
                 <th>Last Updated</th>
               </tr>
-              <?php include "candidate_table.php"; ?>
             </thead>
             <tbody>
-              <tr></tr>
+              <?php include"candidate_table.php"; ?>
             </tbody>
           </table><!--candidatesTable -->
         </div>

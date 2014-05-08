@@ -16,12 +16,9 @@ mysqli_select_db($mysqli, $database) or die('Could not select database');
 $query = "SELECT MAX(CID) AS maxID FROM Candidates;";
 $result = mysqli_query($mysqli,$query) or die('Query failed: ' . mysqli_error($mysqli));
 
-$rows = array();
-while($r = mysqli_fetch_array($result,MYSQL_ASSOC)) {
-    $rows[] = $r;
-}
+$r = mysqli_fetch_row($result)[0];
+echo json_encode($r);
 
-echo json_encode($rows[0]);
 mysqli_close($mysqli);
 
 ?>

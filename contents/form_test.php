@@ -25,7 +25,16 @@ VALUES ('$name', '$email', '$phone', '$school','$education','$major','$position'
 if (!mysqli_query($con,$sql)) {
   die('Error: ' . mysqli_error($con));
 }
-echo "1 record added";
+
+// TODO: Add action and task
+$query = "SELECT MAX(CID) AS maxID FROM Candidates;";
+$result = mysqli_query($con,$query) or die('Query failed: ' . mysqli_error($con));
+
+$r = mysqli_fetch_row($result)[0] ;
+echo json_encode($r);
+
+$s = "INSERT INTO Tasks (CID, Action) VALUES ('$r', 1)";
+mysqli_query($con, $s);
 
 mysqli_close($con);
 ?> 

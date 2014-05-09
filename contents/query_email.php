@@ -9,15 +9,12 @@ $con=mysqli_connect($hostname, $username, $password, $database);
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-$CID = $_POST['CID'];
-$action = $_POST['action'];
-$delete = $_POST['delete'];
-echo $delete;
-if ($delete){
-  $s = "DELETE FROM Tasks WHERE TaskID=$taskID ";
-} else{
-$s = "INSERT INTO Tasks (CID, Action) VALUES ('$CID', '$action')";}
-mysqli_query($con, $s) or die(mysqli_error($con));
+$cid = $_POST['cid'];
+
+$query = "SELECT Name, Email FROM Candidates WHERE CID=$cid"; 
+$result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
+$line = mysqli_fetch_array($result, MYSQL_ASSOC);
+echo $line["Name"]."&#60;".$line["Email"]."&#62;";
 
 mysqli_close($con);
 ?>

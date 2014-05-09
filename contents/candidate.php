@@ -93,6 +93,53 @@
         </div>
       </div>
     </div>
+
+    <!-- Interview request -->
+  <div class='modal fade' id='newInterview' tabindex='-1' role='dialog' aria-labelledby='myModelLabel' aria-hidden='true'>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+      <button type="button" class="close" id="closeIntReq" aria-hidden="true" onclick="$('#newInterview').modal('hide');">×</button>
+      <div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID: <a id='candidateID'></a> </div>
+          </div>
+      <div class="modal-body">
+       <div id='avail' class='horizontalPanel'>
+      <div id='calControls'>
+      <label> Candidate Availability </label>
+      <button id='clearBtn' onclick="$('#calendar').weekCalendar('clear');" class="btn btn-default btn-mini">Clear</button>
+      </div>
+        <div id='calendar'></div>
+       </div> 
+       <div id='spec' class='horizontalPanel'>
+      <form> 
+      <div id='iType' class = 'verticalPanel'>
+      <label>Interview Type: </label>
+      <select id='type'> 
+        <option>Phone</option>
+        <option>Onsite</option>
+      </select>
+      </div>
+      
+      <div id='intrs' class = 'verticalPanel'>
+      <label>Interviewers:</label>
+      <input id='intrName' type='text'> 
+      <ul id='intrList'>
+      </ul>
+      </div>
+        
+      <div id='iComment'>
+      <label>Comments:</label><br>
+
+      <textarea rows=5 id="commentInputArea"></textarea>
+      </div>
+      </form>
+            <button id="intCancelBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="intSendBtn" type="button" class="btn btn-primary" data-dismiss="modal">Send Interview Request</button>
+       </div>
+       </div>
+      </div>
+    </div>
+  </div>
  
     <div id="titleBar">
       <div id="title"><img src="graphics/title3.png"/></div>
@@ -104,8 +151,7 @@
       <div id="controlPanel">
         <div class="tabControl" id="tabCandidate" href="/recruiter/contents/index.php">  Candidates</div>
         <div class="tabControl" id="tabTask" href="/recruiter/contents/tasks.php"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
-        <div class="tabControl" id="tabSchedule">  Schedule</div>
-        <div class="tabControl" id="tabPosition">  Positions</div>
+        <div class="tabControl" id="tabDirectory" href="/recruiter/contents/directory.php">  Directory</div>
       </div>
       <?php
         $username = "mzhan";

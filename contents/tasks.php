@@ -17,19 +17,83 @@
 
     <script type="text/javascript" src="profile.js"></script>
 
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
+  <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
+  <script type='text/javascript' src='schedule.js'></script>
     <script type="text/javascript" src="jquery/js/jquery.tablesorter.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="apps.js"></script>
     <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 	
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
-  <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
-  <script type='text/javascript' src='schedule.js'></script>
 
   </head>
   <body id="myBody">
 
+<!--new app from email Modal -->
+    <div class="modal fade" id="newEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" id="emailContent">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Send Email to Candidate</h4>
+          </div>
+          <div class="modal-body">
+            <table id="emailTable">
+              <tr>
+                <td class="emailLabel">To:</td>
+                <td><span id="recipient">Ben Bitdiddle&#60;bitdiddle@mit.edu&#62;</span></td>
+              </tr>
+              <tr>
+                <td class="emailLabel">Title:</td>
+                <td><input id="titleInput"></input></td>
+              </tr>
+              <tr>
+                <td class="emailLabel">Message:</td>
+                <td><textarea rows="8" id="messageInput"></textarea></td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button id="cancelEmailButton" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="sendEmailButton" type="button" class="btn btn-primary">Send</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Email Sent Alert -->
+    <div id="emailSent" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Email successfully sent!
+          </div>
+          <!-- dialog buttons -->
+          <div class="modal-footer"><button type="button" class="btn btn-primary" id="closeAlert">OK</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Send Confirmation -->
+    <div id="emailSendConfirmation" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Are you sure to send this email to the candidate?
+          </div>
+          <!-- dialog buttons -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" id="cancelSend">Cancel</button>
+            <button type="button" class="btn btn-primary" id="confirmSend">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
   
 		<!-- Interview request -->
 	<div class='modal fade' id='newInterview' tabindex='-1' role='dialog' aria-labelledby='myModelLabel' aria-hidden='true'>
@@ -89,8 +153,7 @@
       <div id="controlPanel">
         <div class="tabControl" id="tabCandidate" href="/recruiter/contents/index.php">  Candidates</div>
         <div class="tabControl" id="tabTask"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
-        <div class="tabControl" id="tabSchedule">  Schedule</div>
-        <div class="tabControl" id="tabPosition">  Positions</div>
+        <div class="tabControl" id="tabDirectory" href="/recruiter/contents/directory.php">  Directory</div>
       </div>
       <div id="pagePanel">
         
@@ -153,13 +216,13 @@
                   $count = $count + 1;
                   if ($count == 5) {
                     if ($col_value == 1) {
-                      echo "<td><button class='btn btn-default'>Add Reviewer</button></td></tr>";
+                      echo "<td><button class='btn btn-default buttonReviewer' href='/recruiter/contents/candidate.php?id=".$line["CID"]."#profilePagePanel'>Add Reviewer</button></td></tr>";
                     } elseif ($col_value == 2) {
-                      echo "<td><button class='btn btn-warning'>Schedule Interview</button></td></tr>";
+                      echo "<td><button class='btn btn-warning buttonSchedule'>Schedule Interview</button></td></tr>";
                     } elseif ($col_value == 3) {
-                      echo "<td><button class='btn btn-danger'>Send Rejection</button></td></tr>";
+                      echo "<td><button class='btn btn-danger buttonRejection'>Send Rejection</button></td></tr>";
                     } elseif ($col_value == 4) {
-                      echo "<td><button class='btn btn-success'>Send Offer</button></td></tr>";
+                      echo "<td><button class='btn btn-success buttonOffer'>Send Offer</button></td></tr>";
                     } else {
                       echo "<td>$col_value</td>";
                     }

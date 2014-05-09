@@ -26,7 +26,7 @@ if (!mysqli_query($con,$sql)) {
   die('Error: ' . mysqli_error($con));
 }
 
-// TODO: Add action record 
+// TODO: Add action and task
 $query = "SELECT MAX(CID) AS maxID FROM Candidates;";
 $result = mysqli_query($con,$query) or die('Query failed: ' . mysqli_error($con));
 

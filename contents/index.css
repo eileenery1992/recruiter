@@ -103,6 +103,15 @@ html, #myBody {
 	border-right: 2px solid #8AC007;
 	border-bottom: 2px solid #8AC007;
 }
+
+#interviewCard2 {
+	padding: 15px;
+	border-top: 2px solid #8AC007;
+	border-left: 10px solid #8AC007;
+	border-right: 2px solid #8AC007;
+	border-bottom: 2px solid #8AC007;
+}
+
 #cardTitle {
 	font-size: 24px;
 	font-weight: bold;

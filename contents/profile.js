@@ -47,7 +47,7 @@ function loadEmail(id, name, email, template) {
 function addReviewer() {
   $('#reviewerInput').val('');   // clears input field 
   $("#reviewerToken").css("display", "inline-block");
-  $("#confirmButton").css("background-color", "#388ac1");
+  $("#confirmButton").css("background-color", "#388ac1").css("cursor", "pointer");
   token = 1;
 }
 
@@ -193,9 +193,9 @@ var loadBen = function() {
 
   $("#actionInput").keyup(function() {
     if ($(this).val().length != 0) {
-      $("#confirmButton").css("backgroundColor", "#388ac1");
+      $("#confirmButton").css("backgroundColor", "#388ac1").css("cursor", "pointer");
     } else {
-      $("#confirmButton").css("backgroundColor", "gray");
+      $("#confirmButton").css("backgroundColor", "gray").css("cursor", "default");
     }
   });
 
@@ -295,7 +295,7 @@ var loadBen = function() {
 
   $("#deleteToken").click(function() {
     $("#reviewerToken").css("display", "none");
-    $("#confirmButton").css("background-color", "gray");
+    $("#confirmButton").css("background-color", "gray").css("cursor", "default");
     token = 0;
   });
 
@@ -333,29 +333,6 @@ var loadAlex = function() {
   reviewerLink2.className = "profileLink";
   $("#rev2").append(reviewerLink2);
 
-  $("#actionInput2").keyup(function() {
-    if ($(this).val().length != 0) {
-      $("#confirmButton2").css("backgroundColor", "#388ac1");
-    } else {
-      $("#confirmButton2").css("backgroundColor", "gray");
-    }
-  });
-
-  $("#confirmButton2").click(function() {
-    var option = $("#mySelect2").find(":selected").text();
-    if (option == "Add Comment") {
-      var comment = $("#actionInput2").val();
-      $("#actionInput2").val("");
-      if (comment.length != 0) {
-        addAction2("laura", "comment", comment);
-      }
-    } else {
-      var reviewer = $("#reviewerInput2").val();
-      if (reviewer == "mclean") {
-        addAction2("laura", "review", reviewer);
-      }
-    }
-  });
 
   $(".profileTab2.unselected, .profileTab2.selected").hover(function() {
     $(this).addClass("hovering");
@@ -409,8 +386,13 @@ var loadAlex = function() {
   });
 
   $("#interviewButton").click(function() {
-    $('#newInterview').modal('show');
+    window.document.location = $(this).attr("href");
   });
+
+  $("#rejectButton").click(function() {
+    window.document.location = $(this).attr("href");
+  });
+
 
   $("#availability").click(function() {
     $('#newInterview').modal('show');

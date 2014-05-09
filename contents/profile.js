@@ -411,8 +411,13 @@ var loadAlex = function() {
   });
 
   $("#interviewButton").click(function() {
-    $('#newInterview').modal('show');
+    window.document.location = $(this).attr("href");
   });
+
+  $("#rejectButton").click(function() {
+    window.document.location = $(this).attr("href");
+  });
+
 
   $("#availability").click(function() {
     $('#newInterview').modal('show');

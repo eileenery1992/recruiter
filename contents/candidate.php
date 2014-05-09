@@ -292,16 +292,20 @@
             echo "<div class='activity comment'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span>$a_content</span><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 4) {
             //reject
-            $innerStr = "rejected this candidate.  ";
+            $innerStr = " rejected this candidate.  ";
             echo "<div class='activity regular'><span class='profileLink'>$a_sender</span><span>$innerStr</span><button class='btn btn-danger btn-xs' type='button' id='rejectButton' href='/recruiter/contents/candidate.php?id=".$id."&showEmail=reject'>Send Rejection</button><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 5) {
             //send reject
             $innerStr = " sent a rejection letter to the candidate.";
-            echo "<div class='activity statusChange'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='timeStamp'>$a_time</span></div>";
+            echo "<div class='activity reject'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 6) {
-            //send reject
+            //request interview
             $innerStr = " requested an interview with the candidate.  ";
             echo "<div class='activity regular'><span class='profileLink'>$a_sender</span><span>$innerStr</span><button class='btn btn-warning btn-xs' type='button' id='interviewButton' href='/recruiter/contents/candidate.php?id=".$id."&showInterview=true'>Schedule Interview</button><span class='timeStamp'>$a_time</span></div>";
+          } elseif ($a_type == 7) {
+            //send offer
+            $innerStr = " sent an offer letter to the candidate.";
+            echo "<div class='activity statusChange'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='timeStamp'>$a_time</span></div>";
           }
         }
 

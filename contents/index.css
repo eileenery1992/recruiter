@@ -423,6 +423,10 @@ html, #myBody {
     margin: 10px;
 }
 
+.mewBadge.zeroBadge {
+	display: none;
+}
+
 #confirmButton, #confirmButton2 {
 	background-color: gray;
 	color: white;

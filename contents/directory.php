@@ -43,7 +43,6 @@
     <div id="content">
       <div id="controlPanel">
         <div class="tabControl" id="tabCandidate" href="/recruiter/contents/index.php">  Candidates</div>
-        <div class="tabControl" id="tabTask" href='/recruiter/contents/tasks.php'><span class='mewBadge' id='notification'>
         <?php
             $username = "mzhan";
             $password = "wxz6813";
@@ -61,6 +60,13 @@
             while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
                 $count = $count + 1;
             }
+
+            $extraClass = '';
+
+            if ($count == 0) {
+              $extraClass=' zeroBadge';
+            }
+            echo "<div class='tabControl' id='tabTask' href='/recruiter/contents/tasks.php'><span class='mewBadge".$extraClass."' id='notification'>";
 
             echo $count;
             mysqli_close($con);

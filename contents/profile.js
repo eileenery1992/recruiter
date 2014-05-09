@@ -12,15 +12,31 @@ var rejecting = 0;
 
 
 var rejectTitle = "Thank you for your interest";
-var rejectMessage = "Hello,\n\nThank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!\n\nBest,\nLaura";
+var rejectMessage = "Hello,\n\nThank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!";
 var offerTitle = "Congratulations";
 var offerMessage = "We would love you to join us at Geekle!";
 
-function updateTabs(){
+function updateTabs() {
   $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
   if (selected.length != 0) {
     $("#" + selected).css("background-color", "white").css("z-index", 3);
   }  
+}
+
+function popEmail(recipient, template) {
+  $("#recipient").html(recipient);
+  if (template == "empty") {
+    $("#titleInput").val("");
+    $("#messageInput").val("");
+  } else if (template == "offer") {
+    $("#titleInput").val(offerTitle);
+    $("#messageInput").val(offerMessage);
+  } else if (template == "reject") {
+    $("#titleInput").val(rejectTitle);
+    $("#messageInput").val(rejectMessage);
+  }
+  
+  $("#newEmail").modal("show"); 
 }
 
 
@@ -170,8 +186,6 @@ var loadBen = function() {
     benLoaded = 1;
   }
 
-  $("#titleInput").val(rejectTitle);
-  $("#messageInput").val(rejectMessage);
 
   $("#actionInput").keyup(function() {
     if ($(this).val().length != 0) {
@@ -241,10 +255,7 @@ var loadBen = function() {
   }, function() {
     this.style.textDecoration = "none";
   }).click(function() {
-    $("#titleInput").val("");
-    $("#messageInput").val("");
-    $("#recipient").html($("#profileName").html().concat("&#60;").concat($("#profileEmail").html()).concat("&#62;"));
-    $("#newEmail").modal("show");
+    popEmail($("#profileName").html().concat("&#60;").concat($("#profileEmail").html()).concat("&#62;"), "empty");
   });
 
   $("#cancelEmailButton").click(function() {
@@ -452,16 +463,18 @@ $("#newInterview").modal("show");
   });
 
   $(".buttonRejection").click(function() {
-    $("#titleInput").val(rejectTitle);
-    $("#messageInput").val(rejectMessage);
-    $("#newEmail").modal("show");
+    var cid = this.parentNode.parentNode.childNodes[0].innerText;
+    $.post('query_email.php', {cid: cid}, function(data) {
+      popEmail(data, "reject");
+    });
     return false;
   });
 
   $(".buttonOffer").click(function() {
-    $("#titleInput").val(offerTitle);
-    $("#messageInput").val(offerMessage);
-    $("#newEmail").modal("show");
+    var cid = this.parentNode.parentNode.childNodes[0].innerText;
+    $.post('query_email.php', {cid: cid}, function(data) {
+      popEmail(data, "offer");
+    });
     return false;
   });
 

@@ -42,17 +42,23 @@
     </div>
     <div id="content">
       <div id="controlPanel">
-        <div class="tabControl" id="tabCandidate" href="/recruiter/contents/candidate.php">  Candidates</div>
+        <div class="tabControl" id="tabCandidate" href="/recruiter/contents/index.php">  Candidates</div>
         <div class="tabControl" id="tabTask" href="/recruiter/contents/tasks.php"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
         <div class="tabControl" id="tabDirectory">  Directory</div>
       </div>
+
       <div id="pagePanel">
         <div class="tabPage" id="tabDirectoryPage">
+        <div class="pageTitle">Company Directory</div>
           <div id="interviewCard2">
                   <div id="cardTitle">
-                    Mike Mclean
+                    Mike Mclean (mclean)
                   </div>
                   <table id="interviewTable">
+                    <tr>
+                      <td>Position:</td>
+                      <td>Hiring Manager/Interviewer</td>
+                    </tr>
                     <tr>
                       <td>Department:</td>
                       <td>UI Design</td>

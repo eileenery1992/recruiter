@@ -34,7 +34,7 @@ $r = mysqli_fetch_row($result)[0] ;
 echo $r;
 
 $s = "INSERT INTO Tasks (CID, Action) VALUES ('$r', 1)";
-//mysqli_query($con, $s);
+mysqli_query($con, $s);
 
 mysqli_close($con);
 ?> 

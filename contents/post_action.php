@@ -13,12 +13,7 @@ if (mysqli_connect_errno()) {
 }
 $CID = $_POST['CID'];
 $action = $_POST['action'];
-$delete = $_POST['delete'];
-echo $delete;
-if ($delete){
-  $s = "DELETE FROM Tasks WHERE TaskID=$taskID ";
-} else{
-$s = "INSERT INTO Tasks (CID, Action) VALUES ('$CID', '$action')";}
+$s = "INSERT INTO Actions (CID, Action) VALUES ('$CID', '$action')";}
 mysqli_query($con, $s) or die(mysqli_error($con));
 
 mysqli_close($con);

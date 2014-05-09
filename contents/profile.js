@@ -196,12 +196,15 @@ var loadBen = function() {
   });
 
   $("#confirmButton").click(function() {
+    var cid = $("#id").innerHTML;
+    console.log("id: "+cid);
     var option = $("#mySelect").find(":selected").text();
     if (option == "Add Comment") {
       var comment = $("#actionInput").val();
       $("#actionInput").val("");
       if (comment.length != 0) {
         addAction("laura", "comment", comment);
+        $.post('post_action.php', {'action':3, 'CID':cid}, function(r){console.log('comment');});
       }
     } else {
       if (token == 1) {
@@ -211,10 +214,8 @@ var loadBen = function() {
         reviewerLink.className = "profileLink";
         $("#rev").append(reviewerLink);
         $("#notification").css("display", "inline-block");
-        var cid = parseInt($("#id").innerHTML);
-        console.log(cid);
+        $.post('post_action.php', {'action':2, 'CID':cid}, function(r){console.log('review');});
         generate_response(1, cid);
-        addTask(t);
       }
     }
   });
@@ -271,8 +272,9 @@ var loadBen = function() {
   });
 
   $("#confirmSend").click(function() {
-    var cid = parseInt($("#id").innerHTML);
+    var cid = $("#id").innerHTML;
     $.post('update_status.php', {'status': 8, 'cid':cid}, function(r){});
+    $.post('post_action.php', {'action':4, 'CID':cid}, function(r){console.log('rejected');});
     $("#emailSendConfirmation").modal("hide");
     $("#emailSent").modal("show");
     $("#rejectButton").css("background-color", "gray").css("border-color", "gray");

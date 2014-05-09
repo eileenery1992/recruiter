@@ -19,13 +19,14 @@ var outstandingTasks = [];
 var add_task = function(action, cid) {
   switch(action) {
     case "interview":
-      $.post('update_task.php', {'action': 2, 'cid':cid}, function(r){});
+      $.post('update_task.php', {'action': 2, 'CID':cid}, function(r){});
     break;
     case "reject":
-      $.post('update_task.php', {'action': 3, 'cid':cid}, function(r){console.log("something");});
+      console.log(cid);
+      $.post('update_task.php', {'action': 3, 'CID':cid}, function(r){console.log("something");});
     break;
     case "offer":
-      $.post('update_task.php', {'action': 4, 'cid':cid}, function(r){});
+      $.post('update_task.php', {'action': 4, 'CID':cid}, function(r){});
     break;
   }
 };
@@ -34,7 +35,8 @@ var generate_response = function(status, cid) {
   var new_status = 0; 
   if (status<=4) {
     var ran = Math.random();
-    if (ran<.4) {
+    console.log('random: '+ran);
+    if (ran<.35) {
       new_status = 8;
     } else{
       new_status = status + 1;
@@ -240,7 +242,7 @@ $("#form_candidate").submit(function(event){
         // log a message to the console
         var cid = parseInt(response);
         $('#newFromForm').modal('hide');
-        generate_response(1, cid);
+        $.post('post_action.php', {'action':1, 'CID':cid}, function(r){console.log('profile added');});
         window.document.location = "/recruiter/contents/candidate.php?id="+cid;
     });
 

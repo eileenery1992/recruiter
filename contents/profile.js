@@ -214,6 +214,7 @@ var loadBen = function() {
         var time = new Date().toLocaleString();
         $.post('post_action.php', {'action':2, 'CID':cid, 'sender':'laura', 'receiver':'mclean', 'time': time}, function(r){console.log('review');});
         $.post('add_reviewer.php', {'reviewer':'mclean', 'CID':cid}, function(r){console.log('review');});
+        $.post('post_action.php', {'action':6, 'CID':cid, 'sender':'mclean', 'time': time}, function(r){});
         generate_response(1, cid);
       }
     }
@@ -277,11 +278,13 @@ var loadBen = function() {
     var time = new Date().toLocaleString();
     if (message.indexOf("Sorry") > -1) {
       $.post('update_status.php', {'status': 8, 'cid':cid}, function(r){});
-      $.post('post_action.php', {'action':3, 'CID':cid, 'sender':'laura', 'time':time}, function(r){console.log('rejected');});
+      $.post('post_action.php', {'action':5, 'CID':cid, 'sender':'laura', 'time':time}, function(r){console.log('rejected');});
+      $.post('delete_task.php', {'CID':cid});
     } else if (message.indexOf("offer") > -1) {
       console.log("OFFER");
       $.post('update_status.php', {'status': 5, 'cid':cid}, function(r){});
-      $.post('post_action.php', {'action':4, 'CID':cid, 'sender':'laura', 'time':time}, function(r){});
+      $.post('post_action.php', {'action':7, 'CID':cid, 'sender':'laura', 'time':time}, function(r){});
+      $.post('delete_task.php', {'CID':cid});
     }
     
     $("#emailSendConfirmation").modal("hide");
@@ -315,6 +318,7 @@ var loadBen = function() {
     apps[10023]["status"] = "1st Interview";
     $("#c10023").find("td").eq(3).html("1st Interview");
     $("#c10023").find("td").eq(4).html(d1.toDateString());
+    window.document.location = document.URL.split("&")[0];
     
   });
 
@@ -385,8 +389,9 @@ var loadAlex = function() {
     }
   });
 
-  $("#newInterviewButton2").click(function() {
-    $('#newInterview').modal('show');
+  $("#newInterviewButton").click(function() {
+   	window.document.location = document.URL.split("&")[0]+"&showInterview=true";
+    //$('#newInterview').modal('show');
   });
 
   $("#interviewButton").click(function() {

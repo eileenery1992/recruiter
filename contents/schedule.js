@@ -58,6 +58,11 @@ $(document).ready(function() {
    });
 
    $('#intSendBtn').click(function(){
+   		window.document.location = document.URL.split("&")[0];
+   		var cid = $("#candidateID").html();
+   		var time = new Date().toLocaleString();
+   		$.post('post_action.php', {'action':8, 'CID':cid, 'sender':'laura', 'receiver':'mclean', 'time':time}, function(r){});
+   		$.post('update_status.php', {'status': 2, 'cid':cid}, function(r){});
       if (scheduled == 0) {
          $("#interviewLink").click(function() {
             switchToInterview();

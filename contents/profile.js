@@ -174,7 +174,7 @@ var loadBen = function() {
   });
 
   $(".tabControl").click(function() {
-    if ($(this).attr("href").length > 0) {
+    if ($(this).attr("href") && $(this).attr("href").length > 0) {
       window.document.location = $(this).attr("href");
     }   
   });
@@ -195,7 +195,6 @@ var loadBen = function() {
 
   $("#confirmButton").click(function() {
     var cid = $("#profileID").html();
-    console.log("id: "+cid);
     var option = $("#mySelect").find(":selected").text();
     if (option == "Add Comment") {
       var comment = $("#actionInput").val();
@@ -214,10 +213,10 @@ var loadBen = function() {
         $("#notification").css("display", "inline-block");
         $.post('post_action.php', {'action':2, 'CID':cid}, function(r){console.log('review');});
         $.post('add_reviewer.php', {'reviewer':'mclean', 'CID':cid}, function(r){console.log('review');});
-        $("#reviewerInput").tokenInput("clear");
         generate_response(1, cid);
       }
     }
+    location.reload();
   });
 
   $(".profileTab.unselected, .profileTab.selected").hover(function() {
@@ -411,18 +410,21 @@ var loadAlex = function() {
 };
 
 $(document).ready(function() {
-  $("#reviewerInput").tokenInput("/recruiter/contents/auto_complete.php", {
-    onAdd: function (item) {
-      confirmEnable();
-      tokens = this.tokenInput("get");
-    },
-    onDelete: function (item) {
-      tokens = this.tokenInput("get");
-      if (this.tokenInput("get").length == 0) {
-        confirmDisable();
+  if (document.getElementById("reviewerInput")) {
+    $("#reviewerInput").tokenInput("/recruiter/contents/auto_complete.php", {
+      onAdd: function (item) {
+        confirmEnable();
+        tokens = this.tokenInput("get");
+      },
+      onDelete: function (item) {
+        tokens = this.tokenInput("get");
+        if (this.tokenInput("get").length == 0) {
+          confirmDisable();
+        }
       }
-    }
-  });
+    });
+  }
+  
 
   if (showEmail = getParameterByName('showEmail')) {
     loadEmail($("#profileID").html(), $("#profileName").html(), $("#profileEmail").html(), showEmail);
@@ -446,9 +448,6 @@ $(document).ready(function() {
     }
   }).click(function() {
     selected = this.id;
-    if (this.id == "tabTask") {
-      $("#notification").css("display", "none");
-    }
     updateTabs();
   });
   if (document.URL.indexOf("candidate") > -1) {
@@ -462,6 +461,10 @@ $(document).ready(function() {
   $(".buttonReviewer").click(function() {
     window.document.location = $(this).attr("href");
     return false;
+  });
+
+  $("#profileEmail").click(function() {
+    window.document.location = $(this).attr("href");
   });
 
   $(".buttonSchedule").click(function() {

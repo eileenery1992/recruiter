@@ -154,7 +154,29 @@
     <div id="content">
       <div id="controlPanel">
         <div class="tabControl" id="tabCandidate">  Candidates</div>
-        <div class="tabControl" id="tabTask" href="/recruiter/contents/tasks.php"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
+        <div class="tabControl" id="tabTask" href='/recruiter/contents/tasks.php'><span class='mewBadge' id='notification'>
+        <?php
+            $username = "mzhan";
+            $password = "wxz6813";
+            $hostname = "sql.mit.edu";
+            $database = "mzhan+recruiter";
+
+            $con=mysqli_connect($hostname, $username, $password, $database);
+            // Check connection
+            if (mysqli_connect_errno()) {
+              echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            }
+            $query = 'SELECT * FROM Tasks';
+            $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
+            $count = 0;
+            while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+                $count = $count + 1;
+            }
+
+            echo $count;
+            mysqli_close($con);
+          ?>
+        </span>    My Tasks</div>
         <div class="tabControl" id="tabDirectory" href="/recruiter/contents/directory.php">  Directory</div>
       </div>
       <div id="pagePanel">

@@ -59,7 +59,6 @@ $(document).ready(function() {
 
    $('#intSendBtn').click(function(){
       if (scheduled == 0) {
-         addAction2("laura", "schedule", "");
          $("#interviewLink").click(function() {
             switchToInterview();
          });

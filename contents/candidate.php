@@ -53,6 +53,13 @@
         $c_school = $line["School"];
         $c_education = $line["Education"];
         $c_major = $line["Major"];
+
+        $query = 'SELECT * FROM Tasks';
+        $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
+        $count = 0;
+        while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+                $count = $count + 1;
+        }
     echo "<!--new app from email Modal -->
     <div class='modal fade' id='newEmail' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
       <div class='modal-dialog'>
@@ -174,7 +181,7 @@
     <div id='content'>
       <div id='controlPanel'>
         <div class='tabControl' id='tabCandidate' href='/recruiter/contents/index.php'>  Candidates</div>
-        <div class='tabControl' id='tabTask' href='/recruiter/contents/tasks.php'><img src='graphics/dot1.png' id='notification'/>    My Tasks</div>
+        <div class='tabControl' id='tabTask' href='/recruiter/contents/tasks.php'><span class='mewBadge' id='notification'>$count</span>    My Tasks</div>
         <div class='tabControl' id='tabDirectory' href='/recruiter/contents/directory.php'>  Directory</div>
       </div>";
       
@@ -202,7 +209,7 @@
                   </tr>
                   <tr>
                     <td id='emailLabel' class='myLabel'>Email:</td>
-                    <td id='email'><span id='profileEmail'>$c_email</span></td>
+                    <td id='email'><span id='profileEmail' href='/recruiter/contents/candidate.php?id=".$id."&showEmail=empty'>$c_email</span></td>
                   </tr>
                   <tr>
                     <td id='telLabel' class='myLabel'>Telephone:</td>

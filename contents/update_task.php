@@ -16,9 +16,10 @@ $action = $_POST['action'];
 $delete = $_POST['delete'];
 echo $delete;
 if ($delete){
-  $s = "DELETE FROM Tasks WHERE TaskID=$taskID ";
-} else{
-$s = "INSERT INTO Tasks (CID, Action) VALUES ('$CID', '$action')";}
+  $s = "DELETE FROM Tasks WHERE CID=$CID";
+  mysqli_query($con, $s) or die(mysqli_error($con));
+}
+$s = "INSERT INTO Tasks (CID, Action) VALUES ('$CID', '$action')";
 mysqli_query($con, $s) or die(mysqli_error($con));
 
 mysqli_close($con);

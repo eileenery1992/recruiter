@@ -204,7 +204,7 @@
             }
 
             // Performing SQL query
-            $query = 'SELECT Candidates.CID, Candidates.Name, Candidates.Position, Candidates.Status, Tasks.Action FROM Candidates INNER JOIN Tasks ON Candidates.CID=Tasks.CID';
+            $query = 'SELECT Candidates.CID, Candidates.Name, Candidates.Position, Candidates.Status, Tasks.Action FROM Candidates INNER JOIN Tasks ON Candidates.CID=Tasks.CID ORDER BY TaskID DESC';
             $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
             $statii = array("Just Added", "1st Interview", "2nd Interview", "3rd Interview", "Offer Pending", "Offer Accepted", "Offer Declined", "Rejected"); 
 

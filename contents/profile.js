@@ -200,7 +200,7 @@ var loadBen = function() {
   });
 
   $("#confirmButton").click(function() {
-    var cid = $("#id").innerHTML;
+    var cid = $("#profileID").html();
     console.log("id: "+cid);
     var option = $("#mySelect").find(":selected").text();
     if (option == "Add Comment") {
@@ -214,9 +214,7 @@ var loadBen = function() {
       if (token == 1) {
         // addAction("laura", "review", "mclean");
         var reviewerLink = document.createElement("span");
-        reviewerLink.innerHTML = "mclean";
-        reviewerLink.className = "profileLink";
-        $("#rev").append(reviewerLink);
+        reviewerLink.innerHTML = "mclean"; reviewerLink.className = "profileLink"; $("#rev").append(reviewerLink);
         $("#notification").css("display", "inline-block");
         $.post('post_action.php', {'action':2, 'CID':cid}, function(r){console.log('review');});
         generate_response(1, cid);
@@ -277,7 +275,7 @@ var loadBen = function() {
   });
 
   $("#confirmSend").click(function() {
-    var cid = $("#id").innerHTML;
+    var cid = $("#profileID").html();
     $.post('update_status.php', {'status': 8, 'cid':cid}, function(r){});
     $.post('post_action.php', {'action':4, 'CID':cid}, function(r){console.log('rejected');});
     $("#emailSendConfirmation").modal("hide");

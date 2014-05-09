@@ -19,14 +19,13 @@ var outstandingTasks = [];
 var add_task = function(action, cid) {
   switch(action) {
     case "interview":
-      $.post('update_task.php', {'action': 2, 'CID':cid}, function(r){});
+      $.post('update_task.php', {'delete': 1, 'action': 2, 'CID':cid}, function(r){});
     break;
     case "reject":
-      console.log(cid);
-      $.post('update_task.php', {'action': 3, 'CID':cid}, function(r){console.log("something");});
+      $.post('update_task.php', {'delete': 1, 'action': 3, 'CID':cid}, function(r){console.log("something");});
     break;
     case "offer":
-      $.post('update_task.php', {'action': 4, 'CID':cid}, function(r){});
+      $.post('update_task.php',{'delete': 1, 'action': 4, 'CID':cid}, function(r){});
     break;
   }
 };

@@ -205,11 +205,11 @@ var loadBen = function() {
       var comment = $("#actionInput").val();
       $("#actionInput").val("");
       if (comment.length != 0) {
-        addAction("laura", "comment", comment);
+        // addAction("laura", "comment", comment);
       }
     } else {
       if (token == 1) {
-        addAction("laura", "review", "mclean");
+        // addAction("laura", "review", "mclean");
         var reviewerLink = document.createElement("span");
         reviewerLink.innerHTML = "mclean";
         reviewerLink.className = "profileLink";
@@ -282,7 +282,7 @@ var loadBen = function() {
     $("#emailSent").modal("show");
     $("#rejectButton").css("background-color", "gray").css("border-color", "gray");
     if (sent == 0) {
-      addAction("laura", "send", "");
+      // addAction("laura", "send", "");
       sent = 1;
     } 
     $("#statusButton").text("Rejected").removeClass("activeStatus").addClass("inactiveStatus");

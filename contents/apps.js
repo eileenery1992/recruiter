@@ -32,7 +32,7 @@ var add_task = function(action, cid) {
 
 var generate_response = function(status, cid) {
   var new_status = 0; 
-  if (status<=4) {
+  if (status<=3) {
     var ran = Math.random();
     console.log('random: '+ran);
     if (ran<.35) {
@@ -43,7 +43,6 @@ var generate_response = function(status, cid) {
   if (!new_status) {
     new_status = 8;
   }
-  $.post('update_status.php', {'status':new_status, 'cid':cid}, function(r){console.log('updated');});
   if (new_status <= 4) {
     add_task("interview", cid);
   } else if (new_status == 8) {
@@ -51,6 +50,7 @@ var generate_response = function(status, cid) {
   } else if (new_status==6 || new_status==7) {
     add_task("offer", cid);
   }
+  return new_status;
 };
 
 var writeBen = function() {

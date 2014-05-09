@@ -162,7 +162,7 @@
             if (mysqli_connect_errno()) {
               echo "Failed to connect to MySQL: " . mysqli_connect_error();
             }
-            $query = 'SELECT * FROM Tasks';
+            $query = 'SELECT * FROM Tasks ORDER BY TaskID ASC';
             $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
             $count = 0;
             while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {

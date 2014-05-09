@@ -447,6 +447,10 @@ $(document).ready(function() {
     $("#newInterview").modal("show");
   } 
 
+  $.get('interviews.php', {'cid': $('#profileID')[0].innerHTML},function(r){ 
+    $("#interviewList")[0].innerHTML = r;
+   console.log('interviews loaded', r);    
+  });
 
   $(".tabControl").hover(function() {
     if (this.id != selected) {
@@ -494,7 +498,7 @@ $(document).ready(function() {
     window.document.location = $(this).attr("href");
     return false;
   });
-
+  
   loadBen();
   loadAlex();
 });

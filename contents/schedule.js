@@ -65,7 +65,9 @@ $(document).ready(function() {
       }
       scheduled = 1;
       var interviewers  = "Mike McLean (mclean)";
+      var cid =$('#candidateID')[0].innerText; 
       confirmSend($('#candidateName').text(), timeSelected(), interviewers, $('#type').find(':selected').text());
+      $.post('schedule.php', {'cid':cid}, function(r){console.log('interview added for c', cid);})
       $("#emptyTag").css("display", "none");
       $("#interviewCard").css("display", "block");
       $("#intSendBtn").text("Save Changes & Exit");

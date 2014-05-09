@@ -130,7 +130,7 @@
         <div class='modal-content'>
           <div class='modal-header'>
       <button type='button' class='close' id='closeIntReq' aria-hidden='true'>x</button>
-      <div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID: <a id='candidateID'></a> </div>
+      <div class='pageTitle'> Interview Request for <span id='candidateName'> </span> (ID: <span id='candidateID'></span>) </div>
           </div>
       <div class='modal-body'>
        <div id='avail' class='horizontalPanel'>

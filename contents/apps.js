@@ -16,13 +16,16 @@ var apps={
 var IDs = [10023, 11225, 10001, 11000, 10661];
 var outstandingTasks = [];
 
-var add_task = function(action, id) {
+var add_task = function(action, cid) {
   switch(action) {
     case "interview":
+      $.post('update_task.php', {'action': 2, 'cid':cid}, function(r){});
     break;
     case "reject":
+      $.post('update_task.php', {'action': 3, 'cid':cid}, function(r){console.log("something");});
     break;
     case "offer":
+      $.post('update_task.php', {'action': 4, 'cid':cid}, function(r){});
     break;
   }
 };
@@ -31,19 +34,15 @@ var generate_response = function(status, cid) {
   var new_status = 0; 
   if (status<=4) {
     var ran = Math.random();
-    if (ran<.5) {
+    if (ran<.4) {
       new_status = 8;
     } else{
       new_status = status + 1;
-    }
-  } else if(status==5) {
-    var ran = Math.random();
-    if (ran<.5) {
-      new_status = 6;
-    } else{
-      new_status = 7;
     }}
-  $.post('update_status.php', {'status':new_status, 'cid':cid}, function(r){console.log('updated');})
+  if (!new_status) {
+    new_status = 8;
+  }
+  $.post('update_status.php', {'status':new_status, 'cid':cid}, function(r){console.log('updated');});
   if (new_status <= 4) {
     add_task("interview", cid);
   } else if (new_status == 8) {
@@ -240,8 +239,7 @@ $("#form_candidate").submit(function(event){
     // callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         // log a message to the console
-        var cid = response;
-        console.log("New ID:", response);
+        var cid = parseInt(response);
         $('#newFromForm').modal('hide');
         generate_response(1, cid);
         window.document.location = "/recruiter/contents/candidate.php?id="+cid;

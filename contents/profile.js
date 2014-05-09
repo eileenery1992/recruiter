@@ -259,6 +259,8 @@ var loadBen = function() {
   });
 
   $("#confirmSend").click(function() {
+    var cid = parseInt($("#id").innerHTML);
+    $.post('update_status.php', {'status': 8, 'cid':cid}, function(r){});
     $("#emailSendConfirmation").modal("hide");
     $("#emailSent").modal("show");
     $("#rejectButton").css("background-color", "gray").css("border-color", "gray");

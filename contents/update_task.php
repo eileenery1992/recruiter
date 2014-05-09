@@ -16,9 +16,7 @@ echo $delete;
 if ($delete){
   $s = "DELETE FROM Tasks WHERE TaskID=$taskID ";
 } else{
-$s = "UPDATE Tasks
-SET action=$action
-WHERE CID=$CID";}
+$s = "INSERT INTO Tasks (CID, Action) VALUES ('$CID', '$action')";}
 mysqli_query($con, $s) or die(mysqli_error($con));
 
 mysqli_close($con);

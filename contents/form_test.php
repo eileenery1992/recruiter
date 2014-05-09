@@ -31,10 +31,10 @@ $query = "SELECT MAX(CID) AS maxID FROM Candidates;";
 $result = mysqli_query($con,$query) or die('Query failed: ' . mysqli_error($con));
 
 $r = mysqli_fetch_row($result)[0] ;
-echo json_encode($r);
+echo $r;
 
 $s = "INSERT INTO Tasks (CID, Action) VALUES ('$r', 1)";
-mysqli_query($con, $s);
+//mysqli_query($con, $s);
 
 mysqli_close($con);
 ?> 

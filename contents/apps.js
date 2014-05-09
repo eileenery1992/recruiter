@@ -134,7 +134,7 @@ $(function(){
         selected = "";
         candidate = "Ben";
         if (rejected == 0) {
-          addAction("mclean", "reject", "");
+          //addAction("mclean", "reject", "");
           rejected = 1;
         }
         $("#titleInput").val(rejectTitle);
@@ -158,7 +158,7 @@ $(function(){
         candidate = "Alex";
         switchToInterview();
         if (requested == 0) {
-          addAction("mclean", "interview", "");
+          //addAction("mclean", "interview", "");
           requested = 1;
         }
         updateTabs();
@@ -191,7 +191,7 @@ $(function(){
 
       if (candidate == "Ben") {
         if (rejected == 0) {
-          addAction("mclean", "reject", "");
+          //addAction("mclean", "reject", "");
           rejected = 1;
         }
         $("#rejectButton").click(function() {
@@ -242,7 +242,8 @@ $("#form_candidate").submit(function(event){
         var cid = response;
         console.log(cid);
         $('#newFromForm').modal('hide');
-        $.post('post_action.php', {'action':1, 'CID':cid}, function(r){console.log('profile added');});
+        var time = new Date().toLocaleString();
+        $.post('post_action.php', {'action':1, 'CID':cid, 'sender':'laura', 'time':time}, function(r){console.log('profile added');});
         window.document.location = "/recruiter/contents/candidate.php?id="+cid;
     });
 

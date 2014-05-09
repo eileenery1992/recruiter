@@ -34,10 +34,6 @@ html, #myBody {
 	-webkit-appearance: textfield;
 }
 
-.lastRow {
-	height: 50px;
-}
-
 #greeting {
 	display: block;
 	float: left;
@@ -80,13 +76,12 @@ html, #myBody {
 	font-size: 20px;
 	text-align: right;
 	line-height: 50px;
-	width: 100%;<img src="graphics/dot1.png" id="icon1" class="notification"/>
+	width: 100%;
 	height: 50px;
 	cursor: default;
 }
 
 #notification {
-	display: none;
 	cursor: pointer;
 }
 
@@ -151,7 +146,8 @@ html, #myBody {
 
 #infoTable, #infoTable2, #moreInfoTable {
 	margin-bottom: 30px;
-	border-spacing: 25px 2px;
+	border-spacing: 5px;
+	border-collapse: separate;
 }
 
 #moreInfoTable {
@@ -362,6 +358,9 @@ html, #myBody {
 }
 
 #reviewerInputContainer, #reviewerInputContainer2 {
+	position: absolute;
+	margin-top: 10px;
+	padding: 1px;
 	display: none;
 }
 
@@ -408,16 +407,21 @@ html, #myBody {
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 }
 
-.badge {
-    background-color: red;
-    border-radius: 12px;
+.mewBadge {
+    background-color: #d43f3a;
+    border-radius: 16px;
     box-shadow: 1px 1px 1px black;
     color: white;
     font: bold 12px/9px Helvetica, Verdana, Tahoma;
-    height: 12px;
+    height: 16px;
     padding: 2px 3px 0 3px;
     text-align: center;
     min-width: 8px;
+    margin: 10px;
+}
+
+.mewBadge.zeroBadge {
+	display: none;
 }
 
 #confirmButton, #confirmButton2 {

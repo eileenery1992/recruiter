@@ -7,13 +7,14 @@ var scheduled = 0;
 var interviewers = ['Mike Mclean (mclean)']
 var reviewers = ['Mike McLean (mclean)']
 var token = 0;
+var tokens = [];
 
 
 
 var rejectTitle = "Thank you for your interest";
-var rejectMessage = "Hello,\n\nThank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!";
+var rejectMessage = "Hello,\n\nThank you for your interest in Geekle! Sorry but we are not able to move on with your application. Please consider reapplying next year!";
 var offerTitle = "Congratulations";
-var offerMessage = "We would love you to join us at Geekle!";
+var offerMessage = "We would love to extend you an offer, and hope you will join us at Geekle!";
 
 function updateTabs() {
   $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
@@ -43,26 +44,19 @@ function loadEmail(id, name, email, template) {
   }
 }
 
+function confirmEnable() {
+  $("#confirmButton").css("backgroundColor", "#388ac1").css("cursor", "pointer");
+}
+
+function confirmDisable() {
+  $("#confirmButton").css("backgroundColor", "gray").css("cursor", "default");
+}
 
 function addReviewer() {
   $('#reviewerInput').val('');   // clears input field 
   $("#reviewerToken").css("display", "inline-block");
   $("#confirmButton").css("background-color", "#388ac1").css("cursor", "pointer");
   token = 1;
-}
-
-function setAutocompRev(inputElem, source){
-  // Turn on autocompletion
-  inputElem.autocomplete({ 
-    source: source, 
-    select:function(event, ui){
-      if (event.which==1 || event.which == 13){    // 1 for clicking, 13 for entering
-        // Do stuff
-        addReviewer();
-      }
-      return false; 
-    }
-  });
 }
 
 var switchToInterview = function() {
@@ -180,13 +174,12 @@ var loadBen = function() {
   });
 
   $(".tabControl").click(function() {
-    if ($(this).attr("href").length > 0) {
+    if ($(this).attr("href") && $(this).attr("href").length > 0) {
       window.document.location = $(this).attr("href");
     }   
   });
 
   if (benLoaded == 0) {
-    addAction2("mclean", "interview", "");
     benLoaded = 1;
   }
 
@@ -201,25 +194,31 @@ var loadBen = function() {
 
   $("#confirmButton").click(function() {
     var cid = $("#profileID").html();
-    console.log("id: "+cid);
     var option = $("#mySelect").find(":selected").text();
     if (option == "Add Comment") {
       var comment = $("#actionInput").val();
       $("#actionInput").val("");
       if (comment.length != 0) {
-        $.post('post_action.php', {'action':3, 'CID':cid}, function(r){console.log('comment');});
+        var time = new Date().toLocaleString();
+        $.post('post_action.php', {'action':3, 'CID':cid, 'content':comment, 'sender':'laura', 'time':time}, function(r){console.log('comment');});
         // addAction("laura", "comment", comment);
       }
     } else {
-      if (token == 1) {
+      if (tokens.length > 0) {
         // addAction("laura", "review", "mclean");
-        var reviewerLink = document.createElement("span");
-        reviewerLink.innerHTML = "mclean"; reviewerLink.className = "profileLink"; $("#rev").append(reviewerLink);
+        var revs = "";
+        for (var i=0; i < tokens.length; i++) {
+          revs = revs + tokens[i].id;
+        }
         $("#notification").css("display", "inline-block");
-        $.post('post_action.php', {'action':2, 'CID':cid}, function(r){console.log('review');});
+        var time = new Date().toLocaleString();
+        $.post('post_action.php', {'action':2, 'CID':cid, 'sender':'laura', 'receiver':'mclean', 'time': time}, function(r){console.log('review');});
+        $.post('add_reviewer.php', {'reviewer':'mclean', 'CID':cid}, function(r){console.log('review');});
+        $.post('post_action.php', {'action':6, 'CID':cid, 'sender':'mclean', 'time': time}, function(r){});
         generate_response(1, cid);
       }
     }
+    location.reload();
   });
 
   $(".profileTab.unselected, .profileTab.selected").hover(function() {
@@ -261,8 +260,7 @@ var loadBen = function() {
   }, function() {
     this.style.textDecoration = "none";
   }).click(function() {
-    template = "empty";
-    loadEmail($("#profileID").html(), $("#profileName").html(), $("#profileEmail").html());
+    loadEmail($("#profileID").html(), $("#profileName").html(), $("#profileEmail").html(), "empty");
   });
 
   $("#cancelEmailButton").click(function() {
@@ -276,11 +274,22 @@ var loadBen = function() {
 
   $("#confirmSend").click(function() {
     var cid = $("#profileID").html();
-    $.post('update_status.php', {'status': 8, 'cid':cid}, function(r){});
-    $.post('post_action.php', {'action':4, 'CID':cid}, function(r){console.log('rejected');});
+    var message = $("#messageInput").val();
+    var time = new Date().toLocaleString();
+    if (message.indexOf("Sorry") > -1) {
+      $.post('update_status.php', {'status': 8, 'cid':cid}, function(r){});
+      $.post('post_action.php', {'action':5, 'CID':cid, 'sender':'laura', 'time':time}, function(r){console.log('rejected');});
+      $.post('delete_task.php', {'CID':cid});
+    } else if (message.indexOf("offer") > -1) {
+      console.log("OFFER");
+      $.post('update_status.php', {'status': 5, 'cid':cid}, function(r){});
+      $.post('post_action.php', {'action':7, 'CID':cid, 'sender':'laura', 'time':time}, function(r){});
+      $.post('delete_task.php', {'CID':cid});
+    }
+    
     $("#emailSendConfirmation").modal("hide");
     $("#emailSent").modal("show");
-    $("#rejectButton").css("background-color", "gray").css("border-color", "gray");
+    $("#rejectButton").css("display", "none");
     if (sent == 0) {
       // addAction("laura", "send", "");
       sent = 1;
@@ -309,6 +318,7 @@ var loadBen = function() {
     apps[10023]["status"] = "1st Interview";
     $("#c10023").find("td").eq(3).html("1st Interview");
     $("#c10023").find("td").eq(4).html(d1.toDateString());
+    window.document.location = document.URL.split("&")[0];
     
   });
 
@@ -321,8 +331,6 @@ var loadBen = function() {
       $("#reviewerInputContainer").css("display", "inline-block");
     }
   });
-
-  setAutocompRev($('#reviewerInput'), reviewers);
   
 };
 
@@ -415,6 +423,23 @@ var loadAlex = function() {
 };
 
 $(document).ready(function() {
+  if (document.getElementById("reviewerInput")) {
+    $("#reviewerInput").tokenInput("/recruiter/contents/auto_complete.php", {
+      tokenLimit: 1,
+      onAdd: function (item) {
+        confirmEnable();
+        tokens = this.tokenInput("get");
+      },
+      onDelete: function (item) {
+        tokens = this.tokenInput("get");
+        if (this.tokenInput("get").length == 0) {
+          confirmDisable();
+        }
+      }
+    });
+  }
+  
+
   if (showEmail = getParameterByName('showEmail')) {
     loadEmail($("#profileID").html(), $("#profileName").html(), $("#profileEmail").html(), showEmail);
     $("#newEmail").modal("show");
@@ -437,9 +462,6 @@ $(document).ready(function() {
     }
   }).click(function() {
     selected = this.id;
-    if (this.id == "tabTask") {
-      $("#notification").css("display", "none");
-    }
     updateTabs();
   });
   if (document.URL.indexOf("candidate") > -1) {
@@ -452,7 +474,14 @@ $(document).ready(function() {
 
   $(".buttonReviewer").click(function() {
     window.document.location = $(this).attr("href");
+    $("#mySelect").val("Add Reviewer");
+    $("#actionInputContainer").css("display", "none");
+    $("#reviewerInputContainer").css("display", "inline-block");
     return false;
+  });
+
+  $("#profileEmail").click(function() {
+    window.document.location = $(this).attr("href");
   });
 
   $(".buttonSchedule").click(function() {

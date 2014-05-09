@@ -15,17 +15,18 @@
     <script type="text/javascript" src="jquery/js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
 
-    <script type="text/javascript" src="profile.js"></script>
-
-    <script type="text/javascript" src="jquery/js/jquery.tablesorter.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript" src="apps.js"></script>
-    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
   <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
   <script type='text/javascript' src='schedule.js'></script>
+    <script type="text/javascript" src="profile.js"></script>
+
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="apps.js"></script>
+  <script type="text/javascript" src="plugins/jquery.tokeninput.js"></script>
+<link rel="stylesheet" type="text/css" href="plugins/token-input-facebook.css" />
+  
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="jquery/js/jquery.tablesorter.js"></script>
 
   </head>
   <body id="myBody">
@@ -51,6 +52,13 @@
         $c_school = $line["School"];
         $c_education = $line["Education"];
         $c_major = $line["Major"];
+
+        $query = 'SELECT * FROM Tasks';
+        $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
+        $count = 0;
+        while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+                $count = $count + 1;
+        }
     echo "<!--new app from email Modal -->
     <div class='modal fade' id='newEmail' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
       <div class='modal-dialog'>
@@ -121,7 +129,7 @@
       <div class='modal-dialog'>
         <div class='modal-content'>
           <div class='modal-header'>
-      <button type='button' class='close' id='closeIntReq' aria-hidden='true' onclick='$('#newInterview').modal('hide');'>×</button>
+      <button type='button' class='close' id='closeIntReq' aria-hidden='true'>x</button>
       <div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID: <a id='candidateID'></a> </div>
           </div>
       <div class='modal-body'>
@@ -171,8 +179,16 @@
     </div>
     <div id='content'>
       <div id='controlPanel'>
-        <div class='tabControl' id='tabCandidate' href='/recruiter/contents/index.php'>  Candidates</div>
-        <div class='tabControl' id='tabTask' href='/recruiter/contents/tasks.php'><img src='graphics/dot1.png' id='notification'/>    My Tasks</div>
+        <div class='tabControl' id='tabCandidate' href='/recruiter/contents/index.php'>  Candidates</div>";
+
+        $extraClass='';
+        if ($count == 0) {
+          $extraClass=' zeroBadge';
+        }
+        echo "<div class='tabControl' id='tabTask' href='/recruiter/contents/tasks.php'><span class='mewBadge".$extraClass."' id='notification'>$count";
+
+
+    echo "</span>    My Tasks</div>
         <div class='tabControl' id='tabDirectory' href='/recruiter/contents/directory.php'>  Directory</div>
       </div>";
       
@@ -200,7 +216,7 @@
                   </tr>
                   <tr>
                     <td id='emailLabel' class='myLabel'>Email:</td>
-                    <td id='email'><span id='profileEmail'>$c_email</span></td>
+                    <td id='email'><span id='profileEmail' href='/recruiter/contents/candidate.php?id=".$id."&showEmail=empty'>$c_email</span></td>
                   </tr>
                   <tr>
                     <td id='telLabel' class='myLabel'>Telephone:</td>
@@ -211,8 +227,8 @@
                     <td id='pos'>$c_position</td>
                   </tr>
                   <tr>
-                    <td id='revLabel' class='myLabel'>Reviewers:</td>
-                    <td id='rev'>$c_reviewers</td>
+                    <td id='revLabel' class='myLabel'>Reviewer:</td>
+                    <td id='rev'><span class='profileLink'>$c_reviewers</span></td>
                   </tr>
                 </table>
               </td>
@@ -268,24 +284,32 @@
             echo "<div class='activity statusChange'><span class='profileLink'>$a_sender</span><span>$innerStr".$id."</span><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 2) {
             //add reviewer
-            $innerStr = " added reviewer: ";
+            $innerStr = " updated reviewer to: ";
             echo "<div class='activity regular'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='profileLink'>$a_receiver</span><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 3) {
             //comment
             $innerStr = " commented: ";
-            echo "<div class='activity comment'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span>$content</span><span class='timeStamp'>$a_time</span></div>";
+            echo "<div class='activity comment'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span>$a_content</span><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 4) {
             //reject
-            $innerStr = "rejected this candidate.  ";
+            $innerStr = " rejected this candidate.  ";
             echo "<div class='activity regular'><span class='profileLink'>$a_sender</span><span>$innerStr</span><button class='btn btn-danger btn-xs' type='button' id='rejectButton' href='/recruiter/contents/candidate.php?id=".$id."&showEmail=reject'>Send Rejection</button><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 5) {
             //send reject
             $innerStr = " sent a rejection letter to the candidate.";
-            echo "<div class='activity statusChange'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='timeStamp'>$a_time</span></div>";
+            echo "<div class='activity reject'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 6) {
-            //send reject
+            //request interview
             $innerStr = " requested an interview with the candidate.  ";
             echo "<div class='activity regular'><span class='profileLink'>$a_sender</span><span>$innerStr</span><button class='btn btn-warning btn-xs' type='button' id='interviewButton' href='/recruiter/contents/candidate.php?id=".$id."&showInterview=true'>Schedule Interview</button><span class='timeStamp'>$a_time</span></div>";
+          } elseif ($a_type == 7) {
+            //send offer
+            $innerStr = " sent an offer letter to the candidate.";
+            echo "<div class='activity statusChange'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='timeStamp'>$a_time</span></div>";
+          } elseif ($a_type == 8) {
+            //schedule interview
+            $innerStr = " scheduled an interview between the candidate and ";
+            echo "<div class='activity statusChange'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='profileLink'>$a_receiver</span><span class='timeStamp'>$a_time</span></div>";
           }
         }
 
@@ -297,7 +321,7 @@
                     <option id='selectReview'>Add Reviewer</option>
                   </select>
                 </span>
-                <span id='reviewerInputContainer'><input id='reviewerInput'/></span>
+                <span id='reviewerInputContainer'><input id='reviewerInput' name='nyan'/></span>
                 <span id='reviewerToken'>mclean  <button type='button' class='close' id='deleteToken'>&times;</button></span>
               </div>
               <div id='actionInputContainer'>

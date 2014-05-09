@@ -12,7 +12,7 @@ if (mysqli_connect_errno()) {
 }
 
 // Performing SQL query
-$query = 'SELECT CID, Name, Position, Status, Last_Updated FROM Candidates';
+$query = 'SELECT CID, Name, Position, Status, Last_Updated FROM Candidates ORDER BY Last_Updated DESC';
 $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
 
 

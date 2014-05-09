@@ -58,20 +58,28 @@ $(document).ready(function() {
    });
 
    $('#intSendBtn').click(function(){
+   		window.document.location = document.URL.split("&")[0];
+   		var cid = $("#candidateID").html();
+   		var time = new Date().toLocaleString();
+   		$.post('post_action.php', {'action':8, 'CID':cid, 'sender':'laura', 'receiver':'mclean', 'time':time}, function(r){});
+   		$.post('update_status.php', {'status': 2, 'cid':cid}, function(r){});
       if (scheduled == 0) {
-         addAction2("laura", "schedule", "");
          $("#interviewLink").click(function() {
             switchToInterview();
          });
       }
       scheduled = 1;
-	  var interviewers  = "Mike McLean (mclean)";
-		confirmSend($('#candidateName').text(), timeSelected(), interviewers, $('#type').find(':selected').text());
+      var interviewers  = "Mike McLean (mclean)";
+      confirmSend($('#candidateName').text(), timeSelected(), interviewers, $('#type').find(':selected').text());
       $("#emptyTag").css("display", "none");
       $("#interviewCard").css("display", "block");
       $("#intSendBtn").text("Save Changes & Exit");
       $("#t10023").css("display", "none");
 	});
+
+   $('#closeIntReq').click(function(){
+       $('#newInterview').modal('hide');
+    });
 
 	// Autocomplete
 	setAutocomp($('#intrName'), interviewers);

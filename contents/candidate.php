@@ -15,19 +15,18 @@
     <script type="text/javascript" src="jquery/js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
 
-    <script type="text/javascript" src="profile.js"></script>
-
-    <script type="text/javascript" src="jquery/js/jquery.tablesorter.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript" src="apps.js"></script>
-    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
   <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
   <script type='text/javascript' src='schedule.js'></script>
+    <script type="text/javascript" src="profile.js"></script>
+
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="apps.js"></script>
   <script type="text/javascript" src="plugins/jquery.tokeninput.js"></script>
 <link rel="stylesheet" type="text/css" href="plugins/token-input-facebook.css" />
+  
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="jquery/js/jquery.tablesorter.js"></script>
 
   </head>
   <body id="myBody">
@@ -130,7 +129,7 @@
       <div class='modal-dialog'>
         <div class='modal-content'>
           <div class='modal-header'>
-      <button type='button' class='close' id='closeIntReq' aria-hidden='true' onclick='$('#newInterview').modal('hide');'>×</button>
+      <button type='button' class='close' id='closeIntReq' aria-hidden='true'>x</button>
       <div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID: <a id='candidateID'></a> </div>
           </div>
       <div class='modal-body'>

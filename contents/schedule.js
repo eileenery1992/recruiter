@@ -64,13 +64,17 @@ $(document).ready(function() {
          });
       }
       scheduled = 1;
-	  var interviewers  = "Mike McLean (mclean)";
-		confirmSend($('#candidateName').text(), timeSelected(), interviewers, $('#type').find(':selected').text());
+      var interviewers  = "Mike McLean (mclean)";
+      confirmSend($('#candidateName').text(), timeSelected(), interviewers, $('#type').find(':selected').text());
       $("#emptyTag").css("display", "none");
       $("#interviewCard").css("display", "block");
       $("#intSendBtn").text("Save Changes & Exit");
       $("#t10023").css("display", "none");
 	});
+
+   $('#closeIntReq').click(function(){
+       $('#newInterview').modal('hide');
+    });
 
 	// Autocomplete
 	setAutocomp($('#intrName'), interviewers);

@@ -431,7 +431,7 @@ html, #myBody {
 	text-align: center;
 	line-height: 40px;
 	width: 115px;
-	cursor: none;
+	cursor: pointer;
 }
 
 #messageInput, #emailInput2 {

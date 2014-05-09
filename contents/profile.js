@@ -7,6 +7,7 @@ var scheduled = 0;
 var interviewers = ['Mike Mclean (mclean)']
 var reviewers = ['Mike McLean (mclean)']
 var token = 0;
+var tokens = [];
 
 
 
@@ -43,26 +44,19 @@ function loadEmail(id, name, email, template) {
   }
 }
 
+function confirmEnable() {
+  $("#confirmButton").css("backgroundColor", "#388ac1").css("cursor", "pointer");
+}
+
+function confirmDisable() {
+  $("#confirmButton").css("backgroundColor", "gray").css("cursor", "default");
+}
 
 function addReviewer() {
   $('#reviewerInput').val('');   // clears input field 
   $("#reviewerToken").css("display", "inline-block");
   $("#confirmButton").css("background-color", "#388ac1").css("cursor", "pointer");
   token = 1;
-}
-
-function setAutocompRev(inputElem, source){
-  // Turn on autocompletion
-  inputElem.autocomplete({ 
-    source: source, 
-    select:function(event, ui){
-      if (event.which==1 || event.which == 13){    // 1 for clicking, 13 for entering
-        // Do stuff
-        addReviewer();
-      }
-      return false; 
-    }
-  });
 }
 
 var switchToInterview = function() {
@@ -211,13 +205,16 @@ var loadBen = function() {
         // addAction("laura", "comment", comment);
       }
     } else {
-      if (token == 1) {
+      if (tokens.length > 0) {
         // addAction("laura", "review", "mclean");
-        var reviewerLink = document.createElement("span");
-        reviewerLink.innerHTML = "mclean"; reviewerLink.className = "profileLink"; $("#rev").append(reviewerLink);
+        var revs = "";
+        for (var i=0; i < tokens.length; i++) {
+          revs = revs + tokens[i].id;
+        }
         $("#notification").css("display", "inline-block");
         $.post('post_action.php', {'action':2, 'CID':cid}, function(r){console.log('review');});
         $.post('add_reviewer.php', {'reviewer':'mclean', 'CID':cid}, function(r){console.log('review');});
+        $("#reviewerInput").tokenInput("clear");
         generate_response(1, cid);
       }
     }
@@ -322,8 +319,6 @@ var loadBen = function() {
       $("#reviewerInputContainer").css("display", "inline-block");
     }
   });
-
-  setAutocompRev($('#reviewerInput'), reviewers);
   
 };
 
@@ -416,7 +411,18 @@ var loadAlex = function() {
 };
 
 $(document).ready(function() {
-  $("#reviewerInput").tokenInput("/recruiter/contents/auto_complete.php");
+  $("#reviewerInput").tokenInput("/recruiter/contents/auto_complete.php", {
+    onAdd: function (item) {
+      confirmEnable();
+      tokens = this.tokenInput("get");
+    },
+    onDelete: function (item) {
+      tokens = this.tokenInput("get");
+      if (this.tokenInput("get").length == 0) {
+        confirmDisable();
+      }
+    }
+  });
 
   if (showEmail = getParameterByName('showEmail')) {
     loadEmail($("#profileID").html(), $("#profileName").html(), $("#profileEmail").html(), showEmail);

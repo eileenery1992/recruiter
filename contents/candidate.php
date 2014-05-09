@@ -214,7 +214,7 @@
                   </tr>
                   <tr>
                     <td id='revLabel' class='myLabel'>Reviewers:</td>
-                    <td id='rev'>$c_reviewers</td>
+                    <td id='rev'><span class='profileLink'>$c_reviewers</span></td>
                   </tr>
                 </table>
               </td>

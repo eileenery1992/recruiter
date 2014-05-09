@@ -306,6 +306,10 @@
             //send offer
             $innerStr = " sent an offer letter to the candidate.";
             echo "<div class='activity statusChange'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='timeStamp'>$a_time</span></div>";
+          } elseif ($a_type == 8) {
+            //schedule interview
+            $innerStr = " scheduled an interview between the candidate and ";
+            echo "<div class='activity statusChange'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='profileLink'>$a_receiver</span><span class='timeStamp'>$a_time</span></div>";
           }
         }
 

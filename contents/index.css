@@ -34,10 +34,6 @@ html, #myBody {
 	-webkit-appearance: textfield;
 }
 
-.lastRow {
-	height: 50px;
-}
-
 #greeting {
 	display: block;
 	float: left;
@@ -150,7 +146,8 @@ html, #myBody {
 
 #infoTable, #infoTable2, #moreInfoTable {
 	margin-bottom: 30px;
-	border-spacing: 25px 2px;
+	border-spacing: 5px;
+	border-collapse: separate;
 }
 
 #moreInfoTable {

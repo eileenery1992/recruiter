@@ -214,6 +214,7 @@ var loadBen = function() {
         var time = new Date().toLocaleString();
         $.post('post_action.php', {'action':2, 'CID':cid, 'sender':'laura', 'receiver':'mclean', 'time': time}, function(r){console.log('review');});
         $.post('add_reviewer.php', {'reviewer':'mclean', 'CID':cid}, function(r){console.log('review');});
+        $.post('post_action.php', {'action':6, 'CID':cid, 'sender':'mclean', 'time': time}, function(r){});
         generate_response(1, cid);
       }
     }

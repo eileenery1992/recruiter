@@ -362,6 +362,9 @@ html, #myBody {
 }
 
 #reviewerInputContainer, #reviewerInputContainer2 {
+	position: absolute;
+	margin-top: 10px;
+	padding: 1px;
 	display: none;
 }
 

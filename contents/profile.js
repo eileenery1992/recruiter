@@ -217,6 +217,7 @@ var loadBen = function() {
         reviewerLink.innerHTML = "mclean"; reviewerLink.className = "profileLink"; $("#rev").append(reviewerLink);
         $("#notification").css("display", "inline-block");
         $.post('post_action.php', {'action':2, 'CID':cid}, function(r){console.log('review');});
+        $.post('add_reviewer.php', {'reviewer':'mclean', 'CID':cid}, function(r){console.log('review');});
         generate_response(1, cid);
       }
     }
@@ -415,6 +416,8 @@ var loadAlex = function() {
 };
 
 $(document).ready(function() {
+  $("#reviewerInput").tokenInput("/recruiter/contents/auto_complete.php");
+
   if (showEmail = getParameterByName('showEmail')) {
     loadEmail($("#profileID").html(), $("#profileName").html(), $("#profileEmail").html(), showEmail);
     $("#newEmail").modal("show");

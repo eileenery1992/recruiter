@@ -26,6 +26,8 @@
   <script type="text/javascript" src="plugins/week-calendar/libs/date.js"></script>
   <script type='text/javascript' src='plugins/week-calendar/jquery.weekcalendar.js'></script>
   <script type='text/javascript' src='schedule.js'></script>
+  <script type="text/javascript" src="plugins/jquery.tokeninput.js"></script>
+<link rel="stylesheet" type="text/css" href="plugins/token-input-facebook.css" />
 
   </head>
   <body id="myBody">
@@ -297,7 +299,7 @@
                     <option id='selectReview'>Add Reviewer</option>
                   </select>
                 </span>
-                <span id='reviewerInputContainer'><input id='reviewerInput'/></span>
+                <span id='reviewerInputContainer'><input id='reviewerInput' name='nyan'/></span>
                 <span id='reviewerToken'>mclean  <button type='button' class='close' id='deleteToken'>&times;</button></span>
               </div>
               <div id='actionInputContainer'>

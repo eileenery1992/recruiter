@@ -389,8 +389,9 @@ var loadAlex = function() {
     }
   });
 
-  $("#newInterviewButton2").click(function() {
-    $('#newInterview').modal('show');
+  $("#newInterviewButton").click(function() {
+   	window.document.location = document.URL.split("&")[0]+"&showInterview=true";
+    //$('#newInterview').modal('show');
   });
 
   $("#interviewButton").click(function() {

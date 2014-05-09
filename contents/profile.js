@@ -12,9 +12,9 @@ var tokens = [];
 
 
 var rejectTitle = "Thank you for your interest";
-var rejectMessage = "Hello,\n\nThank you for your interest in Geekle! Unfortunately we are not able to move on with your application. Please consider reapplying next year!";
+var rejectMessage = "Hello,\n\nThank you for your interest in Geekle! Sorry but we are not able to move on with your application. Please consider reapplying next year!";
 var offerTitle = "Congratulations";
-var offerMessage = "We would love you to join us at Geekle!";
+var offerMessage = "We would love to extend you an offer, and hope you will join us at Geekle!";
 
 function updateTabs() {
   $(".tabControl").css("background-color", "#e9eaed").css("z-index", 1);
@@ -180,7 +180,6 @@ var loadBen = function() {
   });
 
   if (benLoaded == 0) {
-    addAction2("mclean", "interview", "");
     benLoaded = 1;
   }
 
@@ -200,7 +199,8 @@ var loadBen = function() {
       var comment = $("#actionInput").val();
       $("#actionInput").val("");
       if (comment.length != 0) {
-        $.post('post_action.php', {'action':3, 'CID':cid}, function(r){console.log('comment');});
+        var time = new Date().toLocaleString();
+        $.post('post_action.php', {'action':3, 'CID':cid, 'content':comment, 'sender':'laura', 'time':time}, function(r){console.log('comment');});
         // addAction("laura", "comment", comment);
       }
     } else {
@@ -211,7 +211,8 @@ var loadBen = function() {
           revs = revs + tokens[i].id;
         }
         $("#notification").css("display", "inline-block");
-        $.post('post_action.php', {'action':2, 'CID':cid}, function(r){console.log('review');});
+        var time = new Date().toLocaleString();
+        $.post('post_action.php', {'action':2, 'CID':cid, 'sender':'laura', 'receiver':'mclean', 'time': time}, function(r){console.log('review');});
         $.post('add_reviewer.php', {'reviewer':'mclean', 'CID':cid}, function(r){console.log('review');});
         generate_response(1, cid);
       }
@@ -258,8 +259,7 @@ var loadBen = function() {
   }, function() {
     this.style.textDecoration = "none";
   }).click(function() {
-    template = "empty";
-    loadEmail($("#profileID").html(), $("#profileName").html(), $("#profileEmail").html());
+    loadEmail($("#profileID").html(), $("#profileName").html(), $("#profileEmail").html(), "empty");
   });
 
   $("#cancelEmailButton").click(function() {
@@ -273,11 +273,20 @@ var loadBen = function() {
 
   $("#confirmSend").click(function() {
     var cid = $("#profileID").html();
-    $.post('update_status.php', {'status': 8, 'cid':cid}, function(r){});
-    $.post('post_action.php', {'action':4, 'CID':cid}, function(r){console.log('rejected');});
+    var message = $("#messageInput").val();
+    var time = new Date().toLocaleString();
+    if (message.indexOf("Sorry") > -1) {
+      $.post('update_status.php', {'status': 8, 'cid':cid}, function(r){});
+      $.post('post_action.php', {'action':3, 'CID':cid, 'sender':'laura', 'time':time}, function(r){console.log('rejected');});
+    } else if (message.indexOf("offer") > -1) {
+      console.log("OFFER");
+      $.post('update_status.php', {'status': 5, 'cid':cid}, function(r){});
+      $.post('post_action.php', {'action':4, 'CID':cid, 'sender':'laura', 'time':time}, function(r){});
+    }
+    
     $("#emailSendConfirmation").modal("hide");
     $("#emailSent").modal("show");
-    $("#rejectButton").css("background-color", "gray").css("border-color", "gray");
+    $("#rejectButton").css("display", "none");
     if (sent == 0) {
       // addAction("laura", "send", "");
       sent = 1;
@@ -412,6 +421,7 @@ var loadAlex = function() {
 $(document).ready(function() {
   if (document.getElementById("reviewerInput")) {
     $("#reviewerInput").tokenInput("/recruiter/contents/auto_complete.php", {
+      tokenLimit: 1,
       onAdd: function (item) {
         confirmEnable();
         tokens = this.tokenInput("get");
@@ -460,6 +470,9 @@ $(document).ready(function() {
 
   $(".buttonReviewer").click(function() {
     window.document.location = $(this).attr("href");
+    $("#mySelect").val("Add Reviewer");
+    $("#actionInputContainer").css("display", "none");
+    $("#reviewerInputContainer").css("display", "inline-block");
     return false;
   });
 

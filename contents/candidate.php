@@ -180,8 +180,16 @@
     </div>
     <div id='content'>
       <div id='controlPanel'>
-        <div class='tabControl' id='tabCandidate' href='/recruiter/contents/index.php'>  Candidates</div>
-        <div class='tabControl' id='tabTask' href='/recruiter/contents/tasks.php'><span class='mewBadge' id='notification'>$count</span>    My Tasks</div>
+        <div class='tabControl' id='tabCandidate' href='/recruiter/contents/index.php'>  Candidates</div>";
+
+        $extraClass='';
+        if ($count == 0) {
+          $extraClass=' zeroBadge';
+        }
+        echo "<div class='tabControl' id='tabTask' href='/recruiter/contents/tasks.php'><span class='mewBadge".$extraClass."' id='notification'>$count";
+
+
+    echo "</span>    My Tasks</div>
         <div class='tabControl' id='tabDirectory' href='/recruiter/contents/directory.php'>  Directory</div>
       </div>";
       
@@ -220,7 +228,7 @@
                     <td id='pos'>$c_position</td>
                   </tr>
                   <tr>
-                    <td id='revLabel' class='myLabel'>Reviewers:</td>
+                    <td id='revLabel' class='myLabel'>Reviewer:</td>
                     <td id='rev'><span class='profileLink'>$c_reviewers</span></td>
                   </tr>
                 </table>
@@ -277,12 +285,12 @@
             echo "<div class='activity statusChange'><span class='profileLink'>$a_sender</span><span>$innerStr".$id."</span><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 2) {
             //add reviewer
-            $innerStr = " added reviewer: ";
+            $innerStr = " updated reviewer to: ";
             echo "<div class='activity regular'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span class='profileLink'>$a_receiver</span><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 3) {
             //comment
             $innerStr = " commented: ";
-            echo "<div class='activity comment'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span>$content</span><span class='timeStamp'>$a_time</span></div>";
+            echo "<div class='activity comment'><span class='profileLink'>$a_sender</span><span>$innerStr</span><span>$a_content</span><span class='timeStamp'>$a_time</span></div>";
           } elseif ($a_type == 4) {
             //reject
             $innerStr = "rejected this candidate.  ";

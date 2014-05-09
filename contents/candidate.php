@@ -164,7 +164,7 @@
       </div>
       </form>
             <button id='intCancelBtn' type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
-            <button id='intSendBtn' type='button' class='btn btn-primary' data-dismiss='modal'>Send Interview Request</button>
+            <button id='intSendBtn' type='button' class='btn btn-primary'>Send Interview Request</button>
        </div>
        </div>
       </div>
@@ -193,7 +193,7 @@
       </div>";
       
         
-        $query = 'SELECT * FROM Actions WHERE CID='. $id;
+        $query = 'SELECT * FROM Actions WHERE CID='. $id.' ORDER BY AID DESC';
         $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
         $c_actions = array();
         while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {

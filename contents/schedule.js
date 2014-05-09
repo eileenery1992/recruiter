@@ -58,11 +58,6 @@ $(document).ready(function() {
    });
 
    $('#intSendBtn').click(function(){
-   		window.document.location = document.URL.split("&")[0];
-   		var cid = $("#candidateID").html();
-   		var time = new Date().toLocaleString();
-   		$.post('post_action.php', {'action':8, 'CID':cid, 'sender':'laura', 'receiver':'mclean', 'time':time}, function(r){});
-   		$.post('update_status.php', {'status': 2, 'cid':cid}, function(r){});
       if (scheduled == 0) {
          $("#interviewLink").click(function() {
             switchToInterview();
@@ -72,11 +67,14 @@ $(document).ready(function() {
       var interviewers  = "Mike McLean (mclean)";
       var cid =$('#candidateID')[0].innerText; 
       confirmSend($('#candidateName').text(), timeSelected(), interviewers, $('#type').find(':selected').text());
+
       $.post('schedule.php', {'cid':cid}, function(r){console.log('interview added for c', cid);})
       $("#emptyTag").css("display", "none");
       $("#interviewCard").css("display", "block");
       $("#intSendBtn").text("Save Changes & Exit");
       $("#t10023").css("display", "none");
+
+
 	});
 
    $('#closeIntReq').click(function(){
@@ -148,10 +146,20 @@ var text = "Send "+candidate+"'s availabitilty to "+interviewer+" (type: "+type+
 var r=confirm(text);
 if (r)
   {
-// TODO: Redirect to candidate profile tab
-  }
-else
-  {
-// Back to task tab
+    var cid = $("#candidateID").html();
+    var time = new Date().toLocaleString();
+    var old_status = parseInt($("#statusButton").html().charAt(0));
+    console.log(old_status);
+    if (!old_status) {
+      old_status = 2;
+    } else{
+      old_status = old_status +2;
+    }
+    console.log("now: "+old_status);
+    var new_status = generate_response(old_status, cid);
+    $.post('update_status.php', {'status': old_status, 'cid':cid}, function(r){});
+   	$.post('post_action.php', {'action':8, 'CID':cid, 'sender':'laura', 'receiver':'mclean', 'time':time}, function(r){});
+    $("#interviewButton").css("display", "none");
+   	window.document.location = document.URL.split("&")[0];
   }
 }

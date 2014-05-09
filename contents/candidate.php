@@ -29,66 +29,88 @@
 
   </head>
   <body id="myBody">
-    <!--new app from email Modal -->
-    <div class="modal fade" id="newEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content" id="emailContent">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Send Email to Candidate</h4>
+    <?php
+        $username = "mzhan";
+        $password = "wxz6813";
+        $hostname = "sql.mit.edu";
+        $database = "mzhan+recruiter";
+        parse_str($_SERVER['QUERY_STRING']);
+        $con=mysqli_connect($hostname, $username, $password, $database);
+        if (mysqli_connect_errno()) {
+          echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }
+        $query = 'SELECT * FROM Candidates WHERE CID='.$id;
+        $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
+        $line = mysqli_fetch_array($result, MYSQL_ASSOC);
+        $c_name = $line["Name"];
+        $c_email = $line["Email"];
+        $c_phone = $line["Phone"];
+        $c_position = $line["Position"];
+        $c_reviewers = $line["Reviewers"];
+        $c_status = $line["Status"];
+        $c_school = $line["School"];
+        $c_education = $line["Education"];
+        $c_major = $line["Major"];
+    echo "<!--new app from email Modal -->
+    <div class='modal fade' id='newEmail' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+      <div class='modal-dialog'>
+        <div class='modal-content' id='emailContent'>
+          <div class='modal-header'>
+            <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+            <h4 class='modal-title' id='myModalLabel'>Send Email to Candidate</h4>
           </div>
-          <div class="modal-body">
-            <table id="emailTable">
+          <div class='modal-body'>
+            <table id='emailTable'>
               <tr>
-                <td class="emailLabel">To:</td>
-                <td><span id="recipient">Ben Bitdiddle&#60;bitdiddle@mit.edu&#62;</span></td>
+                <td class='emailLabel'>To:</td>
+                <td><span id='recipient'></span></td>
               </tr>
               <tr>
-                <td class="emailLabel">Title:</td>
-                <td><input id="titleInput"></input></td>
+                <td class='emailLabel'>Subject:</td>
+                <td><input id='titleInput'></input></td>
               </tr>
               <tr>
-                <td class="emailLabel">Message:</td>
-                <td><textarea rows="8" id="messageInput"></textarea></td>
+                <td class='emailLabel'>Message:</td>
+                <td><textarea rows='8' id='messageInput'></textarea></td>
               </tr>
             </table>
           </div>
-          <div class="modal-footer">
-            <button id="cancelEmailButton" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button id="sendEmailButton" type="button" class="btn btn-primary">Send</button>
+          <div class='modal-footer'>
+            <button id='cancelEmailButton' type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+            <button id='sendEmailButton' type='button' class='btn btn-primary'>Send</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <!-- Email Sent Alert -->
-    <div id="emailSent" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
+    <div id='emailSent' class='modal fade'>
+      <div class='modal-dialog'>
+        <div class='modal-content'>
           <!-- dialog body -->
-          <div class="modal-body">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div class='modal-body'>
+            <button type='button' class='close' data-dismiss='modal'>&times;</button>
             Email successfully sent!
           </div>
           <!-- dialog buttons -->
-          <div class="modal-footer"><button type="button" class="btn btn-primary" id="closeAlert">OK</button></div>
+          <div class='modal-footer'><button type='button' class='btn btn-primary' id='closeAlert'>OK</button></div>
         </div>
       </div>
     </div>
 
     <!-- Email Send Confirmation -->
-    <div id="emailSendConfirmation" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
+    <div id='emailSendConfirmation' class='modal fade'>
+      <div class='modal-dialog'>
+        <div class='modal-content'>
           <!-- dialog body -->
-          <div class="modal-body">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div class='modal-body'>
+            <button type='button' class='close' data-dismiss='modal'>&times;</button>
             Are you sure to send this email to the candidate?
           </div>
           <!-- dialog buttons -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" id="cancelSend">Cancel</button>
-            <button type="button" class="btn btn-primary" id="confirmSend">Send</button>
+          <div class='modal-footer'>
+            <button type='button' class='btn btn-default' id='cancelSend'>Cancel</button>
+            <button type='button' class='btn btn-primary' id='confirmSend'>Send</button>
           </div>
         </div>
       </div>
@@ -96,17 +118,17 @@
 
     <!-- Interview request -->
   <div class='modal fade' id='newInterview' tabindex='-1' role='dialog' aria-labelledby='myModelLabel' aria-hidden='true'>
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-      <button type="button" class="close" id="closeIntReq" aria-hidden="true" onclick="$('#newInterview').modal('hide');">×</button>
+      <div class='modal-dialog'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+      <button type='button' class='close' id='closeIntReq' aria-hidden='true' onclick='$('#newInterview').modal('hide');'>×</button>
       <div class='pageTitle'> Interview Request for <a id='candidateName'> </a> ID: <a id='candidateID'></a> </div>
           </div>
-      <div class="modal-body">
+      <div class='modal-body'>
        <div id='avail' class='horizontalPanel'>
       <div id='calControls'>
       <label> Candidate Availability </label>
-      <button id='clearBtn' onclick="$('#calendar').weekCalendar('clear');" class="btn btn-default btn-mini">Clear</button>
+      <button id='clearBtn' onclick='$('#calendar').weekCalendar('clear');' class='btn btn-default btn-mini'>Clear</button>
       </div>
         <div id='calendar'></div>
        </div> 
@@ -130,51 +152,31 @@
       <div id='iComment'>
       <label>Comments:</label><br>
 
-      <textarea rows=5 id="commentInputArea"></textarea>
+      <textarea rows=5 id='commentInputArea'></textarea>
       </div>
       </form>
-            <button id="intCancelBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button id="intSendBtn" type="button" class="btn btn-primary" data-dismiss="modal">Send Interview Request</button>
+            <button id='intCancelBtn' type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+            <button id='intSendBtn' type='button' class='btn btn-primary' data-dismiss='modal'>Send Interview Request</button>
        </div>
        </div>
       </div>
     </div>
   </div>
  
-    <div id="titleBar">
-      <div id="title"><img src="graphics/title3.png"/></div>
-      <div id="toolBar">
-        <div id="greeting">Hi, <span id="profile">Laura</span>!</div>
+    <div id='titleBar'>
+      <div id='title'><img src='graphics/title3.png'/></div>
+      <div id='toolBar'>
+        <div id='greeting'>Hi, <span id='profile'>Laura</span>!</div>
       </div>
     </div>
-    <div id="content">
-      <div id="controlPanel">
-        <div class="tabControl" id="tabCandidate" href="/recruiter/contents/index.php">  Candidates</div>
-        <div class="tabControl" id="tabTask" href="/recruiter/contents/tasks.php"><img src="graphics/dot1.png" id="notification"/>    My Tasks</div>
-        <div class="tabControl" id="tabDirectory" href="/recruiter/contents/directory.php">  Directory</div>
-      </div>
-      <?php
-        $username = "mzhan";
-        $password = "wxz6813";
-        $hostname = "sql.mit.edu";
-        $database = "mzhan+recruiter";
-        parse_str($_SERVER['QUERY_STRING']);
-        $con=mysqli_connect($hostname, $username, $password, $database);
-        if (mysqli_connect_errno()) {
-          echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        }
-        $query = 'SELECT * FROM Candidates WHERE CID='.$id;
-        $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
-        $line = mysqli_fetch_array($result, MYSQL_ASSOC);
-        $c_name = $line["Name"];
-        $c_email = $line["Email"];
-        $c_phone = $line["Phone"];
-        $c_position = $line["Position"];
-        $c_reviewers = $line["Reviewers"];
-        $c_status = $line["Status"];
-        $c_school = $line["School"];
-        $c_education = $line["Education"];
-        $c_major = $line["Major"];
+    <div id='content'>
+      <div id='controlPanel'>
+        <div class='tabControl' id='tabCandidate' href='/recruiter/contents/index.php'>  Candidates</div>
+        <div class='tabControl' id='tabTask' href='/recruiter/contents/tasks.php'><img src='graphics/dot1.png' id='notification'/>    My Tasks</div>
+        <div class='tabControl' id='tabDirectory' href='/recruiter/contents/directory.php'>  Directory</div>
+      </div>";
+      
+        
         $query = 'SELECT * FROM Actions WHERE CID='. $id;
         $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
         $c_actions = array();
@@ -194,7 +196,7 @@
                 <table id='infoTable'>
                   <tr>
                     <td id='idLabel' class='myLabel'>ID:</td>
-                    <td id='id'>$id</td>
+                    <td id='id'><span id='profileID'>$id</span></td>
                   </tr>
                   <tr>
                     <td id='emailLabel' class='myLabel'>Email:</td>

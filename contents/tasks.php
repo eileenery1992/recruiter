@@ -218,11 +218,11 @@
                     if ($col_value == 1) {
                       echo "<td><button class='btn btn-default buttonReviewer' href='/recruiter/contents/candidate.php?id=".$line["CID"]."#profilePagePanel'>Add Reviewer</button></td></tr>";
                     } elseif ($col_value == 2) {
-                      echo "<td><button class='btn btn-warning buttonSchedule'>Schedule Interview</button></td></tr>";
+                      echo "<td><button class='btn btn-warning buttonSchedule'  href='/recruiter/contents/candidate.php?id=".$line["CID"]."&showInterview=true'>Schedule Interview</button></td></tr>";
                     } elseif ($col_value == 3) {
-                      echo "<td><button class='btn btn-danger buttonRejection'>Send Rejection</button></td></tr>";
+                      echo "<td><button class='btn btn-danger buttonRejection' href='/recruiter/contents/candidate.php?id=".$line["CID"]."&showEmail=reject'>Send Rejection</button></td></tr>";
                     } elseif ($col_value == 4) {
-                      echo "<td><button class='btn btn-success buttonOffer'>Send Offer</button></td></tr>";
+                      echo "<td><button class='btn btn-success buttonOffer' href='/recruiter/contents/candidate.php?id=".$line["CID"]."&showEmail=offer'>Send Offer</button></td></tr>";
                     } else {
                       echo "<td>$col_value</td>";
                     }

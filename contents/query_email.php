@@ -14,7 +14,7 @@ $cid = $_POST['cid'];
 $query = "SELECT Name, Email FROM Candidates WHERE CID=$cid"; 
 $result = mysqli_query($con, $query) or die('Query failed: ' . mysqli_error($con));
 $line = mysqli_fetch_array($result, MYSQL_ASSOC);
-echo $line["Name"]."&#60;".$line["Email"]."&#62;";
+echo json_encode(array("cid" => $cid, "cname" => $line["Name"], "cemail" => $line["Email"]));
 
 mysqli_close($con);
 ?>

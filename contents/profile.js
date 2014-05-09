@@ -7,7 +7,6 @@ var scheduled = 0;
 var interviewers = ['Mike Mclean (mclean)']
 var reviewers = ['Mike McLean (mclean)']
 var token = 0;
-var rejecting = 0;
 
 
 
@@ -23,8 +22,15 @@ function updateTabs() {
   }  
 }
 
-function popEmail(recipient, template) {
-  $("#recipient").html(recipient);
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function loadEmail(id, name, email, template) {
+  $("#recipient").html(name.concat("&#60;").concat(email).concat("&#62;"));
   if (template == "empty") {
     $("#titleInput").val("");
     $("#messageInput").val("");
@@ -35,8 +41,6 @@ function popEmail(recipient, template) {
     $("#titleInput").val(rejectTitle);
     $("#messageInput").val(rejectMessage);
   }
-  
-  $("#newEmail").modal("show"); 
 }
 
 
@@ -203,12 +207,12 @@ var loadBen = function() {
       var comment = $("#actionInput").val();
       $("#actionInput").val("");
       if (comment.length != 0) {
-        addAction("laura", "comment", comment);
         $.post('post_action.php', {'action':3, 'CID':cid}, function(r){console.log('comment');});
+        // addAction("laura", "comment", comment);
       }
     } else {
       if (token == 1) {
-        addAction("laura", "review", "mclean");
+        // addAction("laura", "review", "mclean");
         var reviewerLink = document.createElement("span");
         reviewerLink.innerHTML = "mclean";
         reviewerLink.className = "profileLink";
@@ -259,7 +263,8 @@ var loadBen = function() {
   }, function() {
     this.style.textDecoration = "none";
   }).click(function() {
-    popEmail($("#profileName").html().concat("&#60;").concat($("#profileEmail").html()).concat("&#62;"), "empty");
+    template = "empty";
+    loadEmail($("#profileID").html(), $("#profileName").html(), $("#profileEmail").html());
   });
 
   $("#cancelEmailButton").click(function() {
@@ -279,7 +284,7 @@ var loadBen = function() {
     $("#emailSent").modal("show");
     $("#rejectButton").css("background-color", "gray").css("border-color", "gray");
     if (sent == 0) {
-      addAction("laura", "send", "");
+      // addAction("laura", "send", "");
       sent = 1;
     } 
     $("#statusButton").text("Rejected").removeClass("activeStatus").addClass("inactiveStatus");
@@ -430,6 +435,18 @@ var loadAlex = function() {
 };
 
 $(document).ready(function() {
+  if (showEmail = getParameterByName('showEmail')) {
+    loadEmail($("#profileID").html(), $("#profileName").html(), $("#profileEmail").html(), showEmail);
+    $("#newEmail").modal("show");
+  } 
+
+  if (showInterview = getParameterByName('showInterview')) {
+    $('#candidateName').text($("#profileName").html());
+    $('#candidateID').text($("#profileID").html());    
+    $("#newInterview").modal("show");
+  } 
+
+
   $(".tabControl").hover(function() {
     if (this.id != selected) {
       this.style.backgroundColor = "#f6f7f8";
@@ -459,33 +476,19 @@ $(document).ready(function() {
   });
 
   $(".buttonSchedule").click(function() {
-    
-$("#newInterview").modal("show");
-    var l = this.parentNode.parentNode.childNodes;
-    var name = l[1].innerText;
-    var id = l[0].innerText;
-    $('#candidateName').text(name);
-    $('#candidateID').text(id);    
+    window.document.location = $(this).attr("href");
     return false;
   });
 
   $(".buttonRejection").click(function() {
-    var cid = this.parentNode.parentNode.childNodes[0].innerText;
-    $.post('query_email.php', {cid: cid}, function(data) {
-      popEmail(data, "reject");
-    });
+    window.document.location = $(this).attr("href");
     return false;
   });
 
   $(".buttonOffer").click(function() {
-    var cid = this.parentNode.parentNode.childNodes[0].innerText;
-    $.post('query_email.php', {cid: cid}, function(data) {
-      popEmail(data, "offer");
-    });
+    window.document.location = $(this).attr("href");
     return false;
   });
-
-
 
   loadBen();
   loadAlex();

@@ -239,7 +239,8 @@ $("#form_candidate").submit(function(event){
     // callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         // log a message to the console
-        var cid = parseInt(response);
+        var cid = response;
+        console.log(cid);
         $('#newFromForm').modal('hide');
         $.post('post_action.php', {'action':1, 'CID':cid}, function(r){console.log('profile added');});
         window.document.location = "/recruiter/contents/candidate.php?id="+cid;

@@ -13,7 +13,7 @@ if (mysqli_connect_errno()) {
 }
 $CID = $_POST['CID'];
 $action = $_POST['action'];
-$s = "INSERT INTO Actions (CID, Action) VALUES ('$CID', '$action')";}
+$s = "INSERT INTO Actions (CID, Action) VALUES (10020, 2)";
 mysqli_query($con, $s) or die(mysqli_error($con));
 
 mysqli_close($con);

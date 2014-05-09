@@ -412,7 +412,7 @@ html, #myBody {
 
 .mewBadge {
     background-color: #d43f3a;
-    border-radius: 12px;
+    border-radius: 16px;
     box-shadow: 1px 1px 1px black;
     color: white;
     font: bold 12px/9px Helvetica, Verdana, Tahoma;
